@@ -3,6 +3,7 @@ using Samples.datastructures;
 
 namespace Test
 {
+ 
     public class DynamicArrayTest
     {
         private DynamicArray array;

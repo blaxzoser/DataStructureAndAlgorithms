@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Samples.datastructures
-{
+{  
+    /// <summary>
+   /// -Killer Feature-
+   /// Random Access
+   /// Fixed Capicity
+   /// Dobule when resize
+   /// </summary>
     public class DynamicArray: List<string>
     {
         private  Object[] _data;
@@ -16,7 +21,19 @@ namespace Samples.datastructures
             _data = new object[_initialCapacity];
         }
 
+        /// <summary>
+        /// O(1)
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public string Get(int index) => _data[index] == null ? null: _data[index].ToString();
+        
+        /// <summary>
+        /// O(1)
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+
         public void Set(int index, string value) => _data[index] = value;
 
         public new void Add(string value) 
@@ -29,6 +46,11 @@ namespace Samples.datastructures
             _size++;
         }
  
+        /// <summary>
+        /// O(n)
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="value"></param>
         public  new void Insert(int index, string value) 
         {
             //CheckSize
@@ -76,6 +98,10 @@ namespace Samples.datastructures
 
         public int Size => _size;
 
+        /// <summary>
+        /// O(n)
+        /// </summary>
+        /// <param name="index"></param>
         public void Delete(int index)
         {
             //Bad way :( but it works XD

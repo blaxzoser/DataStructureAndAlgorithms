@@ -16,7 +16,7 @@ namespace Samples.datastructures
             _data = new object[_initialCapacity];
         }
 
-        public string Get(int index) => _data[index].ToString();
+        public string Get(int index) => _data[index] == null ? null: _data[index].ToString();
         public void Set(int index, string value) => _data[index] = value;
 
         public new void Add(string value) 
@@ -46,6 +46,23 @@ namespace Samples.datastructures
             _size++;
         }
 
+        /// <summary>
+        /// Custum Contains
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool  Contains(object value) 
+        {
+            for (int i = 0; i < _data.Length; i++)
+            {
+                if (_data[i] == value)
+                    return true;
+            }
+
+            return false;
+        }
+
+
         public void Resize() 
         {
             Object[] newData = new Object[_initialCapacity * 2];
@@ -71,12 +88,13 @@ namespace Samples.datastructures
             //        newData[i] = _data[i+1];
             //}
             //_data = newData;
-
-            for(int i = index; i < _size - 1; i++) 
+            int i = index;
+            for ( i = index; i < _size - 1; i++) 
             {
                 _data[i] = _data[i + 1];
             }
 
+            _data[i] = null;
             _size--;
         }
 

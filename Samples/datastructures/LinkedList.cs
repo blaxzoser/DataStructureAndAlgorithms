@@ -2,6 +2,11 @@
 
 namespace Samples.datastructures
 {
+    /// <summary>
+    /// No random access
+    /// No fixed Capacity
+    /// Always the right size
+    /// </summary>
     public class LinkedList
     {
         private class Node 
@@ -17,6 +22,11 @@ namespace Samples.datastructures
         }
 
         private Node _head;
+
+        /// <summary>
+        /// O(1)
+        /// </summary>
+        /// <param name="data"></param>
         public void AddFront(int data) 
         {
             //Create new node
@@ -59,6 +69,10 @@ namespace Samples.datastructures
 
         }
 
+        /// <summary>
+        /// O(n)
+        /// </summary>
+        /// <param name="data"></param>
         public void AddBack(int data )
         {
             var newNode = new Node(data);
@@ -98,6 +112,10 @@ namespace Samples.datastructures
             return count;
         }
 
+        /// <summary>
+        /// O(n)
+        /// </summary>
+        /// <param name="data"></param>
         public void DeleteValue(int data)
         {
             if (_head == null) return;
@@ -107,6 +125,7 @@ namespace Samples.datastructures
                 return;
             }
             var current = _head;
+
             while (current.Next != null)
             {
                 if (current.Next.Data == data) 

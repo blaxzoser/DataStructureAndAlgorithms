@@ -3,7 +3,7 @@
 namespace Samples.datastructures
 {
     /// <summary>
-    /// LIFO = Last in First Out
+    /// LIFO Last in First Out
     /// </summary>
     public class Stack
     {

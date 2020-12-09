@@ -5,7 +5,7 @@ namespace Samples.datastructures
     /// <summary>
     /// No random access
     /// No fixed Capacity
-    /// Always the right size
+    /// Always the right size 
     /// </summary>
     public class LinkedList
     {

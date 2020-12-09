@@ -5,6 +5,10 @@ using System.Text;
 namespace Samples.datastructures
 {
 
+    /// <summary>
+    ///  Review
+    ///  Super fast lookups O(1)
+    /// </summary>
     public class HashTable
     {
         private const int INITIAL_SIZE = 16;

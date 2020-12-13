@@ -1,9 +1,7 @@
 ﻿using NUnit.Framework;
 using Samples.algorithms;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
+
 
 namespace Test.algorithms
 {

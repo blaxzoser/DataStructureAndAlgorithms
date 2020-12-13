@@ -5,7 +5,7 @@ namespace Samples.algorithms
     public class BinarySearchTree
     {
         private Node _root;
-
+        public Node Root => _root;
         public class Node
         {
             public string Value   { get; set; }
@@ -97,6 +97,43 @@ namespace Samples.algorithms
             // Since duplicates are not allowed in BSTs, simply ignore the duplicate,
             // and return our fully constructed tree. We are done!
             return node;
+        }
+
+        public bool CheckBST(Node root)
+        {
+
+            // left smaller
+            bool leftOK = false;
+
+            if (root.Left != null)
+            {
+                if (root.Left.Key < root.Key)
+                {
+                    leftOK = true;
+                }
+            }
+            else
+            {
+                leftOK = true;
+            }
+
+            // right larger
+            bool rightOK = false;
+
+            if (root.Right != null)
+            {
+                if (root.Right.Key > root.Key)
+                {
+                    rightOK = true;
+                }
+            }
+            else
+            {
+                rightOK = true;
+            }
+
+            // get distinct check for free via <>
+            return leftOK && rightOK;
         }
 
         #region Delete 

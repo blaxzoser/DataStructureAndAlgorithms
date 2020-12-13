@@ -80,7 +80,7 @@ namespace Samples.algorithms
             return Height(N.Left) - Height(N.Right);
         }
 
-        void Insert(int key)
+        public void Insert(int key)
         {
             _root = Insert(_root, key);
         }

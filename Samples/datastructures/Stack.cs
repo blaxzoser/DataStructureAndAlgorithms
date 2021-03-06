@@ -1,5 +1,5 @@
 ﻿using System;
-
+ 
 namespace Samples.datastructures
 {
     /// <summary>

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Samples.algorithms
+namespace Samples.algorithms 
 {
     public class BinarySearchTree
     {

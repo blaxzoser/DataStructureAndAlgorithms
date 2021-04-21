@@ -51,5 +51,18 @@ namespace Test.algorithms.questions
             Assert.IsFalse(permutationDetector.IsPermutationRefactor("abc", "xyz"));
             Assert.IsFalse(permutationDetector.IsPermutationRefactor("abc", "aca"));
         }
+
+
+        [Test]
+        public void URLIfy()
+        {
+            Assert.AreEqual("My%20Home%20Page",UrlConverter.Urlify("My Home Page    ",16));
+        }
+
+        [Test]
+        public void URLIfyRefactor()
+        {
+            Assert.AreEqual("My%20Home%20Page", UrlConverter.UrlifyRefactor("My Home Page    ", 16));
+        }
     }
 }

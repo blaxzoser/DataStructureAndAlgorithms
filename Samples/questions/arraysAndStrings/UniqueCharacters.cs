@@ -22,13 +22,14 @@ namespace Samples.questions.arraysAndStrings
 
         public bool IsUniqueRefactor(string text)
         {
-            if (text.Length > 128) return false;
+            const int ASCII = 128;
+            if (text.Length > ASCII) return false;
 
-            bool[] charSet = new bool[128];
+            bool[] charSet = new bool[ASCII];
             for(int i=0; i < text.Length; i++) 
             {
                 var value = text.IndexOf(text[i]);
-                if (charSet[value]) 
+                if (charSet[value] == true) 
                 {
                     return false;
                 }

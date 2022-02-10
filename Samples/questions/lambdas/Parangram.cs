@@ -11,7 +11,7 @@ namespace Samples.questions.arraysAndStrings
     //   Given a string, detect whether or not it is a pangram.Return True if it is, False if not.Ignore numbers and punctuation.
     public class Parangram
     {
-        public static bool IsParangramLamdas(string text)
+        public static bool IsParangramLambdas(string text)
         {
             return text
                 .ToLower()

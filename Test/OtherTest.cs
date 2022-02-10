@@ -16,7 +16,7 @@ namespace Test
         [Test]
         public void TestParangramWithLambdas()
         {
-            Assert.AreEqual(true, Parangram.IsParangramLamdas("The quick brown fox jumps over the lazy dog."));
+            Assert.AreEqual(true, Parangram.IsParangramLambdas("The quick brown fox jumps over the lazy dog."));
         }
     }
 }

@@ -6,9 +6,49 @@ namespace Samples.questions.lambdas
 {
     public class Balance
     {
-        public bool IsBalance(string text)
+        public static bool IsBalance(string text)
         {
-            return true;
+            Stack<char> lastOpen = new Stack<char>();
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == '{')
+                {
+                    lastOpen.Push(text[i]);
+                    continue;
+                }
+                else if (text[i] == '[')
+                {
+                    lastOpen.Push(text[i]);
+                    continue;
+                }
+                else if (text[i] == '(')
+                {
+                    lastOpen.Push(text[i]);
+                    continue;
+                }
+                else if (text[i] == ')')
+                {
+                    if (lastOpen.Count == 0 || lastOpen.Pop() != '(')
+                        return false;
+                    continue;
+                }
+                else if (text[i] == ']')
+                {
+                    if (lastOpen.Count == 0 || lastOpen.Pop() != '[')
+                        return false;
+                    continue;
+                }
+                else if (text[i] == '}')
+                {
+                    if (lastOpen.Count == 0 || lastOpen.Pop() != '{')
+                        return false;
+                    continue;
+                }
+            }
+
+            if (lastOpen.Count == 0) return true;
+            else return false;
+
         }
 
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Samples.questions.lambdas
 {
-    public class  Kata
+    public partial class Kata
     {
         public static int[] ArrayDiff(int[] a, int[] b)
         {

@@ -87,7 +87,25 @@ namespace Test
             Assert.IsFalse(Balance.IsBalance("{]"));
             Assert.IsFalse(Balance.IsBalance("{{]}"));
             Assert.IsFalse(Balance.IsBalance("{((({})}"));
+        }
 
+        [Test]
+        public void TestCompress()
+        {
+            Assert.AreEqual("a3b2c1",Compressor.Compress("aaabbc"));
+        }
+
+        [Test]
+        public void Tests1()
+        {
+            Assert.AreEqual(5, Kata.FindInt(new[] { 20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5 }));
+        }
+
+
+        [Test]
+        public void Tests3()
+        {
+            Assert.AreEqual(2, Kata.FindInt(new[] { 1, 1, 2 }));
         }
     }
 }

@@ -114,5 +114,27 @@ namespace Test
         {
             Assert.AreEqual("Luis Pntado", StringDuplicates.RemoveDuplicates("Luis Pintado"));
         }
+
+        [Test]
+        public void TestPalindromes()
+        {
+            Assert.IsTrue(Palindrome.IsPalindromeDetector("abba"));
+            Assert.IsTrue(Palindrome.IsPalindromeDetector("mom"));
+            Assert.IsTrue(Palindrome.IsPalindromeDetector("dad"));
+
+            Assert.IsFalse(Palindrome.IsPalindromeDetector("rush"));
+            Assert.IsFalse(Palindrome.IsPalindromeDetector("yes"));
+        }
+
+        [Test]
+        public void TestPalindromePerformance()
+        {
+            Assert.IsTrue(Palindrome.IsPalindromeRefactor("abba"));
+            Assert.IsTrue(Palindrome.IsPalindromeRefactor("mom"));
+            Assert.IsTrue(Palindrome.IsPalindromeRefactor("dad"));
+
+            Assert.IsFalse(Palindrome.IsPalindromeRefactor("rush"));
+            Assert.IsFalse(Palindrome.IsPalindromeRefactor("yes"));
+        }
     }
 }

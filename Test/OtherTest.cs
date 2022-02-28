@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Samples.questions.arraysAndStrings;
+using Samples.questions.interviews;
 using Samples.questions.lambdas;
 using Samples.questions.recursive;
 
@@ -106,6 +107,12 @@ namespace Test
         public void Tests3()
         {
             Assert.AreEqual(2, Kata.FindInt(new[] { 1, 1, 2 }));
+        }
+
+        [Test]
+        public void Tests1InterviewStringDuplicates()
+        {
+            Assert.AreEqual("Luis Pntado", StringDuplicates.RemoveDuplicates("Luis Pintado"));
         }
     }
 }

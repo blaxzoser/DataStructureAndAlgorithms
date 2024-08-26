@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 
 namespace Samples.questions.interviews
 {
@@ -29,6 +30,16 @@ namespace Samples.questions.interviews
                 }
             }
             return true;
+        }
+
+        /// <summary>
+        /// Ref https://learn.microsoft.com/en-us/dotnet/csharp/how-to/concatenate-multiple-strings
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static bool IsPalindromeLambda(string text)
+        {
+            return text  == string.Concat(text.Reverse().Select(source => source));
         }
     }
 }

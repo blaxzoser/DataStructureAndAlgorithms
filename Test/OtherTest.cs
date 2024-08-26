@@ -136,5 +136,16 @@ namespace Test
             Assert.IsFalse(Palindrome.IsPalindromeRefactor("rush"));
             Assert.IsFalse(Palindrome.IsPalindromeRefactor("yes"));
         }
+
+        [Test]
+        public void TestPalindromePerformanceWithLambdas()
+        {
+            Assert.IsTrue(Palindrome.IsPalindromeLambda("abba"));
+            Assert.IsTrue(Palindrome.IsPalindromeLambda("mom"));
+            Assert.IsTrue(Palindrome.IsPalindromeLambda("dad"));
+
+            Assert.IsFalse(Palindrome.IsPalindromeLambda("rush"));
+            Assert.IsFalse(Palindrome.IsPalindromeLambda("yes"));
+        }
     }
 }

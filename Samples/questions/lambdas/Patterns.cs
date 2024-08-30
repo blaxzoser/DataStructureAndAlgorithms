@@ -59,5 +59,34 @@ namespace Samples.questions.lambdas
                 .Count();
         }
 
+
+        public bool IsBinary(string text)
+        {
+            //1 approach
+            //var isNotBinary = text.Split(',').Select(a => a == "0" || a == "1").Contains(false);
+            //return !isNotBinary;
+
+            //2 approach
+            //return !text.Split(',').Where(a => a != "0" && a != "1").Any();
+
+            //3 approach
+            return text.Split(',').All(c => c == "0" || c == "1");
+
+            //4 old 
+            //foreach (var item in text.Split(','))
+            //{
+            //    if(item == "0" || item == "1")
+            //    {
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //}
+            //return true;
+
+        }
+
     }
 }

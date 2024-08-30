@@ -61,7 +61,15 @@ namespace Test.algorithms.questions
             var input2 = "22,2,3,3,3,3,3,3,3,3";
             var output2 = 8;
             Assert.AreEqual(output2, patterns.CountOdd(input2));
+        }
 
+        [Test]
+        public void ShoudIsBinary()
+        {
+            Assert.AreEqual(true, patterns.IsBinary("1,1,1"));
+            Assert.AreEqual(true, patterns.IsBinary("0,0,0"));
+            Assert.AreEqual(true, patterns.IsBinary("1,0,1,0,1,0"));
+            Assert.AreEqual(false, patterns.IsBinary("1,0,1,0,1,3"));
 
         }
     }

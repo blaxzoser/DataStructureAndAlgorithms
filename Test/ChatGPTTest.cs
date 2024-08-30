@@ -95,5 +95,12 @@ namespace Test
             Assert.That(actual, Is.EquivalentTo(expected));
 
         }
+
+        [Test]
+        public void ShouldGetMajorityElement()
+        {
+            Assert.AreEqual(2, chatGPT.MajorityElement(new int[] { 1, 2, 1, 4 }));
+            Assert.AreEqual(6, chatGPT.MajorityElement(new int[] { 2, 2, 3, 3,4,4,1,2,0,0,0,0,0,0 }));
+        }
     }
 }

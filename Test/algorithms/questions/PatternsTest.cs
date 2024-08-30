@@ -50,5 +50,19 @@ namespace Test.algorithms.questions
             var result = new string[] {  "pip","a" };
             Assert.AreEqual(result, patterns.ReturnEven(elements));
         }
+
+        [Test]
+        public void ShoudCountOdd()
+        {
+            var input = "1,2,3,4,5,6,7,8";
+            var output = 4;
+            Assert.AreEqual(output, patterns.CountOdd(input));
+
+            var input2 = "22,2,3,3,3,3,3,3,3,3";
+            var output2 = 8;
+            Assert.AreEqual(output2, patterns.CountOdd(input2));
+
+
+        }
     }
 }

@@ -46,7 +46,18 @@ namespace Samples.questions.lambdas
         }
 
 
-
+        /// <summary>
+        /// Count how many numbers odd has it 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public int CountOdd(string text)
+        {
+            return text.Split(',')
+                .Select(x => int.Parse(x))
+                .Where(s => s % 2 != 0)
+                .Count();
+        }
 
     }
 }

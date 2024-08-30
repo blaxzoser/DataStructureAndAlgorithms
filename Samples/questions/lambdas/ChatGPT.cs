@@ -98,6 +98,21 @@ namespace Samples.questions.lambdas
             return debug.ToList<Person>();
         }
 
+        //169. Majority Element by Alberto
+        //Count the majority and return the max
+        // Sample:
+        // { 1,1,2}
+        // return  2
+        // Sample 2:
+        //{4,5,6,5,4,4}
+        //return 3
+        public int MajorityElement(int[] numers)
+        {
+            return numers.GroupBy(x => x).Select(
+                    g => new { key = g, count = g.Count() }
+                ).OrderByDescending(g => g.count).FirstOrDefault().count;
+        
+        }
 
     }
 }

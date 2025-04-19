@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Samples.questions.leetcode.array
 {
@@ -38,13 +39,31 @@ namespace Samples.questions.leetcode.array
         public void RotateImage(int[][] matrix)
         {
             int n = matrix.Length;
-            // Step 1: Transpose the matrix
+            // Step 1: Transpose the matrix\
+            // It means that we swap the elements matrix[i][j] with matrix[j][i]
             for (int i = 0; i < n; i++)
             {
+                // It start on read first row
+                Debug.WriteLine($"Row index: {i}:");
+
+
                 for (int j = i + 1; j < n; j++)
                 {
-                    int temp = matrix[i][j];
-                    
+                    // it start on read first column
+                    Debug.WriteLine($"Column index:{j}");
+                    Debug.WriteLine($"Row Column Value {matrix[i][j]}:");
+
+
+                    // Swap the elements matrix[i][j] with matrix[j][i]
+                    // This will convert the matrix from:
+                    // { 1, 2, 3},
+                    // { 4, 5, 6},
+                    // { 7, 8, 9 }
+                    // to:
+                    // { 1, 4, 7},
+                    // { 2, 5, 8},
+                    // { 3, 6, 9 }
+                    int temp = matrix[i][j];                    
                     matrix[i][j] = matrix[j][i];
                     matrix[j][i] = temp;
                 }
@@ -53,6 +72,7 @@ namespace Samples.questions.leetcode.array
             // Step 2: Reverse each row
             for (int i = 0; i < n; i++)
             {
+                // So that we can easily reverse the rows
                 Array.Reverse(matrix[i]);
             }
         }

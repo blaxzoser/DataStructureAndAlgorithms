@@ -63,7 +63,7 @@ namespace Samples.questions.leetcode.array
                     // { 1, 4, 7},
                     // { 2, 5, 8},
                     // { 3, 6, 9 }
-                    int temp = matrix[i][j];                    
+                    int temp = matrix[i][j];
                     matrix[i][j] = matrix[j][i];
                     matrix[j][i] = temp;
                 }
@@ -76,5 +76,24 @@ namespace Samples.questions.leetcode.array
                 Array.Reverse(matrix[i]);
             }
         }
+        
+        public void ReverseArrayDoubleOnlyRows(int[][] matrix)
+        {
+            var lengthRows = matrix.Length;
+            for (int i = 0; i < lengthRows; i++)
+            {
+                var stoper = matrix[i].Length/2;
+               for (int j = 0; j < stoper; j++)
+               {
+                    var temp = matrix[i][j];
+                    var limitColumn = (matrix[j].Length - j) - 1;
+                    matrix[i][j] = matrix[i][limitColumn];
+                    matrix[i][limitColumn] = temp;
+                }
+            }
+
+        }
+
+
     }
 }

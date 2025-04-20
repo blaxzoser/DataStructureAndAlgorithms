@@ -82,13 +82,14 @@ namespace Samples.questions.leetcode.array
             var lengthRows = matrix.Length;
             for (int i = 0; i < lengthRows; i++)
             {
-                var stoper = matrix[i].Length/2;
-               for (int j = 0; j < stoper; j++)
+               var limitColumnPerRow = matrix[i].Length;
+               var stopperColumns = limitColumnPerRow / 2;
+               for (int j = 0; j < stopperColumns; j++)
                {
                     var temp = matrix[i][j];
-                    var limitColumn = (matrix[j].Length - j) - 1;
-                    matrix[i][j] = matrix[i][limitColumn];
-                    matrix[i][limitColumn] = temp;
+                    var newLimitColumnLeft = (matrix[j].Length - j) - 1;
+                    matrix[i][j] = matrix[i][newLimitColumnLeft];
+                    matrix[i][newLimitColumnLeft] = temp;
                 }
             }
 

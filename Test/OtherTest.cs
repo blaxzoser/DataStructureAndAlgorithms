@@ -3,6 +3,8 @@ using Samples.questions.arraysAndStrings;
 using Samples.questions.interviews;
 using Samples.questions.lambdas;
 using Samples.questions.recursive;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Test
 {
@@ -146,6 +148,6 @@ namespace Test
 
             Assert.IsFalse(Palindrome.IsPalindromeLambda("rush"));
             Assert.IsFalse(Palindrome.IsPalindromeLambda("yes"));
-        }
+        }     
     }
 }

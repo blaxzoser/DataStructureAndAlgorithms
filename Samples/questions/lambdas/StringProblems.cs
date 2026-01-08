@@ -71,6 +71,15 @@ namespace Samples.questions.lambdas
             return str.ToLower().Trim().Count(s => s == 'a' || s == 'e' || s == 'i' || s == 'o' || s == 'u');
         }
 
+        public int CountVowelsApprochB(string inputString)
+        {
+            var vowels = "aeiou";
+            return inputString
+                    .ToLower()
+                    .Where(s => vowels.Contains(s))
+                    .Count();
+        }
+
         // ========================================================================
         // EXERCISE 2: Reverse Words in String
         // ========================================================================
@@ -196,9 +205,10 @@ namespace Samples.questions.lambdas
         //
         // Hint: Use Distinct() and compare lengths
         public bool HasAllUniqueCharacters(string str)
-        {
-            // TODO: Implement using lambda and LINQ
-            throw new NotImplementedException();
+        {           
+            var differentValues = str.Distinct();
+            return str == string.Join("",differentValues);
+
         }
 
         // ========================================================================

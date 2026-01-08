@@ -58,6 +58,35 @@ namespace Test.questions.lamdas
         }
 
         [Test]
+        public void CountVowelsApproachB_Return_Correct_Number()
+        {
+            // Arrange
+            var expected = 3;
+            var input = "Hello World";
+
+            // Act
+            var result = stringProblems.CountVowelsApprochB(input);
+
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void CountVowelsApproachA_Return_Correct_Number()
+        {
+            // Arrange
+            var expected = 5;
+            var input = "The quick brown fox";
+
+            // Act
+            var result = stringProblems.CountVowelsApprochB(input);
+
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+
+
+        [Test]
         public void CountVowels_Return_Correct_Number_ScenarioTwo()
         {
             // Arrange

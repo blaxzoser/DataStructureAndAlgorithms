@@ -228,8 +228,37 @@ namespace Samples.questions.lambdas
         // Hint: Use Distinct() or GroupBy()
         public string RemoveDuplicates(string str)
         {
-            // TODO: Implement using lambda and LINQ
-            throw new NotImplementedException();
+            // CLUE FOR LINE 231: You're on the right track with GroupBy! ✓
+            // But think about what the requirement really means:
+            //   - "Remove duplicates, keeping only the first occurrence"
+            //   - This means: "programming" → "progamin" (keep first 'r', 'm', 'g', remove later ones)
+            //
+            // ISSUE 1 (Line 232): When you do GroupBy(x => x), each group 'x' is an IGrouping<char, char>
+            //   - To get the CHARACTER, use x.Key (not just x)
+            //   - Current: key = x  ❌ (x is a group, not a char)
+            //   - Should be: key = x.Key  ✓ (x.Key is the character)
+            //
+            // ISSUE 2 (Line 233): .Where(x => x.value == 1) filters to keep ONLY characters that appear ONCE
+            //   - But the requirement is to keep ALL characters (first occurrence of each)
+            //   - "programming" has: p(1), r(2), o(1), g(2), a(1), m(2), i(1), n(1)
+            //   - Your current code would return: "poain" (only chars appearing once) ❌
+            //   - Should return: "progamin" (first occurrence of each char) ✓
+            //
+            // 💡 SIMPLER APPROACH: The hint says "Use Distinct()" - that's much simpler!
+            //   Distinct() automatically keeps the first occurrence of each character!
+            //   "programming".Distinct() → ['p','r','o','g','a','m','i','n'] → "progamin" ✓
+            //
+            // 💡 IF USING GroupBy: After GroupBy, you just need the Key (the character), not the count!
+            //   GroupBy keeps them in order, so just take x.Key from each group
+            //
+            // WRONG AWNSER APPROACH A
+            //return string.Join("",str.GroupBy( x => x)                    
+            //      .Select( x=> new { key = x, value = x.Count() })
+            //      .Where(x => x.value == 1)
+            //      .Select(x => x.key).ToList());
+            //      
+
+            return string.Join("",str.Distinct());
         }
 
         // ========================================================================
@@ -245,8 +274,9 @@ namespace Samples.questions.lambdas
         // Hint: Use GroupBy() and ToDictionary()
         public Dictionary<char, int> GetCharacterFrequency(string str)
         {
-            // TODO: Implement using lambda and LINQ
-            throw new NotImplementedException();
+            return str.GroupBy(s => s)
+                      .Select(s => new { key = s.Key, count = s.Count() })
+                      .ToDictionary(x => x.key, x => x.count);                                    
         }
 
         // ========================================================================
@@ -267,7 +297,43 @@ namespace Samples.questions.lambdas
         public string CapitalizeWords(string str)
         {
             // TODO: Implement using lambda and LINQ
-            throw new NotImplementedException();
+            // CLUE FOR LINE 301: You're on the right track with Split() and Select()! ✓
+            // But there are several issues to fix:
+            //
+            // ISSUE 1: Return type mismatch
+            //   - Your Select() returns IEnumerable<string> (a collection of strings)
+            //   - But the method signature requires string (a single string)
+            //   - You need to JOIN the words back together with spaces!
+            //   - Hint: Use string.Join(" ", ...) to combine the words
+            //
+            // ISSUE 2: Empty string handling
+            //   - When you Split(' ') on "  multiple   spaces  ", you get: ["", "", "multiple", "", "", "spaces", "", ""]
+            //   - Empty strings will cause s[0] to throw IndexOutOfRangeException! ❌
+            //   - You need to check if the string is not empty before accessing s[0]
+            //   - Hint: Use a condition like: s.Length > 0 ? ... : s
+            //
+            // ISSUE 3: Replace() replaces ALL occurrences
+            //   - s.Replace("h", "H") replaces ALL 'h' in the word, not just the first
+            //   - For "hello" → "Hello" ✓ (works fine)
+            //   - But think: what if you want to capitalize ONLY the first character?
+            //   - Better approach: Take first char, uppercase it, concatenate with rest of string
+            //   - Hint: Use Substring() or string indexing: char.ToUpper(s[0]) + s.Substring(1)
+            //
+            // VISUAL EXAMPLE:
+            //   Input: "hello world"
+            //   Split(' ') → ["hello", "world"]
+            //   Select → ["Hello", "World"]  (capitalize first letter of each)
+            //   Join(" ") → "Hello World" ✓
+            //
+            //   Input: "  multiple   spaces  "
+            //   Split(' ') → ["", "", "multiple", "", "", "spaces", "", ""]
+            //   Select → ["", "", "Multiple", "", "", "Spaces", "", ""]  (handle empty strings!)
+            //   Join(" ") → "  Multiple   Spaces  " ✓ (preserves spaces)
+            //  Approch A WRONG
+            //return str.Split(' ')
+            //         .Select(s => s.Replace(s[0].ToString(), s[0].ToString().ToUpper() ));
+
+            
         }
 
         // ========================================================================

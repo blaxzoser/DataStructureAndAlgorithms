@@ -330,9 +330,9 @@ namespace Samples.questions.lambdas
             //   Select → ["", "", "Multiple", "", "", "Spaces", "", ""]  (handle empty strings!)
             //   Join(" ") → "  Multiple   Spaces  " ✓ (preserves spaces)
             //  Approch A WRONG
-            //return str.Split(' ')
-            //         .Select(s => s.Replace(s[0].ToString(), s[0].ToString().ToUpper() ));
-
+            ///return str.Split(' ')
+            //        .Select(s => s.Replace(s[0].ToString(), s[0].ToString().ToUpper() ));
+            return string.Empty;
             
         }
 

@@ -15,6 +15,7 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
     // It is LAZY: nothing runs until you iterate (foreach, ToArray, ToList...).
     //
     // Total practice time: ~40 min
+    // 1 round: 30 min
     // ============================================================================
     public class WhereExercises
     {
@@ -27,11 +28,11 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         //
         // Expected time to solve: 5 min
         // Topic: Where + simple predicate
-        // Tip:   n % 2 == 0. Don't forget .ToArray() at the end.
+      
         // ========================================================================
         public int[] GetEvenNumbers(int[] numbers)
         {
-            
+            return numbers.Where(n => n % 2 == 0 ).ToArray();
         }
 
         // ========================================================================
@@ -42,12 +43,11 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         //
         // Expected time to solve: 5 min
         // Topic: Where + using a method parameter inside the lambda (closure)
-        // Tip:   The lambda can "see" minLength even though it's not one of
-        //        its own parameters. That is called a closure.
+       
         // ========================================================================
         public string[] GetWordsLongerThan(string[] words, int minLength)
         {
-            throw new NotImplementedException();
+           return  words.Where(w => w.Length > minLength).ToArray();
         }
 
         // ========================================================================
@@ -58,11 +58,11 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         //
         // Expected time to solve: 5 min
         // Topic: Where over a List of objects
-        // Tip:   p => p.Age >= 18. Return a List, so use .ToList().
+      
         // ========================================================================
         public List<Person> GetAdults(List<Person> people)
         {
-            throw new NotImplementedException();
+            return people.Where(p => p.Age >= 18).ToList();
         }
 
         // ========================================================================
@@ -76,12 +76,12 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         //
         // Expected time to solve: 10 min
         // Topic: Where + && + string comparison
-        // Tip:   string.Equals(a, b, StringComparison.OrdinalIgnoreCase)
-        //        You can also chain two Where calls. Try both and compare.
+        
         // ========================================================================
         public List<Person> GetPeopleFromCityOlderThan(List<Person> people, string city, int minAge)
         {
-            throw new NotImplementedException();
+           return people.Where(p => string.Equals(p.City, city, StringComparison.OrdinalIgnoreCase) && p.Age > minAge)
+                .ToList();
         }
 
         // ========================================================================
@@ -93,13 +93,11 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         //
         // Expected time to solve: 10 min
         // Topic: Where overload (element, index) => ...
-        // Tip:   Where has a second version where the lambda receives TWO
-        //        parameters: the element and its index.
-        //        words.Where((word, index) => ...)
+      
         // ========================================================================
         public string[] GetElementsAtEvenIndex(string[] words)
         {
-            throw new NotImplementedException();
+            return words.Where((e, i) => i % 2 == 0).ToArray();
         }
     }
 }

@@ -70,8 +70,32 @@ while (left < right)
 
 ### Two Pointers + Skip + Swap
 
-> To fill in after you solve `ReverseOnlyLetters`: what changes compared with
-> the pattern above?
+**Use it when:** you must reverse / rearrange only SOME elements and leave the
+rest in place (only letters, only vowels…).
+
+Same template as Two Pointers + Skip, only the last step changes:
+
+```csharp
+char[] chars = input.ToCharArray();          // strings can't be changed
+while (left < right)
+{
+    while (left < right && !Counts(chars[left])) left++;
+    while (left < right && !Counts(chars[right])) right--;
+
+    (chars[left], chars[right]) = (chars[right], chars[left]);   // swap instead of compare
+
+    left++;
+    right--;
+}
+return new string(chars);
+```
+
+- Don't write `if / else if` for each case (letter/symbol on each side): it's
+  easy to forget "both are symbols", and then nothing moves → infinite loop.
+  The inner whiles cover every case.
+- When `left == right` the swap is with itself: harmless.
+
+**Seen in:** `ReverseOnlyLetters.Reverse` (40 min, first try hung), `ReverseVowels.Reverse`
 
 ### Digit manipulation (numbers without strings)
 
@@ -158,4 +182,13 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `Palindrome.IsPalindrome` | Two Pointers | 10 min | 15 min | ✅ | Use `while` instead of `do...while` |
 | `Palindrome.IsValidPalindrome` | Two Pointers + Skip | 15 min | 30 min | ✅ | Built a clean copy (Space O(n)); see `Sample2Refactor` |
 | `Palindrome.IsPalindromeNumber` | Digit manipulation | 15 min | 20 min | ❌ → reviewed | Only checked the last digit; review the half-reverse trick |
-| `ReverseOnlyLetters.Reverse` | Two Pointers + Skip + Swap | 15 min | | | |
+| `ReverseOnlyLetters.Reverse` | Two Pointers + Skip + Swap | 15 min | 40 min | ✅ | if/else if missed the "both symbols" case (hang); use the 2 inner whiles |
+| `ReverseVowels.Reverse` (easy) | Two Pointers + Skip + Swap | 15 min | | | |
+| `ValidPalindromeOneDeletion.CanBePalindrome` (medium) | Two Pointers + one deletion | 15 min | | | |
+| `ContainerWithMostWater.MaxArea` (medium) | Two Pointers, move the shorter side | 15 min | | | |
+| `ValidPalindromeSkipAndDelete.CanBeValidPalindrome` (hard) | Two Pointers + Skip + one deletion | 15 min | | | |
+| `TrappingRainWater.Trap` (hard) | Two Pointers, move the shorter side + side max | 15 min | | | |
+
+**Suggested order** (each one reuses the one before it):
+`ReverseOnlyLetters` → `ReverseVowels` → `ValidPalindromeOneDeletion` → `ValidPalindromeSkipAndDelete`
+and `ContainerWithMostWater` → `TrappingRainWater`.

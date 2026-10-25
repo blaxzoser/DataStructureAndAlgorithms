@@ -450,10 +450,10 @@
     "semantic_hash": "f6664532bcb7f99b0922a34e58b8c520"
   },
   "TrainingAlgorithms/algorithms/easy/ReverseOnlyLetters.cs": {
-    "mtime": 1792371165.5615659,
-    "seen": 1792617184.6070404,
-    "ast_hash": "016ad2f24d57128591efa52c9497b44f",
-    "semantic_hash": "016ad2f24d57128591efa52c9497b44f"
+    "mtime": 1792890323.5991855,
+    "seen": 1792890337.52843,
+    "ast_hash": "d89b6eb8763b73426da89bf107beaeed",
+    "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/POCOS/Order.cs": {
     "mtime": 1792372119.8647664,
@@ -516,9 +516,81 @@
     "semantic_hash": "6f45d50a5a5b18a7db5bb52bfd719654"
   },
   "docs/CheatSheet.md": {
-    "mtime": 1792372278.9206984,
-    "seen": 1792617184.6070576,
-    "ast_hash": "12387b225948bd455f968e80c28f55ee",
-    "semantic_hash": "12387b225948bd455f968e80c28f55ee"
+    "mtime": 1792890325.3763072,
+    "seen": 1792890337.5285234,
+    "ast_hash": "6b312b0445a70e925d05bc017ed46507",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/ReverseVowelsTest.cs": {
+    "mtime": 1792886631.7008984,
+    "seen": 1792886672.8653266,
+    "ast_hash": "1b53367e94af6aa0b406bd6e64bf7f78",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/hard/TrappingRainWaterTest.cs": {
+    "mtime": 1792886631.9708557,
+    "seen": 1792886672.8653295,
+    "ast_hash": "9cf10873703d34d658cd29e8b151884e",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/hard/ValidPalindromeSkipAndDeleteTest.cs": {
+    "mtime": 1792886631.8940694,
+    "seen": 1792886672.8653312,
+    "ast_hash": "1cf218ef8e4e75bad1fc258c27273f19",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/ContainerWithMostWaterTest.cs": {
+    "mtime": 1792886631.8166466,
+    "seen": 1792886672.8653324,
+    "ast_hash": "a3c9458abd0eafb23886c3e7031ccf69",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/ValidPalindromeOneDeletionTest.cs": {
+    "mtime": 1792886631.7543318,
+    "seen": 1792886672.8653338,
+    "ast_hash": "fbbbe511ab7abcbba4e0baf68c23d7e5",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/ReverseVowels.cs": {
+    "mtime": 1792886648.7420187,
+    "seen": 1792886672.8654382,
+    "ast_hash": "1891558c1efb9fa9d1c0ce51e6b6f969",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/hard/TrappingRainWater.cs": {
+    "mtime": 1792886648.7470198,
+    "seen": 1792886672.8654394,
+    "ast_hash": "5fb6dc31aa9004c7ac1338c998427510",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/hard/ValidPalindromeSkipAndDelete.cs": {
+    "mtime": 1792886648.7450237,
+    "seen": 1792886672.865441,
+    "ast_hash": "256bc3e51c0c9dc719704c27182da137",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/ContainerWithMostWater.cs": {
+    "mtime": 1792886648.744021,
+    "seen": 1792886672.8654423,
+    "ast_hash": "d8916903ead6856894d2908fedb3adb9",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/ValidPalindromeOneDeletion.cs": {
+    "mtime": 1792886648.74302,
+    "seen": 1792886672.8654435,
+    "ast_hash": "2709d05504df030b3233651c1b1238ba",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792887201.4835608,
+    "seen": 1792889982.43294,
+    "ast_hash": "d4e83e6f66a2fde4d434919542f86ae2",
+    "semantic_hash": ""
+  },
+  "docs/trackingTestTrainingAlgorithms.md": {
+    "mtime": 1792890325.3752983,
+    "seen": 1792890337.5285254,
+    "ast_hash": "40eee1a826c40cd8c35daeef7dd3b024",
+    "semantic_hash": ""
   }
 }

@@ -35,10 +35,45 @@ namespace TrainingAlgorithms.algorithms.easy
         //        is a quick way to check it.
         // Tip 2: The loop is the same as ReverseOnlyLetters: only the skip
         //        condition changes. Try to write it from memory first.
+        //
+        // Result 1: 20 min (ReverseOnlyLetters took 40), loop from memory with
+        //           helper IsVowel. Fixed: text.ToString() -> new string(text),
+        //           removed input.ToLower() (it lower-cased the output too)
         // ========================================================================
         public string Reverse(string input)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            char[] text = input.ToCharArray();
+            int left = 0;
+            int right = input.Length - 1;
+            while (left < right) {
+                while (left < right && !IsVowel(text[left])) 
+                {
+                    left++;
+                }
+
+                while (left < right && !IsVowel(text[right]))
+                {
+                    right--;
+                }
+
+                var tempA = text[left];
+                var tempB = text[right];
+                text[left] = tempB;
+                text[right] = tempA;
+
+                left++;
+                right--;
+            }
+
+            return new string(text);
+        }
+
+        private bool IsVowel(char c)        
+        {
+            return "aeiouAEIOU".IndexOf(c) >= 0;
         }
     }
 }

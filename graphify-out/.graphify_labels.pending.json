@@ -1,6 +1,21 @@
 {
+  "2": "List",
+  "3": "TestCase",
+  "5": "Algorithms Cheat Sheet",
   "6": "SetUp",
   "9": "BubbleSort",
+  "23": "FirstExercisesTest",
   "24": "Data Structures & Algorithms in C#",
-  "26": "FibonacciTest"
+  "25": "TrappingRainWaterTest",
+  "26": "FibonacciTest",
+  "27": "PalindromeTest",
+  "28": "SkipExercisesTest",
+  "29": "WhereExercisesTest",
+  "30": "TrainingAlgorithms.algorithms.easy",
+  "31": "Easy",
+  "32": "UniqueCharactersTest",
+  "33": "ReverseOnlyLettersTest",
+  "34": "RansomNoteTest",
+  "35": "ValidAnagramTest",
+  "36": "FirstUniqueCharacterTest"
 }

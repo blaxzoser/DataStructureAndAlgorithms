@@ -31,10 +31,14 @@ reference solution in a separate method (e.g. `Sample1Refactor`) next to theirs.
 | `docs/trackingTestTrainingAlgorithms.md` | doc | Time / date / checked / notes for every exercise tested in `TestTrainingAlgorithms` | |
 | `graphify-out/` | generated | Knowledge graph (see below) | |
 
-Current `TrainingAlgorithms` exercises (all two-pointer family):
-- easy: `Palindrome` (+ `Sample1Refactor`/`Sample2Refactor` reference solutions), `ReverseOnlyLetters`, `ReverseVowels`
-- medium: `ValidPalindromeOneDeletion`, `ContainerWithMostWater`
-- hard: `ValidPalindromeSkipAndDelete`, `TrappingRainWater`
+Current `TrainingAlgorithms` exercises, by pattern family:
+- Two pointers
+  - easy: `Palindrome` (+ `Sample1Refactor`/`Sample2Refactor` reference solutions), `ReverseOnlyLetters`, `ReverseVowels`
+  - medium: `ValidPalindromeOneDeletion`, `ContainerWithMostWater`
+  - hard: `ValidPalindromeSkipAndDelete`, `TrappingRainWater`
+- Seen set / frequency count (worked LINQ/sort versions live in `Samples/questions/arraysAndStrings` and `Samples/questions/lambdas/StringProblems.cs`)
+  - easy: `UniqueCharacters` (`IsUnique` + `IsUniqueNoExtraSpace`), `FirstUniqueCharacter`, `ValidAnagram`, `RansomNote`
+  - medium: `LongestSubstringWithoutRepeating` (sliding window), `GroupAnagrams`
 
 ## Conventions for training exercises
 

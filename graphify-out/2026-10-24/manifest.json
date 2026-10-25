@@ -444,15 +444,15 @@
     "semantic_hash": "63f64d3b772ae7e4966ac02355afd2d3"
   },
   "TrainingAlgorithms/algorithms/easy/Palindrome.cs": {
-    "mtime": 1792370972.3555272,
-    "seen": 1792617184.6070392,
-    "ast_hash": "f6664532bcb7f99b0922a34e58b8c520",
-    "semantic_hash": "f6664532bcb7f99b0922a34e58b8c520"
+    "mtime": 1792897237.5067072,
+    "seen": 1792899058.1160905,
+    "ast_hash": "7953b3afb98571e74faab81c5b0624eb",
+    "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/easy/ReverseOnlyLetters.cs": {
-    "mtime": 1792889962.1133304,
-    "seen": 1792889982.432906,
-    "ast_hash": "f10e7465d0099ad94c8ea85beef31ff0",
+    "mtime": 1792890443.774863,
+    "seen": 1792899058.1160936,
+    "ast_hash": "ed00233dca9a1e714567ce2b6f6ed168",
     "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/POCOS/Order.cs": {
@@ -516,9 +516,9 @@
     "semantic_hash": "6f45d50a5a5b18a7db5bb52bfd719654"
   },
   "docs/CheatSheet.md": {
-    "mtime": 1792886662.8732014,
-    "seen": 1792886672.8654628,
-    "ast_hash": "be8366cf771abcf2cf4815567b9c6c67",
+    "mtime": 1792900943.6406598,
+    "seen": 1792900955.962145,
+    "ast_hash": "639b19c827a70679ca8cec06f9cf7a3c",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/ReverseVowelsTest.cs": {
@@ -552,9 +552,9 @@
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/easy/ReverseVowels.cs": {
-    "mtime": 1792886648.7420187,
-    "seen": 1792886672.8654382,
-    "ast_hash": "1891558c1efb9fa9d1c0ce51e6b6f969",
+    "mtime": 1792899042.7040536,
+    "seen": 1792899058.1160955,
+    "ast_hash": "61c9d24648bf0707eb28adc0f3a584de",
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/hard/TrappingRainWater.cs": {
@@ -582,15 +582,87 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792887201.4835608,
-    "seen": 1792889982.43294,
-    "ast_hash": "d4e83e6f66a2fde4d434919542f86ae2",
+    "mtime": 1792899566.543801,
+    "seen": 1792899572.977642,
+    "ast_hash": "81d2a8b2a81aa10da7ff10f4345e3bc8",
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingAlgorithms.md": {
-    "mtime": 1792886998.4147973,
-    "seen": 1792889982.4329443,
-    "ast_hash": "a003bb072354657ff7deff1cdb6de6ab",
+    "mtime": 1792900943.6387672,
+    "seen": 1792900955.9621465,
+    "ast_hash": "62ec3e6e1b6b55c44e4d8ef39b7ee8b8",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs": {
+    "mtime": 1792899498.1255298,
+    "seen": 1792899572.9775186,
+    "ast_hash": "93a8d0861759ff3aaffb06bbd2a4e5e5",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/RansomNoteTest.cs": {
+    "mtime": 1792899498.53525,
+    "seen": 1792899572.977523,
+    "ast_hash": "a330134901b3e6f6201c5d6a78a4bb12",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/UniqueCharactersTest.cs": {
+    "mtime": 1792899497.9078667,
+    "seen": 1792899572.977529,
+    "ast_hash": "f714b927ade63b23ce0841de5d3bce46",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/ValidAnagramTest.cs": {
+    "mtime": 1792899498.3477173,
+    "seen": 1792899572.977531,
+    "ast_hash": "b2e4b6b75b5754354a978cd6fa6bae95",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/GroupAnagramsTest.cs": {
+    "mtime": 1792899498.8468301,
+    "seen": 1792899572.9775383,
+    "ast_hash": "a6ccafe9b6ecdabc4e0b9067e7587c8b",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/LongestSubstringWithoutRepeatingTest.cs": {
+    "mtime": 1792899498.7029185,
+    "seen": 1792899572.9775398,
+    "ast_hash": "dac260d6f888c2f5291f403ef1572b8a",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/FirstUniqueCharacter.cs": {
+    "mtime": 1792899519.8890214,
+    "seen": 1792899572.9776022,
+    "ast_hash": "8bc1443a220e6dbab3237b10e2f9113a",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/RansomNote.cs": {
+    "mtime": 1792899519.8910205,
+    "seen": 1792899572.9776056,
+    "ast_hash": "e8a9756ab2a3ca3a0ed8f5a6dc605f17",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/UniqueCharacters.cs": {
+    "mtime": 1792900943.6426418,
+    "seen": 1792900955.9620764,
+    "ast_hash": "5d749d808821330f48808adfd4968989",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/ValidAnagram.cs": {
+    "mtime": 1792899519.89002,
+    "seen": 1792899572.9776118,
+    "ast_hash": "15e10895b7dc2f39dc395a69217d58be",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/GroupAnagrams.cs": {
+    "mtime": 1792899519.8960166,
+    "seen": 1792899572.9776187,
+    "ast_hash": "35f44975d55bdaa3b37b69cb1f453fee",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/LongestSubstringWithoutRepeating.cs": {
+    "mtime": 1792899519.8920188,
+    "seen": 1792899572.9776201,
+    "ast_hash": "02679b788181a3ddbb10aaff08869308",
     "semantic_hash": ""
   }
 }

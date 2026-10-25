@@ -97,6 +97,41 @@ return new string(chars);
 
 **Seen in:** `ReverseOnlyLetters.Reverse` (40 min, first try hung), `ReverseVowels.Reverse`
 
+### Seen set / Frequency count
+
+**Use it when:** the question is about **repeats or counts**: "all unique?",
+"first one that doesn't repeat", "same letters?" (anagram), "enough letters?",
+"group the ones that match".
+
+| Tool | Good for | Example |
+|---|---|---|
+| `HashSet<char>` | seen or not seen | `if (!seen.Add(c)) return false;` (`Add` returns `false` if already there) |
+| `int[128]` | counts of ASCII chars | `counts[c]++;` (a `char` is a number, so it works as an index) |
+| `int[26]` | counts of `'a'..'z'` only | `counts[c - 'a']++;` |
+| `Dictionary<char, int>` | counts of any char | `counts[c] = counts.TryGetValue(c, out var n) ? n + 1 : 1;` |
+| `Dictionary<string, List<string>>` | grouping by a key | key = sorted letters for anagrams |
+
+- Asking "seen before?" is O(1) with a set or array, so one pass is O(n).
+- Without extra memory, the fallback is comparing every pair: O(n²), because the inner loop **starts over** for each element.
+- Common shape: **pass 1 counts, pass 2 answers** (first unique), or **+1 / -1 on one array** (anagram).
+
+> Template: fill in after you solve `UniqueCharacters`.
+
+**Seen in:** `UniqueCharacters`, `FirstUniqueCharacter`, `ValidAnagram`, `RansomNote`, `GroupAnagrams`
+
+### Sliding window (two pointers, same direction)
+
+**Use it when:** the question asks for the longest / shortest **continuous**
+piece (substring, subarray) that follows a rule.
+
+- Both pointers start at the left. `right` grows the window, `left` shrinks it when the rule breaks.
+- Window size = `right - left + 1`.
+- Still O(n): each pointer only moves forward.
+
+> Template: fill in after you solve `LongestSubstringWithoutRepeating`.
+
+**Seen in:** `LongestSubstringWithoutRepeating`
+
 ### Digit manipulation (numbers without strings)
 
 **Use it when:** the problem is about the digits of a number (reverse it,
@@ -134,6 +169,8 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 
 - Strings are **immutable** in C#: `s[0] = 'x'` doesn't compile. Use a `char[]` or `StringBuilder`.
 - `s1 + s2` in a loop creates a new string every time: use `StringBuilder`.
+- `chars.ToString()` on a `char[]` returns `"System.Char[]"` (the type name). Use `new string(chars)`.
+- Lower-case only for the **check** (`char.ToLowerInvariant(c)` or `"aeiouAEIOU"`), not the whole input, or the output changes too.
 - LINQ (`Where`, `Concat`, `Reverse`) is short to write but allocates new collections, so watch the Space.
 
 ### Loops
@@ -183,12 +220,22 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `Palindrome.IsValidPalindrome` | Two Pointers + Skip | 15 min | 30 min | ✅ | Built a clean copy (Space O(n)); see `Sample2Refactor` |
 | `Palindrome.IsPalindromeNumber` | Digit manipulation | 15 min | 20 min | ❌ → reviewed | Only checked the last digit; review the half-reverse trick |
 | `ReverseOnlyLetters.Reverse` | Two Pointers + Skip + Swap | 15 min | 40 min | ✅ | if/else if missed the "both symbols" case (hang); use the 2 inner whiles |
-| `ReverseVowels.Reverse` (easy) | Two Pointers + Skip + Swap | 15 min | | | |
+| `ReverseVowels.Reverse` (easy) | Two Pointers + Skip + Swap | 15 min | 20 min | ✅ | Loop from memory (40 → 20 min). `char[].ToString()` gives "System.Char[]": use `new string(chars)`. Don't `ToLower()` the input, only the check |
 | `ValidPalindromeOneDeletion.CanBePalindrome` (medium) | Two Pointers + one deletion | 15 min | | | |
 | `ContainerWithMostWater.MaxArea` (medium) | Two Pointers, move the shorter side | 15 min | | | |
 | `ValidPalindromeSkipAndDelete.CanBeValidPalindrome` (hard) | Two Pointers + Skip + one deletion | 15 min | | | |
 | `TrappingRainWater.Trap` (hard) | Two Pointers, move the shorter side + side max | 15 min | | | |
+| `UniqueCharacters.IsUnique` (easy) | Seen set | 10 min | 30 min | ✅ | First exercise of a new pattern. Special case for `""`/1 char not needed; `!seen.Add(c)` = check + add |
+| `UniqueCharacters.IsUniqueNoExtraSpace` (easy) | Compare every pair | 15 min | 12 min | ✅ | First one under the expected time. `j = i + 1`: never compare a char with itself, never compare a pair twice |
+| `FirstUniqueCharacter.FindIndex` (easy) | Frequency count, 2 passes | 15 min | | | |
+| `ValidAnagram.IsAnagram` (easy) | Frequency count, +1/-1 | 15 min | | | |
+| `RansomNote.CanConstruct` (easy) | Frequency count, use up | 15 min | | | |
+| `LongestSubstringWithoutRepeating.LengthOfLongest` (medium) | Sliding window + seen set | 15 min | | | |
+| `GroupAnagrams.Group` (medium) | Grouping with a Dictionary | 15 min | | | |
 
 **Suggested order** (each one reuses the one before it):
 `ReverseOnlyLetters` → `ReverseVowels` → `ValidPalindromeOneDeletion` → `ValidPalindromeSkipAndDelete`
 and `ContainerWithMostWater` → `TrappingRainWater`.
+
+Seen set / frequency count:
+`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `GroupAnagrams`.

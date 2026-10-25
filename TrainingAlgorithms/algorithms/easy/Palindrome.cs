@@ -178,9 +178,17 @@ namespace TrainingAlgorithms.algorithms.easy
             while (left < right)
             {
                 // inner 1: move 'left' forward past characters that aren't letters or digits
-                while (left < right && !char.IsLetterOrDigit(input[left])) left++;
+                while (left < right && !char.IsLetterOrDigit(input[left]))
+                {
+                    left++;
+                }
+ 
                 // inner 2: move 'right' back past characters that aren't letters or digits
-                while (left < right && !char.IsLetterOrDigit(input[right])) right--;
+                while (left < right && !char.IsLetterOrDigit(input[right]))
+                {
+                    right--;
+                }
+                   
 
                 // compare the pair, ignoring case
 

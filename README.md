@@ -52,7 +52,9 @@ Exercises are grouped by **pattern** and repeated with growing difficulty
 | Level | Exercises | Pattern |
 |---|---|---|
 | Easy | Palindrome, ReverseOnlyLetters, ReverseVowels | Two pointers (+ skip, + swap), digit manipulation |
+| Easy | UniqueCharacters, FirstUniqueCharacter, ValidAnagram, RansomNote | Seen set / frequency count |
 | Medium | ValidPalindromeOneDeletion, ContainerWithMostWater | Two pointers (one deletion, move the shorter side) |
+| Medium | LongestSubstringWithoutRepeating, GroupAnagrams | Sliding window + seen set, grouping with a Dictionary |
 | Hard | ValidPalindromeSkipAndDelete, TrappingRainWater | Two pointers (combined patterns, side max) |
 
 ## Getting started

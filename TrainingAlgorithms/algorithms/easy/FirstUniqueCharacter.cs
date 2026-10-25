@@ -31,14 +31,35 @@ namespace TrainingAlgorithms.algorithms.easy
         // Expected time to solve: 15 min
         // Pattern: Frequency count (builds on UniqueCharacters)
         // Topic: Strings + Hashing
-        // Tip 1: TWO passes over the string. Pass 1: count every char.
-        //        Pass 2: the first char whose count is 1 is the answer.
-        // Tip 2: For the counts, a Dictionary<char, int> works, or an int[128]
-        //        indexed by the char itself: counts[c]++ (a char is a number).
         // ========================================================================
         public int FindIndex(string input)
         {
-            throw new NotImplementedException();
+            if(string.IsNullOrEmpty(input)) return -1;
+
+            if (input.Length == 1) return 0;
+            var hash = new Dictionary<char,int>();
+            for (int i = 0; i < input.Length; i++)
+            {
+
+                if (!hash.ContainsKey(input[i]))
+                {
+                    hash.Add(input[i], 1);
+                }
+                else
+                {
+                    hash[input[i]] = hash[input[i]] + 1;
+                }
+            }
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (hash[input[i]] == 1)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 }

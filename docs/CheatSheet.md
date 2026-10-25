@@ -12,6 +12,7 @@ Update this file every time you finish a new exercise in `TrainingAlgorithms`.
 3. Ask: **does it look like one of the patterns below?**
 4. Write the simplest working solution first, then improve Time/Space.
 5. Run the tests and go through the edge-case checklist (section 5).
+6. Before adding a special case (`""`, 1 element), ask: does the main loop already handle it? Usually it does.
 
 ---
 
@@ -227,7 +228,7 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `TrappingRainWater.Trap` (hard) | Two Pointers, move the shorter side + side max | 15 min | | | |
 | `UniqueCharacters.IsUnique` (easy) | Seen set | 10 min | 30 min | ✅ | First exercise of a new pattern. Special case for `""`/1 char not needed; `!seen.Add(c)` = check + add |
 | `UniqueCharacters.IsUniqueNoExtraSpace` (easy) | Compare every pair | 15 min | 12 min | ✅ | First one under the expected time. `j = i + 1`: never compare a char with itself, never compare a pair twice |
-| `FirstUniqueCharacter.FindIndex` (easy) | Frequency count, 2 passes | 15 min | | | |
+| `FirstUniqueCharacter.FindIndex` (easy) | Frequency count, 2 passes | 15 min | 30 min | ✅ | Unique means count `== 1`, not `> 1`. Walk the STRING in pass 2 (not the dictionary) to get the first one |
 | `ValidAnagram.IsAnagram` (easy) | Frequency count, +1/-1 | 15 min | | | |
 | `RansomNote.CanConstruct` (easy) | Frequency count, use up | 15 min | | | |
 | `LongestSubstringWithoutRepeating.LengthOfLongest` (medium) | Sliding window + seen set | 15 min | | | |

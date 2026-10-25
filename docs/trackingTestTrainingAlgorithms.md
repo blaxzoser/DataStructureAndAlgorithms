@@ -31,7 +31,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | 7 | `ReverseVowels.Reverse` | [ReverseVowelsTest.cs](../TestTrainingAlgorithms/algorithms/easy/ReverseVowelsTest.cs) | 20 min (15) | 2026-10-24 | ✅ | Loop with the 2 inner whiles written from memory, plus helper `IsVowel`. Fixed `text.ToString()` → `new string(text)` and removed `ToLower()` (it changed the output) |
 | 12 | `UniqueCharacters.IsUnique` | [UniqueCharactersTest.cs](../TestTrainingAlgorithms/algorithms/easy/UniqueCharactersTest.cs) | 30 min (10) | 2026-10-24 | ✅ | New pattern: seen set. Correct with `HashSet` + `Contains`/`Add`. The `Length == 1 \|\| ""` check isn't needed (the loop handles it), and `if (!hash.Add(c)) return false;` does check + add in one call |
 | 13 | `UniqueCharacters.IsUniqueNoExtraSpace` | [UniqueCharactersTest.cs](../TestTrainingAlgorithms/algorithms/easy/UniqueCharactersTest.cs) | 12 min (15) | 2026-10-24 | ✅ | Follow-up: no HashSet, compare every pair. Under the expected time. `j = i + 1` avoids comparing a char with itself. Same unneeded `Length == 1` / `""` check as `IsUnique` |
-| 14 | `FirstUniqueCharacter.FindIndex` | [FirstUniqueCharacterTest.cs](../TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs) | (15) | | | |
+| 14 | `FirstUniqueCharacter.FindIndex` | [FirstUniqueCharacterTest.cs](../TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs) | 30 min (15) | 2026-10-24 | ✅ | Score 7/10 before the fix. Right shape (count in a `Dictionary`, then 2nd pass over the string), but checked `> 1` (first repeated) instead of `== 1` (first unique). Extra `Length == 1` check again |
 | 15 | `ValidAnagram.IsAnagram` | [ValidAnagramTest.cs](../TestTrainingAlgorithms/algorithms/easy/ValidAnagramTest.cs) | (15) | | | |
 | 16 | `RansomNote.CanConstruct` | [RansomNoteTest.cs](../TestTrainingAlgorithms/algorithms/easy/RansomNoteTest.cs) | (15) | | | |
 
@@ -57,7 +57,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 
 | Level | Total | ✅ | ❌ | Pending |
 |---|---|---|---|---|
-| Easy | 12 | 6 | 1 | 5 |
+| Easy | 12 | 7 | 1 | 4 |
 | Medium | 4 | 0 | 0 | 4 |
 | Hard | 2 | 0 | 0 | 2 |
-| **All** | **18** | **6** | **1** | **11** |
+| **All** | **18** | **7** | **1** | **10** |

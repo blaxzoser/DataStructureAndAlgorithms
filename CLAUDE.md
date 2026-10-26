@@ -29,6 +29,7 @@ reference solution in a separate method (e.g. `Sample1Refactor`) next to theirs.
 | `DataStructureAndAlgorithms/` | console app | Hello World entry point, unused | |
 | `docs/CheatSheet.md` | doc | Patterns + templates, C# quick reference, Time/Space, edge cases, progress log | |
 | `docs/trackingTestTrainingAlgorithms.md` | doc | Time / date / checked / notes for every exercise tested in `TestTrainingAlgorithms` | |
+| `docs/trackingTestTrainingLambdasAndLinq.md` | doc | Rounds per class + checked / notes for every exercise tested in `TestTrainingLambdasAndLinq` | |
 | `graphify-out/` | generated | Knowledge graph (see below) | |
 
 Current `TrainingAlgorithms` exercises, by pattern family:
@@ -52,6 +53,7 @@ Current `TrainingAlgorithms` exercises, by pattern family:
   gradually (~15 min each). Check existing exercises (and `Samples/`) to avoid repeats.
 - Verify test expectations with a temporary reference solution, then strip it back to a stub.
 - When adding an exercise, also add a row to `docs/trackingTestTrainingAlgorithms.md`
+  (LINQ exercises: `docs/trackingTestTrainingLambdasAndLinq.md`)
   (and its summary) and to the progress log in `docs/CheatSheet.md`.
 
 ## Commands

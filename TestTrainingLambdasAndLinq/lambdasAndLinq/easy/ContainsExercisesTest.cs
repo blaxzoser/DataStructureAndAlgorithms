@@ -55,6 +55,7 @@ namespace TestTrainingLambdasAndLinq.lambdasAndLinq.easy
         [TestCase("The quick brown fox jumps over the lazy dog", true)]
         [TestCase("Pack my box with five dozen liquor jugs", true)]
         [TestCase("Hello world", false)]
+        [TestCase("abcdefghijklmnopqrstvwxyz", false)]
         [TestCase("", false)]
         public void ShouldCheckPangram(string sentence, bool output)
         {

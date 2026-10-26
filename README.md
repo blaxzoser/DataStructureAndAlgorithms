@@ -95,6 +95,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj --filter "Fully
 |---|---|
 | [docs/CheatSheet.md](docs/CheatSheet.md) | Patterns with templates, C# quick reference, Time/Space guide, edge-case checklist |
 | [docs/trackingTestTrainingAlgorithms.md](docs/trackingTestTrainingAlgorithms.md) | Time, date, result and notes for every algorithm exercise |
+| [docs/trackingTestTrainingLambdasAndLinq.md](docs/trackingTestTrainingLambdasAndLinq.md) | Time, date, result and notes for every LINQ exercise |
 
 ## Tech
 

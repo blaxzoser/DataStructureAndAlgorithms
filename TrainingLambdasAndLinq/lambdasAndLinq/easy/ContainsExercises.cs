@@ -35,7 +35,7 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public bool HasNumber(int[] numbers, int target)
         {
-            throw new NotImplementedException();
+            return numbers.Any(x=> x == target);
         }
 
         // ========================================================================
@@ -48,13 +48,10 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         //
         // Expected time to solve: 5 min
         // Topic: Contains on a string + Count(predicate)
-        // Tip:   "aeiou".Contains(c) works because a string is a collection of
-        //        chars. Count(predicate) is a Where + Count in one call.
-        //        Don't forget uppercase letters.
         // ========================================================================
         public int CountVowels(string text)
         {
-            throw new NotImplementedException();
+            return text.ToLower().Count(s => s == 'a' || s == 'e' || s == 'i' || s == 'o' || s == 'u');
         }
 
         // ========================================================================
@@ -66,13 +63,10 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ([], [1])            -> []
         //
         // Expected time to solve: 5 min
-        // Topic: Where + !Contains
-        // Tip:   Careful: a.Except(b) looks like the answer but it ALSO removes
-        //        duplicates from 'a'. ([1, 1, 3], [2]) must give [1, 1, 3].
         // ========================================================================
         public int[] ArrayDiff(int[] a, int[] b)
         {
-            throw new NotImplementedException();
+            return a.Where( s => !b.Contains(s) ).ToArray();
         }
 
         // ========================================================================
@@ -90,7 +84,8 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public bool IsPangram(string sentence)
         {
-            throw new NotImplementedException();
+            var alphabeth = new char[] { 'a', 'b','c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            return alphabeth.All(x => sentence.ToLower().Contains(x));
         }
 
         // ========================================================================
@@ -101,13 +96,10 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // (people, [])  -> []
         //
         // Expected time to solve: 5 min
-        // Topic: Where + Contains on a second collection
-        // Tip:   Here Contains is called on 'cities', not on the person.
-        //        people.Where(p => cities.Contains(...))
         // ========================================================================
         public List<Person> GetPeopleFromCities(List<Person> people, string[] cities)
         {
-            throw new NotImplementedException();
+           return people.Where(p=> cities.Contains(p.City)).ToList();
         }
 
         // ========================================================================
@@ -125,7 +117,8 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public bool IsBinary(string text)
         {
-            throw new NotImplementedException();
+            return text.Split(',').All(s => s == "1" || s == "0");
+            // !text.Split(',').Any(s => s != "0" && s != "1")
         }
     }
 }

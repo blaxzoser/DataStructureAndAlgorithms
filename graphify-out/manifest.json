@@ -258,10 +258,10 @@
     "semantic_hash": "8148cb45924efc83fcb25643f059ce1f"
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercisesTest.cs": {
-    "mtime": 1792382981.2072263,
-    "seen": 1792617184.6069841,
-    "ast_hash": "36764afe8fb3ac5ef9240c2317aa597c",
-    "semantic_hash": "36764afe8fb3ac5ef9240c2317aa597c"
+    "mtime": 1792981155.611293,
+    "seen": 1792981213.0450194,
+    "ast_hash": "c3d0b07c057b5c899a9b7bf808f80431",
+    "semantic_hash": ""
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/FirstExercisesTest.cs": {
     "mtime": 1792372191.5646064,
@@ -480,10 +480,10 @@
     "semantic_hash": "63f64d3b772ae7e4966ac02355afd2d3"
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercises.cs": {
-    "mtime": 1792382916.4434688,
-    "seen": 1792617184.607048,
-    "ast_hash": "5955f2c77a1576da5e0bb2b7af934988",
-    "semantic_hash": "5955f2c77a1576da5e0bb2b7af934988"
+    "mtime": 1792981038.415313,
+    "seen": 1792981213.0451028,
+    "ast_hash": "38efb221aab9b26ec07fc243f715e273",
+    "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/FirstExercises.cs": {
     "mtime": 1792380635.8014934,
@@ -582,9 +582,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792899566.543801,
-    "seen": 1792899572.977642,
-    "ast_hash": "81d2a8b2a81aa10da7ff10f4345e3bc8",
+    "mtime": 1792981206.1690285,
+    "seen": 1792981213.0451128,
+    "ast_hash": "7d6982903daefa9ce61eab58c55ff10c",
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingAlgorithms.md": {
@@ -636,9 +636,9 @@
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/easy/RansomNote.cs": {
-    "mtime": 1792973264.5181363,
-    "seen": 1792973277.043036,
-    "ast_hash": "c2be0f624e6c676540b39c14874ee4c0",
+    "mtime": 1792973475.1820104,
+    "seen": 1792981213.0450761,
+    "ast_hash": "c61416bdafbfb660e442efc6c4c96d7e",
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/easy/UniqueCharacters.cs": {
@@ -663,6 +663,12 @@
     "mtime": 1792899519.8920188,
     "seen": 1792899572.9776201,
     "ast_hash": "02679b788181a3ddbb10aaff08869308",
+    "semantic_hash": ""
+  },
+  "docs/trackingTestTrainingLambdasAndLinq.md": {
+    "mtime": 1792981195.5837939,
+    "seen": 1792981213.0451186,
+    "ast_hash": "bccfc4de19ed90f63b609b6ba397464a",
     "semantic_hash": ""
   }
 }

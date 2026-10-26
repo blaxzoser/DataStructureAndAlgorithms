@@ -229,8 +229,8 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `UniqueCharacters.IsUnique` (easy) | Seen set | 10 min | 30 min | ✅ | First exercise of a new pattern. Special case for `""`/1 char not needed; `!seen.Add(c)` = check + add |
 | `UniqueCharacters.IsUniqueNoExtraSpace` (easy) | Compare every pair | 15 min | 12 min | ✅ | First one under the expected time. `j = i + 1`: never compare a char with itself, never compare a pair twice |
 | `FirstUniqueCharacter.FindIndex` (easy) | Frequency count, 2 passes | 15 min | 30 min | ✅ | Unique means count `== 1`, not `> 1`. Walk the STRING in pass 2 (not the dictionary) to get the first one |
-| `ValidAnagram.IsAnagram` (easy) | Frequency count, +1/-1 | 15 min | | | |
-| `RansomNote.CanConstruct` (easy) | Frequency count, use up | 15 min | | | |
+| `ValidAnagram.IsAnagram` (easy) | Frequency count, +1/-1 | 15 min | 20 min | ✅ (after fix) | A new count starts at **1**, not at the index `i`. When looping over 2 strings, check each loop reads the right one (copy-paste bug) |
+| `RansomNote.CanConstruct` (easy) | Frequency count, use up | 15 min | 20 min | ❌ | `null` checks go FIRST: calling `.Trim()` / `.Length` on `null` crashes. Too many special cases caused the bugs; the main loop already handled `""` |
 | `LongestSubstringWithoutRepeating.LengthOfLongest` (medium) | Sliding window + seen set | 15 min | | | |
 | `GroupAnagrams.Group` (medium) | Grouping with a Dictionary | 15 min | | | |
 

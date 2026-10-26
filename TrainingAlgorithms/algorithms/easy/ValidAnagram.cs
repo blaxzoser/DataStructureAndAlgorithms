@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TrainingAlgorithms.algorithms.easy
 {
@@ -36,10 +37,54 @@ namespace TrainingAlgorithms.algorithms.easy
         // Tip 1: Different lengths can never be anagrams: check that first.
         // Tip 2: One int[128]: +1 for every char of the first string, -1 for every
         //        char of the second. Anagrams leave every count at 0.
+        //
+        // Result 1: 20 min, 3 of 11 tests fail (score 5/10). Add(c, i) stores the
+        //           index instead of 1, and the 2nd loop reads source[i] (first
+        //           string) instead of second[i].
         // ========================================================================
         public bool IsAnagram(string first, string second)
         {
-            throw new NotImplementedException();
+            if (first == "" && second == "")
+                return true;
+
+            if(string.IsNullOrEmpty(first) || string.IsNullOrEmpty(second)) 
+                return false;
+
+            if(first.Length != second.Length) return false;
+          
+
+            Dictionary<char,int> dicc = new Dictionary<char, int>();
+            for (int i = 0; i < first.Length; i++) {
+                if (!dicc.ContainsKey(first[i]))
+                {
+                    dicc.Add(first[i], 1);
+                }
+                else
+                {
+                    dicc[first[i]] = dicc[first[i]] + 1;
+                }               
+            }
+
+            for (int i = 0; i < second.Length; i++)
+            {
+                if (!dicc.ContainsKey(second[i]))
+                {
+                    return false;
+                }
+                else
+                {
+                    if (dicc[second[i]] == 1)
+                    {
+                        dicc.Remove(second[i]);
+                    }
+                    else
+                    {
+                        dicc[second[i]] += -1;
+                    }
+                }
+            }
+
+            return dicc.Count == 0;               
         }
     }
 }

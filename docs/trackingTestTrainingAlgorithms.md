@@ -32,8 +32,8 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | 12 | `UniqueCharacters.IsUnique` | [UniqueCharactersTest.cs](../TestTrainingAlgorithms/algorithms/easy/UniqueCharactersTest.cs) | 30 min (10) | 2026-10-24 | ✅ | New pattern: seen set. Correct with `HashSet` + `Contains`/`Add`. The `Length == 1 \|\| ""` check isn't needed (the loop handles it), and `if (!hash.Add(c)) return false;` does check + add in one call |
 | 13 | `UniqueCharacters.IsUniqueNoExtraSpace` | [UniqueCharactersTest.cs](../TestTrainingAlgorithms/algorithms/easy/UniqueCharactersTest.cs) | 12 min (15) | 2026-10-24 | ✅ | Follow-up: no HashSet, compare every pair. Under the expected time. `j = i + 1` avoids comparing a char with itself. Same unneeded `Length == 1` / `""` check as `IsUnique` |
 | 14 | `FirstUniqueCharacter.FindIndex` | [FirstUniqueCharacterTest.cs](../TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs) | 30 min (15) | 2026-10-24 | ✅ | Score 7/10 before the fix. Right shape (count in a `Dictionary`, then 2nd pass over the string), but checked `> 1` (first repeated) instead of `== 1` (first unique). Extra `Length == 1` check again |
-| 15 | `ValidAnagram.IsAnagram` | [ValidAnagramTest.cs](../TestTrainingAlgorithms/algorithms/easy/ValidAnagramTest.cs) | (15) | | | |
-| 16 | `RansomNote.CanConstruct` | [RansomNoteTest.cs](../TestTrainingAlgorithms/algorithms/easy/RansomNoteTest.cs) | (15) | | | |
+| 15 | `ValidAnagram.IsAnagram` | [ValidAnagramTest.cs](../TestTrainingAlgorithms/algorithms/easy/ValidAnagramTest.cs) | 20 min (15) | 2026-10-25 | ✅ | Fixed: all 11 pass (~9/10). Before the fix: score 5/10, 3 of 11 tests failed (every "true" case). Right idea (count first, subtract second, `Count == 0`), but `Add(c, i)` stores the INDEX instead of 1, and the 2nd loop reads `source[i]` (first string) instead of `second[i]`. The "false" tests passed by accident |
+| 16 | `RansomNote.CanConstruct` | [RansomNoteTest.cs](../TestTrainingAlgorithms/algorithms/easy/RansomNoteTest.cs) | 20 min (15) | 2026-10-25 | ❌ | Score 6/10, 2 of 10 tests fail (`NullReferenceException` on `null`). Main logic is right (count the note, use up with the magazine, `Count == 0`). The 5 special-case lines at the top cause the bugs: `.Trim()` / `.Length` run before the `null` checks. One line `if (note == null \|\| magazine == null) return false;` replaces all 5 |
 
 ## Medium
 
@@ -57,7 +57,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 
 | Level | Total | ✅ | ❌ | Pending |
 |---|---|---|---|---|
-| Easy | 12 | 7 | 1 | 4 |
+| Easy | 12 | 8 | 2 | 2 |
 | Medium | 4 | 0 | 0 | 4 |
 | Hard | 2 | 0 | 0 | 2 |
-| **All** | **18** | **7** | **1** | **10** |
+| **All** | **18** | **8** | **2** | **8** |

@@ -1,0 +1,668 @@
+{
+  "DataStructureAndAlgorithms.sln": {
+    "mtime": 1792372197.217303,
+    "seen": 1792617184.6068668,
+    "ast_hash": "9fa3d85575525bbd3357a548eb6aa35d",
+    "semantic_hash": "9fa3d85575525bbd3357a548eb6aa35d"
+  },
+  "DataStructureAndAlgorithms/DataStructureAndAlgorithms.csproj": {
+    "mtime": 1724643328.0389793,
+    "seen": 1792617184.6068754,
+    "ast_hash": "0ae863da72b72feb7905ddc4dd82efa7",
+    "semantic_hash": "0ae863da72b72feb7905ddc4dd82efa7"
+  },
+  "DataStructureAndAlgorithms/Program.cs": {
+    "mtime": 1724643328.0389793,
+    "seen": 1792617184.6068785,
+    "ast_hash": "8028b1ab3d68ee05e9418bb8a680fe1c",
+    "semantic_hash": "8028b1ab3d68ee05e9418bb8a680fe1c"
+  },
+  "Samples/POCOS/Person.cs": {
+    "mtime": 1724899432.7519548,
+    "seen": 1792617184.6068816,
+    "ast_hash": "40b75a771beee382052cfa9e5d6b04b0",
+    "semantic_hash": "40b75a771beee382052cfa9e5d6b04b0"
+  },
+  "Samples/Samples.csproj": {
+    "mtime": 1768069739.8783157,
+    "seen": 1792617184.6068854,
+    "ast_hash": "2b876b29852be75a2f84551139f4f3e6",
+    "semantic_hash": "2b876b29852be75a2f84551139f4f3e6"
+  },
+  "Samples/algorithms/AVLTree.cs": {
+    "mtime": 1724643328.040971,
+    "seen": 1792617184.6068878,
+    "ast_hash": "8099823c4f386398d8e8835eace28a09",
+    "semantic_hash": "8099823c4f386398d8e8835eace28a09"
+  },
+  "Samples/algorithms/BinarySearchTree.cs": {
+    "mtime": 1724643328.0419688,
+    "seen": 1792617184.6068895,
+    "ast_hash": "4a4fba6eb0ea000735a2fed26b3302d4",
+    "semantic_hash": "4a4fba6eb0ea000735a2fed26b3302d4"
+  },
+  "Samples/algorithms/BubbleSort.cs": {
+    "mtime": 1724643328.0429642,
+    "seen": 1792617184.6068907,
+    "ast_hash": "14888c631839c95d86ed83e5048110e7",
+    "semantic_hash": "14888c631839c95d86ed83e5048110e7"
+  },
+  "Samples/algorithms/FibonacciMemoized.cs": {
+    "mtime": 1724643328.043964,
+    "seen": 1792617184.606892,
+    "ast_hash": "3195f5f086dae3750e7f0c3bdd6eca5e",
+    "semantic_hash": "3195f5f086dae3750e7f0c3bdd6eca5e"
+  },
+  "Samples/algorithms/FibonacciNaive.cs": {
+    "mtime": 1724643328.04496,
+    "seen": 1792617184.6068935,
+    "ast_hash": "bf31fb00661cce66ead94bc6758d5caa",
+    "semantic_hash": "bf31fb00661cce66ead94bc6758d5caa"
+  },
+  "Samples/algorithms/MaxIntHeap.cs": {
+    "mtime": 1724643328.0459566,
+    "seen": 1792617184.6068947,
+    "ast_hash": "79a17ba2a437334b3f9f4ba3a513b882",
+    "semantic_hash": "79a17ba2a437334b3f9f4ba3a513b882"
+  },
+  "Samples/algorithms/MergeSort.cs": {
+    "mtime": 1724643328.0459566,
+    "seen": 1792617184.6068966,
+    "ast_hash": "2810c080ae4d800a43e9e6f1df74ffa7",
+    "semantic_hash": "2810c080ae4d800a43e9e6f1df74ffa7"
+  },
+  "Samples/algorithms/QuickSort.cs": {
+    "mtime": 1724643328.046954,
+    "seen": 1792617184.606898,
+    "ast_hash": "2840ababc1679ffc7cf50bf27966d4e2",
+    "semantic_hash": "2840ababc1679ffc7cf50bf27966d4e2"
+  },
+  "Samples/algorithms/Recursion.cs": {
+    "mtime": 1724643328.046954,
+    "seen": 1792617184.606901,
+    "ast_hash": "f16c3faa25fdde376c13ffa8981cd8eb",
+    "semantic_hash": "f16c3faa25fdde376c13ffa8981cd8eb"
+  },
+  "Samples/datastructures/DynamicArray.cs": {
+    "mtime": 1724643328.0479512,
+    "seen": 1792617184.606907,
+    "ast_hash": "09c43e90b5825d36dfd86d1298ea5322",
+    "semantic_hash": "09c43e90b5825d36dfd86d1298ea5322"
+  },
+  "Samples/datastructures/HashTable.cs": {
+    "mtime": 1724643328.0489485,
+    "seen": 1792617184.6069124,
+    "ast_hash": "42f2fd9542a86a485d2c008b560678a0",
+    "semantic_hash": "42f2fd9542a86a485d2c008b560678a0"
+  },
+  "Samples/datastructures/LinkedList.cs": {
+    "mtime": 1724643328.0489485,
+    "seen": 1792617184.6069167,
+    "ast_hash": "53f95d709ac4890cfb18bf6f499b3117",
+    "semantic_hash": "53f95d709ac4890cfb18bf6f499b3117"
+  },
+  "Samples/datastructures/Queue.cs": {
+    "mtime": 1724643328.0499456,
+    "seen": 1792617184.606921,
+    "ast_hash": "5c6f6f1cba2b8044ba35cb6c27dfa3c1",
+    "semantic_hash": "5c6f6f1cba2b8044ba35cb6c27dfa3c1"
+  },
+  "Samples/datastructures/Stack.cs": {
+    "mtime": 1724643328.0499456,
+    "seen": 1792617184.6069267,
+    "ast_hash": "82baaa5aeb76a87c4270ed4639fda4e8",
+    "semantic_hash": "82baaa5aeb76a87c4270ed4639fda4e8"
+  },
+  "Samples/memory/ValuesTypeVsReferenceType.cs": {
+    "mtime": 1768070388.994829,
+    "seen": 1792617184.6069314,
+    "ast_hash": "1ebd6fac317f196431db13fa399da393",
+    "semantic_hash": "1ebd6fac317f196431db13fa399da393"
+  },
+  "Samples/questions/arraysAndStrings/Compressor.cs": {
+    "mtime": 1724643328.0519402,
+    "seen": 1792617184.6069336,
+    "ast_hash": "00b389c7b66f59707efbe59c7a37357d",
+    "semantic_hash": "00b389c7b66f59707efbe59c7a37357d"
+  },
+  "Samples/questions/arraysAndStrings/FindOddInt.cs": {
+    "mtime": 1724643328.0519402,
+    "seen": 1792617184.6069348,
+    "ast_hash": "7d4660b88f951e285ed9ae9942893066",
+    "semantic_hash": "7d4660b88f951e285ed9ae9942893066"
+  },
+  "Samples/questions/arraysAndStrings/PermutationDetector.cs": {
+    "mtime": 1724643328.0529373,
+    "seen": 1792617184.6069376,
+    "ast_hash": "ec1837a5d9bdb97a64f69260aa54fed5",
+    "semantic_hash": "ec1837a5d9bdb97a64f69260aa54fed5"
+  },
+  "Samples/questions/arraysAndStrings/RemoveDuplicates.cs": {
+    "mtime": 1724643328.0529373,
+    "seen": 1792617184.6069388,
+    "ast_hash": "1db3b7baffd54ae68f6b4f146958bd3f",
+    "semantic_hash": "1db3b7baffd54ae68f6b4f146958bd3f"
+  },
+  "Samples/questions/arraysAndStrings/UniqueCharacters.cs": {
+    "mtime": 1724643328.0539348,
+    "seen": 1792617184.6069407,
+    "ast_hash": "0477ed84a995eebaf111e1f884bd92d1",
+    "semantic_hash": "0477ed84a995eebaf111e1f884bd92d1"
+  },
+  "Samples/questions/arraysAndStrings/UrlConverter.cs": {
+    "mtime": 1724643328.0539348,
+    "seen": 1792617184.606942,
+    "ast_hash": "e8c700b74af00f41e872899cce196a22",
+    "semantic_hash": "e8c700b74af00f41e872899cce196a22"
+  },
+  "Samples/questions/interviews/Palindrome.cs": {
+    "mtime": 1724645153.4397397,
+    "seen": 1792617184.6069434,
+    "ast_hash": "086470e8f0a873227b60a9755bcaca53",
+    "semantic_hash": "086470e8f0a873227b60a9755bcaca53"
+  },
+  "Samples/questions/interviews/StringDuplicates.cs": {
+    "mtime": 1724643328.0559306,
+    "seen": 1792617184.6069448,
+    "ast_hash": "c0d2cfa55f9a5475ec34d4dd9cf42960",
+    "semantic_hash": "c0d2cfa55f9a5475ec34d4dd9cf42960"
+  },
+  "Samples/questions/lambdas/ArrayDiff.cs": {
+    "mtime": 1724643328.0559306,
+    "seen": 1792617184.6069462,
+    "ast_hash": "a1aab3f0771ca53bb8f68cde84cfdda4",
+    "semantic_hash": "a1aab3f0771ca53bb8f68cde84cfdda4"
+  },
+  "Samples/questions/lambdas/ArrayFind.cs": {
+    "mtime": 1767626594.1907246,
+    "seen": 1792617184.6069481,
+    "ast_hash": "294bd912bd109e17cd212dbdaa27496f",
+    "semantic_hash": "294bd912bd109e17cd212dbdaa27496f"
+  },
+  "Samples/questions/lambdas/Balance.cs": {
+    "mtime": 1724643328.0569267,
+    "seen": 1792617184.6069493,
+    "ast_hash": "d61518a064cf823b7ba5ded8d89b4126",
+    "semantic_hash": "d61518a064cf823b7ba5ded8d89b4126"
+  },
+  "Samples/questions/lambdas/ChatGPT.cs": {
+    "mtime": 1767621416.9517782,
+    "seen": 1792617184.606951,
+    "ast_hash": "fe615e236af217882dd9530a73523bea",
+    "semantic_hash": "fe615e236af217882dd9530a73523bea"
+  },
+  "Samples/questions/lambdas/CodeWars.cs": {
+    "mtime": 1724996231.768167,
+    "seen": 1792617184.6069524,
+    "ast_hash": "bcd9902399d3a841e7283603231e63cc",
+    "semantic_hash": "bcd9902399d3a841e7283603231e63cc"
+  },
+  "Samples/questions/lambdas/Parangram.cs": {
+    "mtime": 1724893915.864085,
+    "seen": 1792617184.606954,
+    "ast_hash": "ba842c1bc8959d70bc525ceb219ca888",
+    "semantic_hash": "ba842c1bc8959d70bc525ceb219ca888"
+  },
+  "Samples/questions/lambdas/Patterns.cs": {
+    "mtime": 1725043871.62156,
+    "seen": 1792617184.6069553,
+    "ast_hash": "e034b01de420c6db7d0b094bc033cbc6",
+    "semantic_hash": "e034b01de420c6db7d0b094bc033cbc6"
+  },
+  "Samples/questions/lambdas/StringProblems.cs": {
+    "mtime": 1768067380.5847569,
+    "seen": 1792617184.6069565,
+    "ast_hash": "25110c4109217edaebaff69066c46b3f",
+    "semantic_hash": "25110c4109217edaebaff69066c46b3f"
+  },
+  "Samples/questions/leetcode/array/ArrayDouble.cs": {
+    "mtime": 1745121804.9423544,
+    "seen": 1792617184.6069582,
+    "ast_hash": "db4a6591684a541b11fbc4c901d6a3cf",
+    "semantic_hash": "db4a6591684a541b11fbc4c901d6a3cf"
+  },
+  "Samples/questions/recursive/StringMerger.cs": {
+    "mtime": 1724643328.0589218,
+    "seen": 1792617184.6069593,
+    "ast_hash": "876d214c4cd1e6942971c43403dad596",
+    "semantic_hash": "876d214c4cd1e6942971c43403dad596"
+  },
+  "Samples/technics/basic/TwoPointers.cs": {
+    "mtime": 1767626599.860881,
+    "seen": 1792617184.6069605,
+    "ast_hash": "d0bf7fbfb282459315b86517ada2c2f7",
+    "semantic_hash": "d0bf7fbfb282459315b86517ada2c2f7"
+  },
+  "TestTrainingAlgorithms/TestTrainingAlgorithms.csproj": {
+    "mtime": 1792365691.2086425,
+    "seen": 1792617184.606962,
+    "ast_hash": "dfafe052425366a1472ef5716007bd83",
+    "semantic_hash": "dfafe052425366a1472ef5716007bd83"
+  },
+  "TestTrainingAlgorithms/algorithms/easy/PalindromeTest.cs": {
+    "mtime": 1792370612.0525434,
+    "seen": 1792617184.6069632,
+    "ast_hash": "b21e6e8d91194c66e7be0436a0fe2d8b",
+    "semantic_hash": "b21e6e8d91194c66e7be0436a0fe2d8b"
+  },
+  "TestTrainingAlgorithms/algorithms/easy/ReverseOnlyLettersTest.cs": {
+    "mtime": 1792371165.6773987,
+    "seen": 1792617184.6069648,
+    "ast_hash": "e76e84bbdeb85548990d693bbc401c9f",
+    "semantic_hash": "e76e84bbdeb85548990d693bbc401c9f"
+  },
+  "TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj": {
+    "mtime": 1792372113.3351066,
+    "seen": 1792617184.60697,
+    "ast_hash": "8148cb45924efc83fcb25643f059ce1f",
+    "semantic_hash": "8148cb45924efc83fcb25643f059ce1f"
+  },
+  "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercisesTest.cs": {
+    "mtime": 1792382981.2072263,
+    "seen": 1792617184.6069841,
+    "ast_hash": "36764afe8fb3ac5ef9240c2317aa597c",
+    "semantic_hash": "36764afe8fb3ac5ef9240c2317aa597c"
+  },
+  "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/FirstExercisesTest.cs": {
+    "mtime": 1792372191.5646064,
+    "seen": 1792617184.6069865,
+    "ast_hash": "588fb09e5800d4bd35e9e5b60acd9079",
+    "semantic_hash": "588fb09e5800d4bd35e9e5b60acd9079"
+  },
+  "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercisesTest.cs": {
+    "mtime": 1792382981.4524872,
+    "seen": 1792617184.6069882,
+    "ast_hash": "90984c5f1b13d2360b825e358a962898",
+    "semantic_hash": "90984c5f1b13d2360b825e358a962898"
+  },
+  "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercisesTest.cs": {
+    "mtime": 1792372191.4956079,
+    "seen": 1792617184.6069899,
+    "ast_hash": "202bdf527d76eadffcabe4a0859a0256",
+    "semantic_hash": "202bdf527d76eadffcabe4a0859a0256"
+  },
+  "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SkipExercisesTest.cs": {
+    "mtime": 1792382981.303353,
+    "seen": 1792617184.6069918,
+    "ast_hash": "0436dfa721ed9d3202b52901f94acb87",
+    "semantic_hash": "0436dfa721ed9d3202b52901f94acb87"
+  },
+  "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/WhereExercisesTest.cs": {
+    "mtime": 1792372191.3955097,
+    "seen": 1792617184.6069932,
+    "ast_hash": "5d04105fe4c0eaf8a8ea6a9ea9345f12",
+    "semantic_hash": "5d04105fe4c0eaf8a8ea6a9ea9345f12"
+  },
+  "Test/ArrayFindTest.cs": {
+    "mtime": 1767625598.032706,
+    "seen": 1792617184.6069944,
+    "ast_hash": "eb92bd4de2a1a3cc1bef4da96630eec9",
+    "semantic_hash": "eb92bd4de2a1a3cc1bef4da96630eec9"
+  },
+  "Test/ChatGPTTest.cs": {
+    "mtime": 1767625032.88932,
+    "seen": 1792617184.6069958,
+    "ast_hash": "cd8c520823b0e34f50f1dc48bc0ddd1a",
+    "semantic_hash": "cd8c520823b0e34f50f1dc48bc0ddd1a"
+  },
+  "Test/CodeWarsTest.cs": {
+    "mtime": 1724994178.380447,
+    "seen": 1792617184.606997,
+    "ast_hash": "24f21b2a789a11928b43edecfde0e139",
+    "semantic_hash": "24f21b2a789a11928b43edecfde0e139"
+  },
+  "Test/DynamicArrayTest.cs": {
+    "mtime": 1724643328.0589218,
+    "seen": 1792617184.6069984,
+    "ast_hash": "a367d53b694b83988a875627e76ade97",
+    "semantic_hash": "a367d53b694b83988a875627e76ade97"
+  },
+  "Test/HashTableTest.cs": {
+    "mtime": 1724643328.0599308,
+    "seen": 1792617184.607,
+    "ast_hash": "d2e4cbcfd31b7a111d1b5bc9c9eb8f76",
+    "semantic_hash": "d2e4cbcfd31b7a111d1b5bc9c9eb8f76"
+  },
+  "Test/LinkedListTest.cs": {
+    "mtime": 1724643328.060916,
+    "seen": 1792617184.607001,
+    "ast_hash": "c02862deaa836bb74bee16dd2eb47f61",
+    "semantic_hash": "c02862deaa836bb74bee16dd2eb47f61"
+  },
+  "Test/MemoryTest.cs": {
+    "mtime": 1768069368.604623,
+    "seen": 1792617184.6070037,
+    "ast_hash": "2c4b5568b97c23590f3cc799e283995e",
+    "semantic_hash": "2c4b5568b97c23590f3cc799e283995e"
+  },
+  "Test/OtherTest.cs": {
+    "mtime": 1768063078.0902584,
+    "seen": 1792617184.6070056,
+    "ast_hash": "e84be2b48e3af79a66e419baf492e880",
+    "semantic_hash": "e84be2b48e3af79a66e419baf492e880"
+  },
+  "Test/QueueTest.cs": {
+    "mtime": 1724643328.0619135,
+    "seen": 1792617184.6070104,
+    "ast_hash": "10c717c14ea1f1e309822d6382460082",
+    "semantic_hash": "10c717c14ea1f1e309822d6382460082"
+  },
+  "Test/StackTest.cs": {
+    "mtime": 1724643328.0629113,
+    "seen": 1792617184.6070116,
+    "ast_hash": "71321561ce5f2158c9511a3f679ecc6e",
+    "semantic_hash": "71321561ce5f2158c9511a3f679ecc6e"
+  },
+  "Test/Test.csproj": {
+    "mtime": 1767635021.777419,
+    "seen": 1792617184.6070154,
+    "ast_hash": "5fb844854ead8c65d332ae57718eb636",
+    "semantic_hash": "5fb844854ead8c65d332ae57718eb636"
+  },
+  "Test/algorithms/AVLTreeTest.cs": {
+    "mtime": 1724643328.063908,
+    "seen": 1792617184.607019,
+    "ast_hash": "cf2bcc2c9e6fc90fbe9bb8785bc6097e",
+    "semantic_hash": "cf2bcc2c9e6fc90fbe9bb8785bc6097e"
+  },
+  "Test/algorithms/BinarySearchTreeTest.cs": {
+    "mtime": 1724643328.064912,
+    "seen": 1792617184.6070209,
+    "ast_hash": "56236cc954eb957623558ecb4c9fed34",
+    "semantic_hash": "56236cc954eb957623558ecb4c9fed34"
+  },
+  "Test/algorithms/BubbleSortTest.cs": {
+    "mtime": 1724643328.0659025,
+    "seen": 1792617184.6070225,
+    "ast_hash": "25ea6befccf6692913cbf15d202b8243",
+    "semantic_hash": "25ea6befccf6692913cbf15d202b8243"
+  },
+  "Test/algorithms/FibonacciTest.cs": {
+    "mtime": 1724643328.0659025,
+    "seen": 1792617184.6070242,
+    "ast_hash": "1f819040a7dc6adb04418c49fa1d7d18",
+    "semantic_hash": "1f819040a7dc6adb04418c49fa1d7d18"
+  },
+  "Test/algorithms/MaxIntHeapTest.cs": {
+    "mtime": 1724643328.0669003,
+    "seen": 1792617184.6070254,
+    "ast_hash": "9a5ebc2f481f18474ed2c4f6392aeccd",
+    "semantic_hash": "9a5ebc2f481f18474ed2c4f6392aeccd"
+  },
+  "Test/algorithms/MergeSortTest.cs": {
+    "mtime": 1724643328.0669003,
+    "seen": 1792617184.6070266,
+    "ast_hash": "960e42814f1f1dfb909d2012fb09ea52",
+    "semantic_hash": "960e42814f1f1dfb909d2012fb09ea52"
+  },
+  "Test/algorithms/QuickSortTest.cs": {
+    "mtime": 1724643328.0678978,
+    "seen": 1792617184.6070282,
+    "ast_hash": "9d82d2b14f9a3d1882722257ea45a332",
+    "semantic_hash": "9d82d2b14f9a3d1882722257ea45a332"
+  },
+  "Test/algorithms/RecursionTest.cs": {
+    "mtime": 1724643328.0678978,
+    "seen": 1792617184.60703,
+    "ast_hash": "8a174e5764960f3b966e0ffee03da922",
+    "semantic_hash": "8a174e5764960f3b966e0ffee03da922"
+  },
+  "Test/algorithms/questions/ArraysAndStringsTest.cs": {
+    "mtime": 1724643328.068895,
+    "seen": 1792617184.6070313,
+    "ast_hash": "939a2e9103fa37415c081b6d60005fb6",
+    "semantic_hash": "939a2e9103fa37415c081b6d60005fb6"
+  },
+  "Test/algorithms/questions/PatternsTest.cs": {
+    "mtime": 1725041172.7385178,
+    "seen": 1792617184.6070325,
+    "ast_hash": "7e594b4153d862cc54f43c29e6a63de4",
+    "semantic_hash": "7e594b4153d862cc54f43c29e6a63de4"
+  },
+  "Test/leetcode/ArrayDoubleTest.cs": {
+    "mtime": 1745120117.5267107,
+    "seen": 1792617184.6070342,
+    "ast_hash": "ee36caf9d223456068941493936f5907",
+    "semantic_hash": "ee36caf9d223456068941493936f5907"
+  },
+  "Test/questions/lamdas/StringProblemsTest.cs": {
+    "mtime": 1767840993.4973817,
+    "seen": 1792617184.6070354,
+    "ast_hash": "76c4068850d510d17ea760188b8282f7",
+    "semantic_hash": "76c4068850d510d17ea760188b8282f7"
+  },
+  "Test/techicsTest/easyTest/TwoPointersTest.cs": {
+    "mtime": 1767621276.1937554,
+    "seen": 1792617184.6070366,
+    "ast_hash": "c00446be8b4efb9abd095b7f6ad7e2b8",
+    "semantic_hash": "c00446be8b4efb9abd095b7f6ad7e2b8"
+  },
+  "TrainingAlgorithms/TrainingAlgorithms.csproj": {
+    "mtime": 1792365691.1589828,
+    "seen": 1792617184.607038,
+    "ast_hash": "63f64d3b772ae7e4966ac02355afd2d3",
+    "semantic_hash": "63f64d3b772ae7e4966ac02355afd2d3"
+  },
+  "TrainingAlgorithms/algorithms/easy/Palindrome.cs": {
+    "mtime": 1792897237.5067072,
+    "seen": 1792899058.1160905,
+    "ast_hash": "7953b3afb98571e74faab81c5b0624eb",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/ReverseOnlyLetters.cs": {
+    "mtime": 1792890443.774863,
+    "seen": 1792899058.1160936,
+    "ast_hash": "ed00233dca9a1e714567ce2b6f6ed168",
+    "semantic_hash": ""
+  },
+  "TrainingLambdasAndLinq/POCOS/Order.cs": {
+    "mtime": 1792372119.8647664,
+    "seen": 1792617184.607042,
+    "ast_hash": "2d8ccde844fb064b1e13f03775cb03e3",
+    "semantic_hash": "2d8ccde844fb064b1e13f03775cb03e3"
+  },
+  "TrainingLambdasAndLinq/POCOS/Person.cs": {
+    "mtime": 1792372119.5960343,
+    "seen": 1792617184.6070433,
+    "ast_hash": "230b307bdb9be2ebbb735738439db8b5",
+    "semantic_hash": "230b307bdb9be2ebbb735738439db8b5"
+  },
+  "TrainingLambdasAndLinq/POCOS/Student.cs": {
+    "mtime": 1792372119.7067661,
+    "seen": 1792617184.607045,
+    "ast_hash": "ad401daf7e5e3e3f3be0600e85d07cd3",
+    "semantic_hash": "ad401daf7e5e3e3f3be0600e85d07cd3"
+  },
+  "TrainingLambdasAndLinq/TrainingLambdasAndLinq.csproj": {
+    "mtime": 1792372113.2904987,
+    "seen": 1792617184.6070464,
+    "ast_hash": "63f64d3b772ae7e4966ac02355afd2d3",
+    "semantic_hash": "63f64d3b772ae7e4966ac02355afd2d3"
+  },
+  "TrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercises.cs": {
+    "mtime": 1792382916.4434688,
+    "seen": 1792617184.607048,
+    "ast_hash": "5955f2c77a1576da5e0bb2b7af934988",
+    "semantic_hash": "5955f2c77a1576da5e0bb2b7af934988"
+  },
+  "TrainingLambdasAndLinq/lambdasAndLinq/easy/FirstExercises.cs": {
+    "mtime": 1792380635.8014934,
+    "seen": 1792617184.6070495,
+    "ast_hash": "76231025029e9945c37dcb2e6af29cdb",
+    "semantic_hash": "76231025029e9945c37dcb2e6af29cdb"
+  },
+  "TrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercises.cs": {
+    "mtime": 1792382949.2607274,
+    "seen": 1792617184.6070507,
+    "ast_hash": "365ce20cac62bc0c4210c645a9350a96",
+    "semantic_hash": "365ce20cac62bc0c4210c645a9350a96"
+  },
+  "TrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercises.cs": {
+    "mtime": 1792372158.6510818,
+    "seen": 1792617184.607052,
+    "ast_hash": "6ebf2fa5fcedba81315306583b462204",
+    "semantic_hash": "6ebf2fa5fcedba81315306583b462204"
+  },
+  "TrainingLambdasAndLinq/lambdasAndLinq/easy/SkipExercises.cs": {
+    "mtime": 1792382932.085081,
+    "seen": 1792617184.6070535,
+    "ast_hash": "7f5ae6dcab622fc136812482c83af708",
+    "semantic_hash": "7f5ae6dcab622fc136812482c83af708"
+  },
+  "TrainingLambdasAndLinq/lambdasAndLinq/easy/WhereExercises.cs": {
+    "mtime": 1792382238.5116198,
+    "seen": 1792617184.6070552,
+    "ast_hash": "6f45d50a5a5b18a7db5bb52bfd719654",
+    "semantic_hash": "6f45d50a5a5b18a7db5bb52bfd719654"
+  },
+  "docs/CheatSheet.md": {
+    "mtime": 1792971661.106235,
+    "seen": 1792971670.5032763,
+    "ast_hash": "4f79ae17771e478dbda39d7b0857ea40",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/ReverseVowelsTest.cs": {
+    "mtime": 1792886631.7008984,
+    "seen": 1792886672.8653266,
+    "ast_hash": "1b53367e94af6aa0b406bd6e64bf7f78",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/hard/TrappingRainWaterTest.cs": {
+    "mtime": 1792886631.9708557,
+    "seen": 1792886672.8653295,
+    "ast_hash": "9cf10873703d34d658cd29e8b151884e",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/hard/ValidPalindromeSkipAndDeleteTest.cs": {
+    "mtime": 1792886631.8940694,
+    "seen": 1792886672.8653312,
+    "ast_hash": "1cf218ef8e4e75bad1fc258c27273f19",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/ContainerWithMostWaterTest.cs": {
+    "mtime": 1792886631.8166466,
+    "seen": 1792886672.8653324,
+    "ast_hash": "a3c9458abd0eafb23886c3e7031ccf69",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/ValidPalindromeOneDeletionTest.cs": {
+    "mtime": 1792886631.7543318,
+    "seen": 1792886672.8653338,
+    "ast_hash": "fbbbe511ab7abcbba4e0baf68c23d7e5",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/ReverseVowels.cs": {
+    "mtime": 1792899042.7040536,
+    "seen": 1792899058.1160955,
+    "ast_hash": "61c9d24648bf0707eb28adc0f3a584de",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/hard/TrappingRainWater.cs": {
+    "mtime": 1792886648.7470198,
+    "seen": 1792886672.8654394,
+    "ast_hash": "5fb6dc31aa9004c7ac1338c998427510",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/hard/ValidPalindromeSkipAndDelete.cs": {
+    "mtime": 1792886648.7450237,
+    "seen": 1792886672.865441,
+    "ast_hash": "256bc3e51c0c9dc719704c27182da137",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/ContainerWithMostWater.cs": {
+    "mtime": 1792886648.744021,
+    "seen": 1792886672.8654423,
+    "ast_hash": "d8916903ead6856894d2908fedb3adb9",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/ValidPalindromeOneDeletion.cs": {
+    "mtime": 1792886648.74302,
+    "seen": 1792886672.8654435,
+    "ast_hash": "2709d05504df030b3233651c1b1238ba",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792899566.543801,
+    "seen": 1792899572.977642,
+    "ast_hash": "81d2a8b2a81aa10da7ff10f4345e3bc8",
+    "semantic_hash": ""
+  },
+  "docs/trackingTestTrainingAlgorithms.md": {
+    "mtime": 1792971661.1042345,
+    "seen": 1792971670.503278,
+    "ast_hash": "a514585cdf9317fadb8a59cd63906902",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs": {
+    "mtime": 1792899498.1255298,
+    "seen": 1792899572.9775186,
+    "ast_hash": "93a8d0861759ff3aaffb06bbd2a4e5e5",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/RansomNoteTest.cs": {
+    "mtime": 1792899498.53525,
+    "seen": 1792899572.977523,
+    "ast_hash": "a330134901b3e6f6201c5d6a78a4bb12",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/UniqueCharactersTest.cs": {
+    "mtime": 1792899497.9078667,
+    "seen": 1792899572.977529,
+    "ast_hash": "f714b927ade63b23ce0841de5d3bce46",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/ValidAnagramTest.cs": {
+    "mtime": 1792899498.3477173,
+    "seen": 1792899572.977531,
+    "ast_hash": "b2e4b6b75b5754354a978cd6fa6bae95",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/GroupAnagramsTest.cs": {
+    "mtime": 1792899498.8468301,
+    "seen": 1792899572.9775383,
+    "ast_hash": "a6ccafe9b6ecdabc4e0b9067e7587c8b",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/LongestSubstringWithoutRepeatingTest.cs": {
+    "mtime": 1792899498.7029185,
+    "seen": 1792899572.9775398,
+    "ast_hash": "dac260d6f888c2f5291f403ef1572b8a",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/FirstUniqueCharacter.cs": {
+    "mtime": 1792904274.2956772,
+    "seen": 1792904280.31332,
+    "ast_hash": "af384dac20033ef210352e8c1a714e1b",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/RansomNote.cs": {
+    "mtime": 1792899519.8910205,
+    "seen": 1792899572.9776056,
+    "ast_hash": "e8a9756ab2a3ca3a0ed8f5a6dc605f17",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/UniqueCharacters.cs": {
+    "mtime": 1792901782.1906912,
+    "seen": 1792904280.3133612,
+    "ast_hash": "1c0e442c48fbbd43547472873474c08d",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/ValidAnagram.cs": {
+    "mtime": 1792971661.1072412,
+    "seen": 1792971670.5032434,
+    "ast_hash": "aa44c1469e8e10966913324ff4de7891",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/GroupAnagrams.cs": {
+    "mtime": 1792899519.8960166,
+    "seen": 1792899572.9776187,
+    "ast_hash": "35f44975d55bdaa3b37b69cb1f453fee",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/LongestSubstringWithoutRepeating.cs": {
+    "mtime": 1792899519.8920188,
+    "seen": 1792899572.9776201,
+    "ast_hash": "02679b788181a3ddbb10aaff08869308",
+    "semantic_hash": ""
+  }
+}

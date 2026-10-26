@@ -33,7 +33,8 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | `ContainsExercises` | 34 min (40) | 2026-10-25 | 24 / 24 | ✅ (after fix) |
 | `SelectManyExercises` | (45) | | | |
 | `SkipExercises` | (40) | | | |
-| `GroupByExercises` | (45) | | | |
+| `GroupByExercises` (1-5) | 60 min (45) | 2026-10-25 | 24 / 24 | ❌ (a lot of AI help: 4 and 5 written by Claude) |
+| `GroupByExercises` (6-10) | (50) | | | |
 
 ---
 
@@ -95,11 +96,16 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 
 | # | Exercise | Expected | Checked | Notes |
 |---|---|---|---|---|
-| 1 | `CharFrequency` | 5 min | | |
-| 2 | `GetDuplicates` | 10 min | | |
-| 3 | `GroupNamesByCity` | 10 min | | |
-| 4 | `GetMostFrequentChar` | 10 min | | |
-| 5 | `GroupWordsByLength` | 10 min | | |
+| 1 | `CharFrequency` | 5 min | ✅ | `GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count())`: the classic frequency count. See the TRACE + `CharFrequencyDebug` |
+| 2 | `GetDuplicates` | 10 min | ✅ | Correct. After `GroupBy` the lambdas get a GROUP: name it `g`, not `x` / `s`. See the TRACE + `GetDuplicatesDebug` |
+| 3 | `GroupNamesByCity` | 10 min | ✅ | Used the element-selector overload `GroupBy(c => c.City, p => p.Name)` (the bonus). Name the `Person` lambda `p` in both |
+| 4 | `GetMostFrequentChar` | 10 min | ❌ | Solution written by Claude (it was still a stub). Re-do it from memory. Key: `OrderByDescending` is stable, so a tie keeps the first-seen char. See the TRACE + `GetMostFrequentCharDebug` |
+| 5 | `GroupWordsByLength` | 10 min | ❌ | Solution written by Claude (it was still a stub). Re-do it from memory. Key: `OrderBy(g => g.Key)` sorts the GROUPS; `string.Join(", ", g)` works on a group directly. See the TRACE + `GroupWordsByLengthDebug` |
+| 6 | `CountEvenAndOdd` | 5 min | | |
+| 7 | `CountWordsByFirstLetter` | 10 min | | |
+| 8 | `GetCitiesWithAtLeast` | 10 min | | |
+| 9 | `CountProductsByCustomer` | 10 min | | |
+| 10 | `GetOldestPersonByCity` | 15 min | | |
 
 ---
 
@@ -112,5 +118,5 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | Contains | 6 | 6 | 0 | 0 |
 | SelectMany | 5 | 0 | 0 | 5 |
 | Skip | 6 | 0 | 0 | 6 |
-| GroupBy | 5 | 0 | 0 | 5 |
-| **All** | **32** | **16** | **0** | **16** |
+| GroupBy | 10 | 3 | 2 | 5 |
+| **All** | **37** | **19** | **2** | **16** |

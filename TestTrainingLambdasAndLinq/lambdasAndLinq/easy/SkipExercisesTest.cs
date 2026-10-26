@@ -27,6 +27,7 @@ namespace TestTrainingLambdasAndLinq.lambdasAndLinq.easy
 
         [TestCase(1, new[] { 1, 2, 3 })]
         [TestCase(2, new[] { 4, 5, 6 })]
+        [TestCase(3, new[] { 7, 8, 9 })]
         [TestCase(4, new[] { 10 })]
         [TestCase(5, new int[0])]
         public void ShouldGetPage(int pageNumber, int[] output)

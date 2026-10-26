@@ -34,26 +34,54 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public int[] SkipFirst(int[] numbers, int count)
         {
-            throw new NotImplementedException();
+            return numbers.Skip(count).ToArray();
         }
 
         // ========================================================================
         // SAMPLE 2: Pagination (pages start at 1)
         // ========================================================================
-        // items = [1..10], pageSize = 3
-        //   page 1 -> [1, 2, 3]
-        //   page 2 -> [4, 5, 6]
-        //   page 4 -> [10]          (last page can be shorter)
-        //   page 5 -> []            (past the end)
+        // Think of a search results page or an online shop: you can't show
+        // all items at once, so you split them into PAGES of 'pageSize' items
+        // and return only the page the user asked for.
+        //
+        // Return the items of page number 'pageNumber'.
+        //   - Every page has 'pageSize' items, in the original order.
+        //   - Page numbers start at 1 (page 1 = the first page).
+        //   - The last page can have fewer items.
+        //   - A page after the last one is empty: [].
+        //
+        // EXAMPLE: items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], pageSize = 3
+        //
+        //   items:  1  2  3 | 4  5  6 | 7  8  9 | 10
+        //           page 1  | page 2  | page 3  | page 4
+        //
+        //   call                     | result       | why
+        //   -------------------------+--------------+--------------------------
+        //   GetPage(items, 1, 3)     | [1, 2, 3]    | first 3 items
+        //   GetPage(items, 2, 3)     | [4, 5, 6]    | next 3
+        //   GetPage(items, 3, 3)     | [7, 8, 9]    | next 3
+        //   GetPage(items, 4, 3)     | [10]         | only 1 left (shorter page)
+        //   GetPage(items, 5, 3)     | []           | no items left
         //
         // Expected time to solve: 10 min
         // Topic: Skip + Take together
-        // Tip:   How many items come BEFORE page 'pageNumber'? That is how
-        //        many you skip. Watch out: pages start at 1, not 0.
+        // Tip 1: Do it in 2 moves: Skip the items of all the pages BEFORE
+        //        this one, then Take one page.
+        // Tip 2: Fill in this table, then turn the "skip" column into a
+        //        formula using pageNumber and pageSize:
+        //
+        //          page | pages before it | items to skip | items to take
+        //          -----+-----------------+---------------+--------------
+        //           1   |       0         |       0       |      3
+        //           2   |       1         |       3       |      3
+        //           3   |       ?         |       ?       |      3
+        //           4   |       ?         |       ?       |      3 (only 1 left: Take is fine with that)
+        //
+        //        Careful: pages start at 1, but page 1 skips NOTHING.
         // ========================================================================
         public int[] GetPage(int[] items, int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+           return  items.Skip(pageSize * (pageNumber -1) ).Take(pageSize).ToArray();
         }
 
         // ========================================================================
@@ -71,7 +99,7 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public int[] GetLastN(int[] numbers, int n)
         {
-            throw new NotImplementedException();
+            return numbers.Skip(numbers.Length - n).Take(n).ToArray();
         }
 
         // ========================================================================
@@ -89,7 +117,7 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public int[] RemoveLeadingZeros(int[] digits)
         {
-            throw new NotImplementedException();
+            return digits.SkipWhile(x => x == 0).ToArray();
         }
 
         // ========================================================================
@@ -106,7 +134,7 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public int[] TakeUntilNegative(int[] numbers)
         {
-            throw new NotImplementedException();
+             return numbers.TakeWhile(x => x >= 0).ToArray();
         }
 
         // ========================================================================
@@ -124,7 +152,13 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public string[] RemoveFirstAndLast(string[] items)
         {
-            throw new NotImplementedException();
+            if (items.Length == 0)
+                return items ;
+
+            if(items.Length == 1)
+                return items.Skip(1).ToArray();
+
+            return items.Skip(1).Take(items.Length-2).ToArray();
         }
     }
 }

@@ -32,7 +32,7 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | `WhereExercises` | 30 min (40) | 2026-10-18 | 14 / 14 | ✅ |
 | `ContainsExercises` | 34 min (40) | 2026-10-25 | 24 / 24 | ✅ (after fix) |
 | `SelectManyExercises` | (45) | | | |
-| `SkipExercises` | (40) | | | |
+| `SkipExercises` | 45 min (40) | 2026-10-25 | 25 / 25 | ✅ (a little AI help: clues for 4 and 6) |
 | `GroupByExercises` (1-5) | 60 min (45) | 2026-10-25 | 24 / 24 | ❌ (a lot of AI help: 4 and 5 written by Claude) |
 | `GroupByExercises` (6-10) | (50) | | | |
 
@@ -85,12 +85,12 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 
 | # | Exercise | Expected | Checked | Notes |
 |---|---|---|---|---|
-| 1 | `SkipFirst` | 3 min | | |
-| 2 | `GetPage` | 10 min | | |
-| 3 | `GetLastN` | 5 min | | |
-| 4 | `RemoveLeadingZeros` | 5 min | | |
-| 5 | `TakeUntilNegative` | 5 min | | |
-| 6 | `RemoveFirstAndLast` | 10 min | | |
+| 1 | `SkipFirst` | 3 min | ✅ | |
+| 2 | `GetPage` | 10 min | ✅ | `Skip(pageSize * (pageNumber - 1)).Take(pageSize)`: page 1 skips 0. Instructions were unclear at first (page 3 missing); rewritten with a full page table. Interview extra: `pageNumber = 0` gives `Skip(-3)` = skip 0, so it silently returns page 1 |
+| 3 | `GetLastN` | 5 min | ✅ | `.Take(n)` isn't needed: after skipping `Length - n` exactly n items are left. Works when n > Length because `Skip` treats a negative count as 0 (so no `Math.Max` needed) |
+| 4 | `RemoveLeadingZeros` | 5 min | ✅ (after clue) | First try `SkipWhile(x => x != 0)` was backwards: the lambda must be `true` for what you SKIP. Say it out loud: "skip while it's zero" |
+| 5 | `TakeUntilNegative` | 5 min | ✅ | `TakeWhile` stops at the first -1 and never looks again (unlike `Where`) |
+| 6 | `RemoveFirstAndLast` | 10 min | ✅ (after clue) | First try took `Length - 1` (one too many). Keep = `Length - 2`. The 2 `if`s aren't needed: `Take` with a negative number returns nothing. Same lesson as RansomNote: too many special cases |
 
 ### GroupBy — [GroupByExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercisesTest.cs)
 
@@ -117,6 +117,6 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | Where | 5 | 5 | 0 | 0 |
 | Contains | 6 | 6 | 0 | 0 |
 | SelectMany | 5 | 0 | 0 | 5 |
-| Skip | 6 | 0 | 0 | 6 |
+| Skip | 6 | 6 | 0 | 0 |
 | GroupBy | 10 | 3 | 2 | 5 |
-| **All** | **37** | **19** | **2** | **16** |
+| **All** | **37** | **25** | **2** | **10** |

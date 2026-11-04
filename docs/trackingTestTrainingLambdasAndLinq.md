@@ -70,6 +70,7 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | 4 | `IsPangram` | 10 min | ✅ (after fix) | The hand-typed alphabet was missing `'u'`; added it. Old tests passed by luck (both sentences have a "u"); new test `"abcdefghijklmnopqrstvwxyz"` caught it. Still to improve: use the string `"abcdefghijklmnopqrstuvwxyz"` (easy to check), and `ToLower()` is still inside the lambda, so it runs 26 times: do it once before |
 | 5 | `GetPeopleFromCities` | 5 min | ✅ | `cities.Contains(p.City)` = SQL `WHERE City IN (...)` |
 | 6 | `IsBinary` | 5 min | ✅ | Correct with `All`. Try `!Any(s => s != "0" && s != "1")` too: same answer |
+| 7 | `GetPeopleInCapitals` | 10 min | | Extra: `List<Person>` vs `List<City>` (different types). `Any(c => c.IsCapital && c.Name == p.City)`, then `Select` + `HashSet<string>` + `Contains` |
 
 ### SelectMany — [SelectManyExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercisesTest.cs)
 
@@ -115,8 +116,8 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 |---|---|---|---|---|
 | First | 5 | 5 | 0 | 0 |
 | Where | 5 | 5 | 0 | 0 |
-| Contains | 6 | 6 | 0 | 0 |
+| Contains | 7 | 6 | 0 | 1 |
 | SelectMany | 5 | 0 | 0 | 5 |
 | Skip | 6 | 6 | 0 | 0 |
 | GroupBy | 10 | 3 | 2 | 5 |
-| **All** | **37** | **25** | **2** | **10** |
+| **All** | **38** | **25** | **2** | **11** |

@@ -120,5 +120,34 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
             return text.Split(',').All(s => s == "1" || s == "0");
             // !text.Split(',').Any(s => s != "0" && s != "1")
         }
+
+        // ========================================================================
+        // SAMPLE 7: People who live in a capital city (List<Person> vs List<City>)
+        // ========================================================================
+        // Sample 5 compared a List<Person> with a string[]. Now BOTH are lists of
+        // objects, and the types differ: Person.City is a string, but 'cities' is
+        // a List<City>. So cities.Contains(p.City) does NOT compile.
+        //
+        // Return the people whose City matches the Name of a City where
+        // IsCapital is true. Keep the order of 'people'.
+        //
+        // cities = [Lima (capital), Cusco (not), Quito (capital)]
+        // people = [Ana Lima, Luis Quito, Sofia Cusco, Pedro Lima, Eva Bogota]
+        //   -> [Ana, Luis, Pedro]
+        // (people, [])          -> []
+        // ([], cities)          -> []
+        //
+        // Difficulty: Easy
+        // Goal: Time O(p * c) is fine first. Then make it O(p + c).
+        // Expected time to solve: 10 min
+        // Topic: Contains vs Any with two List<T> of different types
+        // Tip 1: Solve it with Any(c => c.IsCapital && c.Name == p.City).
+        // Tip 2: Then solve it again with Select + HashSet<string> + Contains.
+        //        Why is that one faster when 'cities' is big?
+        // ========================================================================
+        public List<Person> GetPeopleInCapitals(List<Person> people, List<City> cities)
+        {
+           return people.Where( p => cities.Any(c => c.IsCapital && c.Name == p.City)).ToList();
+        }
     }
 }

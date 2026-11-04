@@ -98,5 +98,53 @@ namespace TestTrainingLambdasAndLinq.lambdasAndLinq.easy
         {
             Assert.AreEqual(output, contains.IsBinary(text));
         }
+
+        // ------------------------- GetPeopleInCapitals ------------------------
+
+        private static List<City> Cities() => new List<City>
+        {
+            new City("Lima", "Peru", true),
+            new City("Cusco", "Peru", false),
+            new City("Quito", "Ecuador", true),
+        };
+
+        [Test]
+        public void ShouldGetPeopleInCapitals()
+        {
+            var people = new List<Person>
+            {
+                new Person("Ana", 20, "Lima"),
+                new Person("Luis", 30, "Quito"),
+                new Person("Sofia", 25, "Cusco"),
+                new Person("Pedro", 40, "Lima"),
+                new Person("Eva", 35, "Bogota"),
+            };
+
+            var result = contains.GetPeopleInCapitals(people, Cities());
+
+            CollectionAssert.AreEqual(new[] { "Ana", "Luis", "Pedro" }, result.Select(p => p.Name));
+        }
+
+        [Test]
+        public void ShouldReturnEmptyWhenNoCities()
+        {
+            var people = new List<Person> { new Person("Ana", 20, "Lima") };
+
+            CollectionAssert.IsEmpty(contains.GetPeopleInCapitals(people, new List<City>()));
+        }
+
+        [Test]
+        public void ShouldReturnEmptyWhenNoPeople()
+        {
+            CollectionAssert.IsEmpty(contains.GetPeopleInCapitals(new List<Person>(), Cities()));
+        }
+
+        [Test]
+        public void ShouldIgnoreNonCapitalCities()
+        {
+            var people = new List<Person> { new Person("Sofia", 25, "Cusco") };
+
+            CollectionAssert.IsEmpty(contains.GetPeopleInCapitals(people, Cities()));
+        }
     }
 }

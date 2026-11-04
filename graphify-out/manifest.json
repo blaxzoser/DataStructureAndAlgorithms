@@ -258,9 +258,9 @@
     "semantic_hash": "8148cb45924efc83fcb25643f059ce1f"
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercisesTest.cs": {
-    "mtime": 1792981155.611293,
-    "seen": 1792981213.0450194,
-    "ast_hash": "c3d0b07c057b5c899a9b7bf808f80431",
+    "mtime": 1793768688.8830612,
+    "seen": 1793768714.2399576,
+    "ast_hash": "81b3352e160f33411081044efb26a23f",
     "semantic_hash": ""
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/FirstExercisesTest.cs": {
@@ -270,10 +270,10 @@
     "semantic_hash": "588fb09e5800d4bd35e9e5b60acd9079"
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercisesTest.cs": {
-    "mtime": 1792382981.4524872,
-    "seen": 1792617184.6069882,
-    "ast_hash": "90984c5f1b13d2360b825e358a962898",
-    "semantic_hash": "90984c5f1b13d2360b825e358a962898"
+    "mtime": 1792989677.2287772,
+    "seen": 1793768714.2399628,
+    "ast_hash": "77fd11dbba26539bdc8209ee7859f45f",
+    "semantic_hash": ""
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercisesTest.cs": {
     "mtime": 1792372191.4956079,
@@ -282,10 +282,10 @@
     "semantic_hash": "202bdf527d76eadffcabe4a0859a0256"
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SkipExercisesTest.cs": {
-    "mtime": 1792382981.303353,
-    "seen": 1792617184.6069918,
-    "ast_hash": "0436dfa721ed9d3202b52901f94acb87",
-    "semantic_hash": "0436dfa721ed9d3202b52901f94acb87"
+    "mtime": 1792990487.6724472,
+    "seen": 1793768714.2399676,
+    "ast_hash": "e8b0762d9f24357781e1d838af2f8d9e",
+    "semantic_hash": ""
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/WhereExercisesTest.cs": {
     "mtime": 1792372191.3955097,
@@ -480,9 +480,9 @@
     "semantic_hash": "63f64d3b772ae7e4966ac02355afd2d3"
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercises.cs": {
-    "mtime": 1792981038.415313,
-    "seen": 1792981213.0451028,
-    "ast_hash": "38efb221aab9b26ec07fc243f715e273",
+    "mtime": 1793768688.020288,
+    "seen": 1793768714.2400825,
+    "ast_hash": "610e7a7e28c4209fbf166f9b38b48730",
     "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/FirstExercises.cs": {
@@ -492,22 +492,22 @@
     "semantic_hash": "76231025029e9945c37dcb2e6af29cdb"
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercises.cs": {
-    "mtime": 1792382949.2607274,
-    "seen": 1792617184.6070507,
-    "ast_hash": "365ce20cac62bc0c4210c645a9350a96",
-    "semantic_hash": "365ce20cac62bc0c4210c645a9350a96"
+    "mtime": 1792989852.3281746,
+    "seen": 1793768714.2400868,
+    "ast_hash": "356eb81c8418dcdb8eda2f2d965c143d",
+    "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercises.cs": {
-    "mtime": 1792372158.6510818,
-    "seen": 1792617184.607052,
+    "mtime": 1792990100.1174893,
+    "seen": 1793768714.240089,
     "ast_hash": "6ebf2fa5fcedba81315306583b462204",
     "semantic_hash": "6ebf2fa5fcedba81315306583b462204"
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/SkipExercises.cs": {
-    "mtime": 1792382932.085081,
-    "seen": 1792617184.6070535,
-    "ast_hash": "7f5ae6dcab622fc136812482c83af708",
-    "semantic_hash": "7f5ae6dcab622fc136812482c83af708"
+    "mtime": 1792993073.643364,
+    "seen": 1793768714.2400908,
+    "ast_hash": "4356c81eebc6e2b8f50dd447319d555d",
+    "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/WhereExercises.cs": {
     "mtime": 1792382238.5116198,
@@ -666,9 +666,15 @@
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingLambdasAndLinq.md": {
-    "mtime": 1792981195.5837939,
-    "seen": 1792981213.0451186,
-    "ast_hash": "bccfc4de19ed90f63b609b6ba397464a",
+    "mtime": 1793768690.572169,
+    "seen": 1793768714.2401206,
+    "ast_hash": "cbd669d4bd01d4f41ce30e47ef5b4682",
+    "semantic_hash": ""
+  },
+  "TrainingLambdasAndLinq/POCOS/City.cs": {
+    "mtime": 1793768686.9632401,
+    "seen": 1793768714.2400692,
+    "ast_hash": "776ae2d293aafd81e71606ab26b0cfb6",
     "semantic_hash": ""
   }
 }

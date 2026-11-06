@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TrainingLambdasAndLinq.POCOS;
@@ -148,6 +149,53 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         public List<Person> GetPeopleInCapitals(List<Person> people, List<City> cities)
         {
            return people.Where( p => cities.Any(c => c.IsCapital && c.Name == p.City)).ToList();
+        }
+
+        // ========================================================================
+        // SAMPLE 7.1: People who live in a capital city, FAST (based on Sample 7)
+        // ========================================================================
+        // Same problem and same examples as Sample 7, but do NOT use Any inside
+        // the Where. Sample 7 rescans 'cities' for every person: O(p * c).
+        //
+        // Build the lookup ONCE, before the Where:
+        //   1. Where  -> keep only the capital cities
+        //   2. Select -> take just their Name (List<City> becomes strings)
+        //   3. HashSet<string> -> Contains is O(1) instead of O(c)
+        // Then the Where over 'people' only does capitals.Contains(p.City).
+        //
+        // cities = [Lima (capital), Cusco (not), Quito (capital)]
+        // people = [Ana Lima, Luis Quito, Sofia Cusco, Pedro Lima, Eva Bogota]
+        //   -> [Ana, Luis, Pedro]
+        // (people, [])          -> []
+        // ([], cities)          -> []
+        //
+        // Difficulty: Easy
+        // Goal: Time O(p + c), Space O(c)
+        // Expected time to solve: 5 min
+        // Pattern: Sample 7 (Any) + Sample 5 (Contains) + UniqueCharacters (HashSet)
+        // Topic: Select + HashSet<string> + Contains
+        // Tip 1: Anything that does not depend on 'p' belongs OUTSIDE the lambda
+        //        (same lesson as IsPangram and ToLower).
+        // Tip 2: Is the answer the same if the same capital appears twice in
+        //        'cities'? What does a HashSet do with duplicates?
+        // ========================================================================
+        public List<Person> GetPeopleInCapitalsFast(List<Person> people, List<City> cities)
+        {
+           // Approach A) mini with extra for to past array to HashSet
+        //    var citiesOnlyCapital =  cities.Where(s=> s.IsCapital)
+        //           .Select(c => c.Name).ToList();
+
+
+        //    var eliminateDuplicates = new HashSet<string>(); 
+        //    foreach(var capitals in citiesOnlyCapital){
+        //         eliminateDuplicates.Add(capitals);
+        //     }
+
+        // return people.Where( p => capitals.Contains(p.City) ).ToList();
+
+        // Approach B do fill Directly HashSet from WHERE + SELECT
+            var capitals = new HashSet<string>(cities.Where(c => c.IsCapital).Select(c => c.Name));                    
+            return people.Where( p => capitals.Contains(p.City) ).ToList();
         }
     }
 }

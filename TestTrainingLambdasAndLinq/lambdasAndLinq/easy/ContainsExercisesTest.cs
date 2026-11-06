@@ -146,5 +146,61 @@ namespace TestTrainingLambdasAndLinq.lambdasAndLinq.easy
 
             CollectionAssert.IsEmpty(contains.GetPeopleInCapitals(people, Cities()));
         }
+
+        // ----------------------- GetPeopleInCapitalsFast ----------------------
+
+        [Test]
+        public void ShouldGetPeopleInCapitalsFast()
+        {
+            var people = new List<Person>
+            {
+                new Person("Ana", 20, "Lima"),
+                new Person("Luis", 30, "Quito"),
+                new Person("Sofia", 25, "Cusco"),
+                new Person("Pedro", 40, "Lima"),
+                new Person("Eva", 35, "Bogota"),
+            };
+
+            var result = contains.GetPeopleInCapitalsFast(people, Cities());
+
+            CollectionAssert.AreEqual(new[] { "Ana", "Luis", "Pedro" }, result.Select(p => p.Name));
+        }
+
+        [Test]
+        public void ShouldReturnEmptyWhenNoCitiesFast()
+        {
+            var people = new List<Person> { new Person("Ana", 20, "Lima") };
+
+            CollectionAssert.IsEmpty(contains.GetPeopleInCapitalsFast(people, new List<City>()));
+        }
+
+        [Test]
+        public void ShouldReturnEmptyWhenNoPeopleFast()
+        {
+            CollectionAssert.IsEmpty(contains.GetPeopleInCapitalsFast(new List<Person>(), Cities()));
+        }
+
+        [Test]
+        public void ShouldIgnoreNonCapitalCitiesFast()
+        {
+            var people = new List<Person> { new Person("Sofia", 25, "Cusco") };
+
+            CollectionAssert.IsEmpty(contains.GetPeopleInCapitalsFast(people, Cities()));
+        }
+
+        [Test]
+        public void ShouldNotRepeatPeopleWhenCapitalIsDuplicatedFast()
+        {
+            var cities = new List<City>
+            {
+                new City("Lima", "Peru", true),
+                new City("Lima", "Peru", true),
+            };
+            var people = new List<Person> { new Person("Ana", 20, "Lima") };
+
+            var result = contains.GetPeopleInCapitalsFast(people, cities);
+
+            CollectionAssert.AreEqual(new[] { "Ana" }, result.Select(p => p.Name));
+        }
     }
 }

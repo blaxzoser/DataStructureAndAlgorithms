@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using TrainingLambdasAndLinq.POCOS;
 
 namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
@@ -484,7 +485,8 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public Dictionary<string, int> CountEvenAndOdd(int[] numbers)
         {
-            throw new NotImplementedException();
+            return numbers.GroupBy(n => n % 2 == 0 ? "Even" : "Odd")
+                 .ToDictionary(s => s.Key, x => x.Count());
         }
 
         // ========================================================================
@@ -497,13 +499,13 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Expected time to solve: 10 min
         // Pattern: CharFrequency (Sample 1) + CountEvenAndOdd (Sample 6)
         // Topic:   GroupBy on a computed key + normalizing the key
-        // Tip 1:   The key is the FIRST char of the word: w[0]
+        // Tip 1:   The key is the FIRST char of the word: w[0] 
         // Tip 2:   'A' and 'a' must land in the same bucket. Lower-case the
         //          KEY (char.ToLowerInvariant), not the whole word.
         // ========================================================================
         public Dictionary<char, int> CountWordsByFirstLetter(string[] words)
         {
-            throw new NotImplementedException();
+            return words.GroupBy(s => char.ToLowerInvariant(s[0])).ToDictionary(s => s.Key, x => x.Count());
         }
 
         // ========================================================================
@@ -521,9 +523,44 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Tip 2:   Sort by g.Key BEFORE or AFTER the Select? Both work,
         //          think about which reads better.
         // ========================================================================
+        // NOTES: think of GroupBy as "SQL GROUP BY ... HAVING ... ORDER BY".
+        //   GroupBy(city) -> Where(count >= N) -> OrderBy(key) -> Select(key) -> ToList()
+        //
+        // Example: [Ana Lima, Luis Quito, Sofia Lima, Pedro Cusco, Maria Cusco, Juan Lima], N = 2
         public List<string> GetCitiesWithAtLeast(List<Person> people, int minPeople)
         {
-            throw new NotImplementedException();
+            return people
+                // STEP 1: p is ONE Person. The lambda only gives the LABEL (the Key).
+                //   Each FULL Person object (not just the name) goes into the box of its city:
+                //     Lima  -> [ Person(Ana,20,Lima), Person(Sofia,25,Lima), Person(Juan,30,Lima) ]
+                //     Quito -> [ Person(Luis,30,Quito) ]
+                //     Cusco -> [ Person(Pedro,40,Cusco), Person(Maria,35,Cusco) ]
+                //   Type now: IEnumerable<IGrouping<string, Person>> = a sequence of BOXES.
+                .GroupBy(p => p.City)
+
+                // STEP 2: g is ONE BOX (not a Person). It runs once per box.
+                //   g.Count() = how many Person objects are inside the box. No field of
+                //   Person is needed, we only ask the box for its size.
+                //     Lima 3 >= 2 keep | Quito 1 >= 2 drop | Cusco 2 >= 2 keep
+                //   ">=" because "at least N" includes N (Cusco has exactly 2).
+                //   Must run BEFORE Select(g => g.Key): after that there are only strings
+                //   and Count() would count characters.
+                .Where(g => g.Count() >= minPeople)
+
+                // STEP 3: still boxes, so g.Key (the city) exists. Sorts A-Z: Cusco, Lima.
+                .OrderBy(g => g.Key)
+
+                // STEP 4: open each box and keep only its label. The people are not needed
+                //   anymore. Type now: IEnumerable<string>.
+                .Select(g => g.Key)
+
+                // STEP 5: the method returns List<string>, so materialize it (without it:
+                //   error CS0266, which breaks the build of the whole test project).
+                .ToList();
+
+            // LAMBDA VARIABLE = ONE element of the sequence in front of it:
+            //   before GroupBy -> Person (p)   -> pick a field: p.City
+            //   after GroupBy  -> a box (g)    -> ask the box: g.Key, g.Count(), g.Max(p => p.Age)
         }
 
         // ========================================================================
@@ -546,7 +583,10 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public Dictionary<string, int> CountProductsByCustomer(List<Order> orders)
         {
-            throw new NotImplementedException();
+            return orders
+                .GroupBy(p => p.Customer)
+                .ToDictionary(a => a.Key, s => s.Sum(o => o.Products.Count )                                                        
+                );
         }
 
         // ========================================================================
@@ -565,6 +605,304 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Tip 2:   Same stable-sort trick as Sample 4 solves the tie.
         // ========================================================================
         public Dictionary<string, string> GetOldestPersonByCity(List<Person> people)
+        {
+            return people.GroupBy(o => o.City)
+                   .ToDictionary(x => x.Key, y => y.OrderByDescending(s=> s.Age).First().Name);
+        }
+
+        // ============================================================================
+        // ROUND 3: senior mock-interview GroupBy (Samples 11-20)
+        // ============================================================================
+        // The GroupBy questions that come up most in C# / .NET interviews.
+        // Mix of simple data (int[], string) and objects with lists inside
+        // (Employee, Student.Courses, Order.Products, Person + City).
+        //
+        // Interview rules: max 15 min each, no TRACE comments, say the
+        // Time / Space out loud when you finish, then answer the
+        // "Interview follow-up" question of each sample.
+        //
+        // New things in this round:
+        //   - ThenBy (tie-break)            -> Sample 12
+        //   - ToLookup                      -> Sample 13
+        //   - Average / Distinct + Skip     -> Samples 14, 15
+        //   - SelectMany BEFORE GroupBy     -> Samples 16, 20
+        //   - Composite key (anonymous type)-> Sample 17
+        //   - Select((x, i) => ...) + GroupBy (batching) -> Sample 18
+        //   - Lookup in a 2nd list, then GroupBy (like a SQL JOIN) -> Sample 19
+        //   - GroupBy inside a GroupBy (nested dictionary)         -> Sample 20
+        //
+        // Total practice time: ~110 min
+        // ============================================================================
+
+        // ========================================================================
+        // SAMPLE 11: Values that appear exactly once (warm-up)
+        // ========================================================================
+        // Keep the order they first appear.
+        // [4, 1, 4, 2, 1, 5] -> [2, 5]
+        // [7, 7]             -> []
+        // []                 -> []
+        //
+        // Difficulty: Easy
+        // Goal: Time O(n), Space O(n)
+        // Expected time to solve: 5 min
+        // Pattern: GetDuplicates (Sample 2), the opposite filter
+        // Topic:   Where on groups
+        // Tip 1:   Same chain as Sample 2, only the Where changes.
+        // Tip 2:   "exactly once" -> == 1 (not >= 1, not > 1).
+        // Interview follow-up: "first non-repeating number" -> what changes?
+        // ========================================================================
+        public int[] GetValuesAppearingOnce(int[] numbers)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 12: Top K most frequent words
+        // ========================================================================
+        // Words are separated by spaces (can be more than one). Ignore case:
+        // return the words in lower case. Most frequent first. Tie: A-Z.
+        // ("the cat and the hat and the bat", 2) -> ["the", "and"]
+        //     the: 3, and: 2, cat/hat/bat: 1
+        // ("b a c a b c", 2)  -> ["a", "b"]    (all have 2: A-Z decides)
+        // ("Hi hi HI", 5)     -> ["hi"]        (k bigger than the words: all)
+        // ("", 3)             -> []
+        //
+        // Difficulty: Easy-Medium
+        // Goal: Time O(n + w log w) (w = different words), Space O(w)
+        // Expected time to solve: 10 min
+        // Pattern: GetMostFrequentChar (Sample 4) + CountWordsByFirstLetter (Sample 7)
+        // Topic:   OrderByDescending + ThenBy + Take
+        // Tip 1:   sentence.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+        //          ("" and double spaces give no empty words).
+        // Tip 2:   In Sample 4 the tie used first-seen order. Here the tie is
+        //          A-Z, so add .ThenBy(g => g.Key) after the OrderByDescending.
+        // Interview follow-up: LeetCode 692. Can you do it without sorting
+        //          all the words? (heap / PriorityQueue of size k)
+        // ========================================================================
+        public List<string> GetTopKFrequentWords(string sentence, int k)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 13: Names by city with ToLookup
+        // ========================================================================
+        // Same data as Sample 3, but return an ILookup instead of a Dictionary.
+        // [Ana Lima, Luis Quito, Sofia Lima]
+        //   lookup["Lima"]  -> ["Ana", "Sofia"]
+        //   lookup["Quito"] -> ["Luis"]
+        //   lookup["Cusco"] -> []      (NO exception, a Dictionary would throw)
+        //
+        // Difficulty: Easy
+        // Goal: Time O(n), Space O(n)
+        // Expected time to solve: 5 min
+        // Pattern: GroupNamesByCity (Sample 3)
+        // Topic:   ToLookup vs GroupBy + ToDictionary
+        // Tip 1:   ToLookup has the same 2 lambdas as GroupBy:
+        //          ToLookup(keySelector, elementSelector).
+        // Tip 2:   It's ONE call, no ToDictionary needed.
+        // Interview follow-up (very common): "GroupBy vs ToLookup?"
+        //          GroupBy is LAZY (runs again on every foreach), ToLookup runs
+        //          NOW (once) and is read-only. A missing key gives an empty
+        //          sequence instead of KeyNotFoundException.
+        // ========================================================================
+        public ILookup<string, string> BuildNamesByCityLookup(List<Person> people)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 14: Average salary by department
+        // ========================================================================
+        // Round to 2 decimals.
+        // [Ana IT 5000, Luis HR 3000, Sofia IT 6000, Pedro IT 4500, Maria HR 3500]
+        //   -> { "IT": 5166.67, "HR": 3250 }
+        // [] -> { }
+        //
+        // Difficulty: Easy
+        // Goal: Time O(n), Space O(d) (d = departments)
+        // Expected time to solve: 10 min
+        // Pattern: CountProductsByCustomer (Sample 9)
+        // Topic:   Aggregates inside a group: Average (also Sum, Min, Max)
+        // Tip 1:   Sample 9 used g.Sum(...). Here: g.Average(e => e.Salary).
+        //          Average of ints returns a double.
+        // Tip 2:   Math.Round(value, 2).
+        // Interview follow-up: "Average() on an empty sequence?" -> it throws
+        //          InvalidOperationException. Why is that never a problem
+        //          inside a GroupBy? (a group always has >= 1 element)
+        // ========================================================================
+        public Dictionary<string, double> GetAverageSalaryByDepartment(List<Employee> employees)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 15: Second highest salary by department
+        // ========================================================================
+        // The classic SQL interview question, in LINQ. "Second highest" means
+        // the second DIFFERENT salary. If there is none, the value is 0.
+        // IT:    6000, 6000, 5000, 4500 -> 5000  (6000 twice is still 1st place)
+        // HR:    3000                   -> 0     (only one employee)
+        // Sales: 4000, 4000             -> 0     (only one DIFFERENT salary)
+        //
+        // Difficulty: Medium
+        // Goal: Time O(n log n), Space O(n)
+        // Expected time to solve: 15 min
+        // Pattern: GetOldestPersonByCity (Sample 10) + SkipExercises + FirstExercises 2
+        // Topic:   Select + Distinct + OrderByDescending + Skip INSIDE each group
+        // Tip 1:   For one group: take the salaries, remove repeats, sort
+        //          biggest first, skip the first one, take the next.
+        // Tip 2:   FirstOrDefault() on an int sequence gives 0 when it's empty
+        //          (you saw it in GetFirstNegativeOrZero). No 'if' needed.
+        // Interview follow-up: "Nth highest?" -> Skip(n - 1). And what if 0 is
+        //          a real salary? (return int? / nullable instead)
+        // ========================================================================
+        public Dictionary<string, int> GetSecondHighestSalaryByDepartment(List<Employee> employees)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 16: How many students take each course
+        // ========================================================================
+        // Each Student has a LIST of courses. Count STUDENTS, not rows: if a
+        // student wrote the same course twice, it counts once.
+        // Ana   -> [Math, Art]
+        // Luis  -> [Math]
+        // Sofia -> [Art, Math, Art]     (Art twice: counts once)
+        // Juan  -> []                   (adds nothing)
+        //   -> { "Math": 3, "Art": 2 }
+        //
+        // Difficulty: Easy-Medium
+        // Goal: Time O(total courses), Space O(different courses)
+        // Expected time to solve: 10 min
+        // Pattern: CharFrequency (Sample 1) + SelectManyExercises.GetAllCourses
+        // Topic:   SelectMany BEFORE GroupBy (flatten the lists, then count)
+        // Tip 1:   You can't group courses while they are inside lists.
+        //          SelectMany(s => s.Courses) gives one flat list of courses.
+        // Tip 2:   Remove the repeats PER STUDENT, before flattening:
+        //          s.Courses.Distinct(). After flattening it's too late
+        //          (you'd remove Math from Luis too).
+        // Interview follow-up: "Which course has the most students?"
+        // ========================================================================
+        public Dictionary<string, int> CountStudentsByCourse(List<Student> students)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 17: Count people by city AND age group (composite key)
+        // ========================================================================
+        // Age group: "Adult" if Age >= 18, else "Minor".
+        // Sort by city A-Z, then by group A-Z. Format: "<City> - <Group>: <count>"
+        // [Ana 20 Lima, Luis 15 Quito, Sofia 12 Lima, Pedro 40 Lima,
+        //  Maria 30 Quito, Juan 18 Lima]
+        //   -> ["Lima - Adult: 3", "Lima - Minor: 1",
+        //       "Quito - Adult: 1", "Quito - Minor: 1"]
+        //   (Juan is exactly 18 -> Adult)
+        //
+        // Difficulty: Medium
+        // Goal: Time O(n + g log g) (g = groups), Space O(n)
+        // Expected time to solve: 15 min
+        // Pattern: CountEvenAndOdd (Sample 6) + GroupWordsByLength (Sample 5)
+        // Topic:   GroupBy on TWO things at once = anonymous type key
+        //          (SQL: GROUP BY City, AgeGroup)
+        // Tip 1:   The key can be an object:
+        //          GroupBy(p => new { p.City, AgeGroup = p.Age >= 18 ? "Adult" : "Minor" })
+        //          Then g.Key.City and g.Key.AgeGroup.
+        // Tip 2:   Two sort levels: OrderBy(...).ThenBy(...), never two OrderBy
+        //          (the 2nd OrderBy throws away the 1st sort).
+        // Interview follow-up: "Why does an anonymous type work as a key but
+        //          a normal class doesn't?" (anonymous types compare by VALUE:
+        //          they override Equals/GetHashCode. A class compares by
+        //          reference -> every person gets their own group. Tuples
+        //          (p.City, group) also work.)
+        // ========================================================================
+        public List<string> CountPeopleByCityAndAgeGroup(List<Person> people)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 18: Split into batches of size N
+        // ========================================================================
+        // ([1, 2, 3, 4, 5, 6, 7], 3) -> [[1, 2, 3], [4, 5, 6], [7]]
+        // ([1, 2], 5)                -> [[1, 2]]
+        // ([], 3)                    -> []
+        //
+        // Difficulty: Medium
+        // Goal: Time O(n), Space O(n)
+        // Expected time to solve: 10 min
+        // Pattern: WhereExercises.GetElementsAtEvenIndex ((e, i) => overload)
+        // Topic:   GroupBy on the INDEX: the key is index / size
+        // Tip 1:   GroupBy has no (x, i) overload, but Select does:
+        //          Select((n, i) => new { n, i })
+        // Tip 2:   Integer division: index 0,1,2 / 3 = 0 | 3,4,5 / 3 = 1 | 6 / 3 = 2.
+        //          Use the 2nd lambda of GroupBy to keep only the number.
+        // Interview follow-up: "Why batch?" (send 1000 rows per DB call / API
+        //          page). .NET 6 has Chunk(size), but it's not in netstandard2.0.
+        // ========================================================================
+        public List<List<int>> SplitIntoBatches(int[] numbers, int size)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 19: Count people by country (two lists, like a SQL JOIN)
+        // ========================================================================
+        // A Person only has a City. The country is in the 2nd list (City).
+        // A city that is not in the list counts as "Unknown".
+        // cities: [Lima Peru, Cusco Peru, Quito Ecuador]
+        // people: [Ana Lima, Luis Quito, Sofia Cusco, Pedro Lima, Maria Bogota]
+        //   -> { "Peru": 3, "Ecuador": 1, "Unknown": 1 }
+        //
+        // Difficulty: Medium
+        // Goal: Time O(p + c), Space O(c)
+        // Expected time to solve: 15 min
+        // Pattern: ContainsExercises.GetPeopleInCapitalsFast (build a lookup once)
+        //          + CountEvenAndOdd (Sample 6, computed key)
+        // Topic:   GroupBy on a key that comes from ANOTHER collection
+        // Tip 1:   Build it ONCE, before the GroupBy:
+        //          var countryOf = cities.ToDictionary(c => c.Name, c => c.Country);
+        //          (a cities.First(...) inside the lambda is O(p * c)).
+        // Tip 2:   The key lambda: countryOf.TryGetValue(p.City, out var country)
+        //          ? country : "Unknown"
+        // Interview follow-up: "Do it with Join." (join drops Maria: that's an
+        //          INNER join. Keeping her = LEFT join = GroupJoin.) And what
+        //          does ToDictionary do if a city name appears twice? (throws)
+        // ========================================================================
+        public Dictionary<string, int> CountPeopleByCountry(List<Person> people, List<City> cities)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 20: How many of each product every customer bought (nested)
+        // ========================================================================
+        // Order 1 Ana   -> [Pen, Book]
+        // Order 2 Luis  -> [Cup]
+        // Order 3 Ana   -> [Pen]
+        // Order 4 Sofia -> []
+        //   -> {
+        //        "Ana":   { "Pen": 2, "Book": 1 },
+        //        "Luis":  { "Cup": 1 },
+        //        "Sofia": { }               (customer stays, inner is empty)
+        //      }
+        //
+        // Difficulty: Medium-Hard
+        // Goal: Time O(total products), Space O(total products)
+        // Expected time to solve: 15 min
+        // Pattern: CountProductsByCustomer (Sample 9) + CharFrequency (Sample 1)
+        //          + CountStudentsByCourse (Sample 16)
+        // Topic:   A GroupBy inside the value of another GroupBy
+        // Tip 1:   Outer: group the ORDERS by customer (like Sample 9).
+        // Tip 2:   Inner, for ONE group g: g.SelectMany(o => o.Products) gives all
+        //          the products of that customer; then it's Sample 1 again.
+        // Interview follow-up: "Why does Sofia stay but has no products?"
+        //          (her ORDER makes the outer group; the inner has nothing to
+        //          count). What would change if you flattened FIRST?
+        // ========================================================================
+        public Dictionary<string, Dictionary<string, int>> GetProductCountsByCustomer(List<Order> orders)
         {
             throw new NotImplementedException();
         }

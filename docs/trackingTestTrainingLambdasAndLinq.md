@@ -35,6 +35,7 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | `SkipExercises` | 45 min (40) | 2026-10-25 | 25 / 25 | ✅ (a little AI help: clues for 4 and 6) |
 | `GroupByExercises` (1-5) | 60 min (45) | 2026-10-25 | 24 / 24 | ❌ (a lot of AI help: 4 and 5 written by Claude) |
 | `GroupByExercises` (6-10) | (50) | | | |
+| `GroupByExercises` (11-20) senior mock | (110) | | | |
 
 ---
 
@@ -70,7 +71,8 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | 4 | `IsPangram` | 10 min | ✅ (after fix) | The hand-typed alphabet was missing `'u'`; added it. Old tests passed by luck (both sentences have a "u"); new test `"abcdefghijklmnopqrstvwxyz"` caught it. Still to improve: use the string `"abcdefghijklmnopqrstuvwxyz"` (easy to check), and `ToLower()` is still inside the lambda, so it runs 26 times: do it once before |
 | 5 | `GetPeopleFromCities` | 5 min | ✅ | `cities.Contains(p.City)` = SQL `WHERE City IN (...)` |
 | 6 | `IsBinary` | 5 min | ✅ | Correct with `All`. Try `!Any(s => s != "0" && s != "1")` too: same answer |
-| 7 | `GetPeopleInCapitals` | 10 min | | Extra: `List<Person>` vs `List<City>` (different types). `Any(c => c.IsCapital && c.Name == p.City)`, then `Select` + `HashSet<string>` + `Contains` |
+| 7 | `GetPeopleInCapitals` | 10 min | | Extra: `List<Person>` vs `List<City>` (different types). `Any(c => c.IsCapital && c.Name == p.City)`. Passes all tests (reviewed) |
+| 7.1 | `GetPeopleInCapitalsFast` | 5 min | | Same as 7 but O(p + c): `Where` + `Select` + `HashSet<string>` built once, then `Contains`. Duplicate capitals must not repeat people |
 
 ### SelectMany — [SelectManyExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercisesTest.cs)
 
@@ -107,6 +109,16 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | 8 | `GetCitiesWithAtLeast` | 10 min | | |
 | 9 | `CountProductsByCustomer` | 10 min | | |
 | 10 | `GetOldestPersonByCity` | 15 min | | |
+| 11 | `GetValuesAppearingOnce` | 5 min | | Warm-up: Sample 2 with `== 1` |
+| 12 | `GetTopKFrequentWords` | 10 min | | `OrderByDescending` + `ThenBy` tie-break A-Z + `Take(k)` (LeetCode 692) |
+| 13 | `BuildNamesByCityLookup` | 5 min | | `ToLookup`: runs now, missing key gives empty (no exception). Know GroupBy vs ToLookup |
+| 14 | `GetAverageSalaryByDepartment` | 10 min | | `Employee` POCO. `g.Average(...)` + `Math.Round(x, 2)` |
+| 15 | `GetSecondHighestSalaryByDepartment` | 15 min | | `Distinct` + `OrderByDescending` + `Skip(1)` + `FirstOrDefault` (0 when none) |
+| 16 | `CountStudentsByCourse` | 10 min | | `SelectMany` BEFORE `GroupBy`; `Distinct` per student, not after flattening |
+| 17 | `CountPeopleByCityAndAgeGroup` | 15 min | | Composite key `new { p.City, AgeGroup }`; `OrderBy` + `ThenBy` on `g.Key.X` |
+| 18 | `SplitIntoBatches` | 10 min | | `Select((n, i) => ...)` + `GroupBy(x => x.i / size, x => x.n)` |
+| 19 | `CountPeopleByCountry` | 15 min | | Build `ToDictionary` of cities ONCE, `TryGetValue` in the key, `"Unknown"` fallback |
+| 20 | `GetProductCountsByCustomer` | 15 min | | Nested: GroupBy customer → `SelectMany` products → GroupBy product |
 
 ---
 
@@ -116,8 +128,8 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 |---|---|---|---|---|
 | First | 5 | 5 | 0 | 0 |
 | Where | 5 | 5 | 0 | 0 |
-| Contains | 7 | 6 | 0 | 1 |
+| Contains | 8 | 6 | 0 | 2 |
 | SelectMany | 5 | 0 | 0 | 5 |
 | Skip | 6 | 6 | 0 | 0 |
-| GroupBy | 10 | 3 | 2 | 5 |
-| **All** | **38** | **25** | **2** | **11** |
+| GroupBy | 20 | 3 | 2 | 15 |
+| **All** | **49** | **25** | **2** | **22** |

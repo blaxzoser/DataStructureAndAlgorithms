@@ -25,7 +25,7 @@ reference solution in a separate method (e.g. `Sample1Refactor`) next to theirs.
 | `Samples/POCOS/` | | Person | |
 | `TrainingAlgorithms/algorithms/{easy,medium,hard}/` | library | Algorithm exercises (stubs) | `TestTrainingAlgorithms/algorithms/{easy,medium,hard}/` |
 | `TrainingLambdasAndLinq/lambdasAndLinq/easy/` | library | LINQ exercises: Where, First, Contains, Skip, SelectMany, GroupBy | `TestTrainingLambdasAndLinq/lambdasAndLinq/easy/` |
-| `TrainingLambdasAndLinq/POCOS/` | | Person, Order, Student (data for LINQ exercises) | |
+| `TrainingLambdasAndLinq/POCOS/` | | Person, Order, Student, City, Employee, Customer (data for LINQ exercises) | |
 | `DataStructureAndAlgorithms/` | console app | Hello World entry point, unused | |
 | `docs/CheatSheet.md` | doc | Patterns + templates, C# quick reference, Time/Space, edge cases, progress log | |
 | `docs/trackingTestTrainingAlgorithms.md` | doc | Time / date / checked / notes for every exercise tested in `TestTrainingAlgorithms` | |

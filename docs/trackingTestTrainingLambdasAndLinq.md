@@ -31,7 +31,8 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | `FirstExercises` | 20 min (35) | 2026-10-18 | 17 / 17 | ✅ |
 | `WhereExercises` | 30 min (40) | 2026-10-18 | 14 / 14 | ✅ |
 | `ContainsExercises` | 34 min (40) | 2026-10-25 | 24 / 24 | ✅ (after fix) |
-| `SelectManyExercises` | (45) | | | |
+| `SelectManyExercises` (1-5) | 30 min (45) | 2026-11-07 | 11 / 11 | ✅ |
+| `SelectManyExercises` (6-15) | (150) | | | |
 | `SkipExercises` | 45 min (40) | 2026-10-25 | 25 / 25 | ✅ (a little AI help: clues for 4 and 6) |
 | `GroupByExercises` (1-5) | 60 min (45) | 2026-10-25 | 24 / 24 | ❌ (a lot of AI help: 4 and 5 written by Claude) |
 | `GroupByExercises` (6-10) | (50) | | | |
@@ -79,11 +80,21 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 
 | # | Exercise | Expected | Checked | Notes |
 |---|---|---|---|---|
-| 1 | `Flatten` | 5 min | | |
-| 2 | `GetAllCharacters` | 5 min | | |
-| 3 | `GetAllCourses` | 10 min | | |
-| 4 | `GetAllPairs` | 10 min | | |
-| 5 | `GetCustomerProducts` | 15 min | | |
+| 1 | `Flatten` | 5 min | ✅ | `SelectMany(x => x)`: each inner array is already a collection |
+| 2 | `GetAllCharacters` | 5 min | ✅ | A `string` is an `IEnumerable<char>`, so `SelectMany(w => w)` works. The lambda was named `words` (same as the array): name it `w` |
+| 3 | `GetAllCourses` | 10 min | ✅ | Flatten → `Distinct` → `OrderBy`, in that order |
+| 4 | `GetAllPairs` | 10 min | ✅ | Cross join: `SelectMany(n => letters.Select(l => ...))`. Empty `letters` gives `[]` for free |
+| 5 | `GetCustomerProducts` | 15 min | ✅ | Result-selector overload `(order, product) => ...` keeps the parent data |
+| 6 | `ExpandRunLength` | 15 min | | LeetCode 1313. `Enumerable.Range` over the pairs + `Enumerable.Repeat` |
+| 7 | `Shuffle` | 15 min | | LeetCode 1470. One index IN, a small array OUT |
+| 8 | `GetDistinctWords` | 15 min | | `Split` inside the `SelectMany` + lower case + `Distinct` + `OrderBy`. netstandard2.0: `Split(new[] { ' ' }, ...)` |
+| 9 | `GetExcelCells` | 15 min | | LeetCode 2194. Cross join columns x rows; a `char` is a number |
+| 10 | `GetPairsWithSum` | 15 min | | All pairs `i < j` (like `IsUniqueNoExtraSpace`). Follow-up: Two Sum in O(n) |
+| 11 | `GetProductsBoughtInCity` | 15 min | | New POCO `Customer` -> `List<Order>` -> `List<string>`: two levels |
+| 12 | `GetOrderLines` | 15 min | | `SelectMany` inside a `SelectMany` (closure keeps the customer) |
+| 13 | `GetStudentsByCourse` | 15 min | | Many-to-many turned around: result selector -> `GroupBy` -> `ToDictionary` |
+| 14 | `GetPeopleWithCountry` | 15 min | | `SelectMany` as an INNER JOIN between two `List<T>` (not `.Join()`) |
+| 15 | `GetPeopleWithCountryOrUnknown` | 15 min | | LEFT JOIN: `SelectMany` + `DefaultIfEmpty`. Very common interview question |
 
 ### Skip / Take / SkipWhile / TakeWhile — [SkipExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SkipExercisesTest.cs)
 
@@ -147,8 +158,8 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | First | 5 | 5 | 0 | 0 |
 | Where | 5 | 5 | 0 | 0 |
 | Contains | 8 | 6 | 0 | 2 |
-| SelectMany | 5 | 0 | 0 | 5 |
+| SelectMany | 15 | 5 | 0 | 10 |
 | Skip | 6 | 6 | 0 | 0 |
 | GroupBy | 22 | 3 | 2 | 17 |
 | ThenBy | 10 | 0 | 0 | 10 |
-| **All** | **61** | **25** | **2** | **34** |
+| **All** | **71** | **30** | **2** | **39** |

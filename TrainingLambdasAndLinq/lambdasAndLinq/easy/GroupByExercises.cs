@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using TrainingLambdasAndLinq.POCOS;
 
@@ -653,7 +654,9 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public int[] GetValuesAppearingOnce(int[] numbers)
         {
-            throw new NotImplementedException();
+            return numbers.GroupBy( x => x )
+                   .Where(s => s.Count() == 1  )
+                   .Select(o => o.Key).ToArray();
         }
 
         // ========================================================================
@@ -681,7 +684,13 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public List<string> GetTopKFrequentWords(string sentence, int k)
         {
-            throw new NotImplementedException();
+            return sentence.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                 .GroupBy(w => w.ToLowerInvariant())
+                 .OrderByDescending(g => g.Count())
+                 .ThenBy(g => g.Key)
+                 .Take(k)
+                 .Select(g => g.Key)
+                 .ToList();
         }
 
         // ========================================================================
@@ -708,7 +717,7 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public ILookup<string, string> BuildNamesByCityLookup(List<Person> people)
         {
-            throw new NotImplementedException();
+            return people.ToLookup(s => s.City, y => y.Name);             
         }
 
         // ========================================================================
@@ -733,7 +742,9 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public Dictionary<string, double> GetAverageSalaryByDepartment(List<Employee> employees)
         {
-            throw new NotImplementedException();
+            return employees.GroupBy(s => s.Department)
+                            .ToDictionary(s => s.Key, p =>  Math.Round(
+                                ( p.Average(t => t.Salary)),2));
         }
 
         // ========================================================================
@@ -759,7 +770,14 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public Dictionary<string, int> GetSecondHighestSalaryByDepartment(List<Employee> employees)
         {
-            throw new NotImplementedException();
+            return employees.GroupBy(e => e.Department)
+                            .ToDictionary(s => s.Key, 
+                                x => x.Select(s => s.Salary)
+                                      .Distinct()
+                                      .OrderByDescending(t => t)
+                                      .Skip(1)
+                                      .FirstOrDefault()
+                            );
         }
 
         // ========================================================================
@@ -787,6 +805,7 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public Dictionary<string, int> CountStudentsByCourse(List<Student> students)
         {
+
             throw new NotImplementedException();
         }
 
@@ -820,7 +839,58 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public List<string> CountPeopleByCityAndAgeGroup(List<Person> people)
         {
-            throw new NotImplementedException();
+            // DEBUG TRACE. Input used in every step below:
+            //   Ana 20 Lima | Luis 15 Quito | Sofia 12 Lima | Pedro 40 Lima
+            //   Maria 30 Quito | Juan 18 Lima
+            return people
+                // STEP 1: GroupBy. The lambda runs ONCE PER PERSON (s = one Person) and
+                //   builds the key. People with an EQUAL key go into the same box:
+                //     Ana   -> { Lima,  Adult }    Luis  -> { Quito, Minor }
+                //     Sofia -> { Lima,  Minor }    Pedro -> { Lima,  Adult }
+                //     Maria -> { Quito, Adult }    Juan  -> { Lima,  Adult }  (18 >= 18)
+                //   The anonymous type compares by VALUE, so Ana, Pedro and Juan share a box.
+                //   Result: boxes in order of FIRST appearance (NOT sorted yet).
+                //   The key is only the LABEL. Each box holds the FULL Person objects
+                //   (Name, Age, City), not just the names:
+                //     BOX 1 { Lima,  Adult } -> [ Person(Ana,20,Lima), Person(Pedro,40,Lima), Person(Juan,18,Lima) ]
+                //     BOX 2 { Quito, Minor } -> [ Person(Luis,15,Quito) ]
+                //     BOX 3 { Lima,  Minor } -> [ Person(Sofia,12,Lima) ]
+                //     BOX 4 { Quito, Adult } -> [ Person(Maria,30,Quito) ]
+                //   Type: IEnumerable<IGrouping<{City, AgeGroup}, Person>>
+                //   ("Person" at the end of the type is what each box holds.)
+                .GroupBy(s => new { s.City, AgeGroup = s.Age >= 18 ? "Adult" : "Minor" })
+
+                // STEP 2: OrderBy. s is now ONE BOX (not a Person). Main sort: the city A-Z.
+                //   Lima boxes first, then Quito. Inside the same city nothing is decided yet
+                //   (OrderBy is stable, so they keep the order from step 1):
+                //     BOX 1 { Lima,  Adult }   BOX 3 { Lima,  Minor }
+                //     BOX 2 { Quito, Minor }   BOX 4 { Quito, Adult }   <- Minor before Adult: wrong yet
+                //   Still boxes, so s.Key.City exists.
+                .OrderBy(s=> s.Key.City)
+
+                // STEP 3: ThenBy = the TIE-BREAK. It only reorders boxes with the SAME city.
+                //   Group A-Z: "Adult" comes before "Minor". Never use a 2nd OrderBy here:
+                //   it would throw away the city sort from step 2.
+                //     Lima:  BOX 1 { Lima,  Adult }, BOX 3 { Lima,  Minor }
+                //     Quito: BOX 4 { Quito, Adult }, BOX 2 { Quito, Minor }
+                //   Order now: BOX 1, BOX 3, BOX 4, BOX 2 (the expected output order).
+                .ThenBy(o => o.Key.AgeGroup)
+
+                // STEP 4: Select. Turns each BOX into ONE string. Keep Key and Count()
+                //   for the LAST step: after this the boxes are gone, only text is left.
+                //     BOX 1 -> "Lima - Adult: 3"     (t.Count() = 3 people in the box)
+                //     BOX 3 -> "Lima - Minor: 1"
+                //     BOX 4 -> "Quito - Adult: 1"
+                //     BOX 2 -> "Quito - Minor: 1"
+                //   Watch the exact text: no space before ':' and none at the end,
+                //   the test compares the strings character by character.
+                .Select(t => $"{t.Key.City} - {t.Key.AgeGroup}: {t.Count()}")
+
+                // STEP 5: ToList. The method returns List<string>; Select gives an
+                //   IEnumerable<string> (lazy, nothing ran until now). ToList runs the whole
+                //   chain once. Without it: error CS0266 and the test project doesn't build.
+                //   -> ["Lima - Adult: 3", "Lima - Minor: 1", "Quito - Adult: 1", "Quito - Minor: 1"]
+                .ToList();
         }
 
         // ========================================================================
@@ -903,6 +973,78 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         //          count). What would change if you flattened FIRST?
         // ========================================================================
         public Dictionary<string, Dictionary<string, int>> GetProductCountsByCustomer(List<Order> orders)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 21: Top K most used hashtags (practice again: Sample 12)
+        // ========================================================================
+        // Words are separated by spaces (can be more than one). Only the words that
+        // START with '#' are hashtags; ignore the rest. Ignore case: return them in
+        // lower case, WITH the '#'. Most used first. Tie: A-Z.
+        // ("#dotnet is fun #linq #DotNet #csharp #linq #dotnet", 2) -> ["#dotnet", "#linq"]
+        //     #dotnet: 3, #linq: 2, #csharp: 1
+        // ("#dotnet is fun #linq #DotNet #csharp #linq #dotnet", 3) -> ["#dotnet", "#linq", "#csharp"]
+        // ("#b #a #c #a #b #c", 2)  -> ["#a", "#b"]    (all have 2: A-Z decides)
+        // ("#Hi #hi #HI", 5)        -> ["#hi"]         (k bigger than the hashtags: all)
+        // ("price a#b #x", 2)       -> ["#x"]          (a#b does NOT start with '#')
+        // ("no tags here", 3)       -> []
+        // ("", 3)                   -> []
+        //
+        // Difficulty: Easy-Medium
+        // Goal: Time O(n + h log h) (h = different hashtags), Space O(h)
+        // Expected time to solve: 8 min (Sample 12 took longer: beat it)
+        // Pattern: GetTopKFrequentWords (Sample 12) + a Where BEFORE the GroupBy
+        // Topic:   Where + GroupBy + OrderByDescending + ThenBy + Take
+        // Tip 1:   Same steps as Sample 12. The only new step is a Where on the
+        //          WORDS (before GroupBy) that keeps the ones starting with '#'.
+        //          Use w[0] == '#' (words are never empty after RemoveEmptyEntries).
+        // Tip 2:   Say the order out loud, as SQL, before you type:
+        //          Split -> Where -> GroupBy -> OrderByDescending(count)
+        //          -> ThenBy(key) -> Take(k) -> Select(key) -> ToList().
+        //          Don't reuse the name 'k' for a lambda variable.
+        // Interview follow-up: the Where could come AFTER the GroupBy too. Which
+        //          is cheaper, and why? (hint: how many boxes get built?)
+        // ========================================================================
+        public List<string> GetTopKHashtags(string text, int k)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 22: Employees by department AND salary level (practice again: Sample 17)
+        // ========================================================================
+        // Salary level: "High" if Salary >= 5000, else "Low".
+        // Sort by department A-Z, then by level A-Z.
+        // Format: "<Department> - <Level>: <count> (total <sum of salaries>)"
+        // [Ana IT 6000, Luis HR 3000, Sofia IT 6000, Pedro IT 4500,
+        //  Maria Sales 4000, Juan IT 5000, Lucia Sales 5500, Eva HR 5000]
+        //   -> ["HR - High: 1 (total 5000)",    "HR - Low: 1 (total 3000)",
+        //       "IT - High: 3 (total 17000)",   "IT - Low: 1 (total 4500)",
+        //       "Sales - High: 1 (total 5500)", "Sales - Low: 1 (total 4000)"]
+        //   (Juan and Eva are exactly 5000 -> High)
+        // ([])  -> []
+        //
+        // Difficulty: Medium
+        // Goal: Time O(n + g log g) (g = groups), Space O(n)
+        // Expected time to solve: 12 min (Sample 17 took longer: beat it)
+        // Pattern: CountPeopleByCityAndAgeGroup (Sample 17) + GetAverageSalaryByDepartment (Sample 14)
+        // Topic:   Composite key + TWO aggregates in one text (Count AND Sum)
+        // Tip 1:   Same steps as Sample 17. The key is
+        //          new { e.Department, Level = e.Salary >= 5000 ? "High" : "Low" }
+        //          and each box now holds Employee objects (not just names).
+        // Tip 2:   Order of steps, as SQL, before you type:
+        //          GroupBy -> OrderBy(department) -> ThenBy(level) -> Select(text) -> ToList().
+        //          The text needs g.Count() AND g.Sum(e => e.Salary): both only
+        //          exist while g is still a box, so Select goes LAST.
+        // Tip 3:   Watch the exact text: "IT - High: 3 (total 17000)". One wrong
+        //          space and the test fails (it happened in Sample 17).
+        // Interview follow-up: use a TUPLE key instead: GroupBy(e => (e.Department, Level)).
+        //          Then g.Key.Department and g.Key.Level (or g.Key.Item1 / Item2). When
+        //          would you still prefer an anonymous type? (hint: names of the parts)
+        // ========================================================================
+        public List<string> CountEmployeesByDepartmentAndLevel(List<Employee> employees)
         {
             throw new NotImplementedException();
         }

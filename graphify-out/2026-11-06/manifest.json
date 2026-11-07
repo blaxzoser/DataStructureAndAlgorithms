@@ -270,9 +270,9 @@
     "semantic_hash": "588fb09e5800d4bd35e9e5b60acd9079"
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercisesTest.cs": {
-    "mtime": 1792989677.2287772,
-    "seen": 1793768714.2399628,
-    "ast_hash": "77fd11dbba26539bdc8209ee7859f45f",
+    "mtime": 1794005769.1271162,
+    "seen": 1794005802.5119572,
+    "ast_hash": "4b053099ad386c2b5ab70322ebc0109c",
     "semantic_hash": ""
   },
   "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercisesTest.cs": {
@@ -492,16 +492,16 @@
     "semantic_hash": "76231025029e9945c37dcb2e6af29cdb"
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercises.cs": {
-    "mtime": 1793840442.4573016,
-    "seen": 1793840463.0377858,
-    "ast_hash": "7b66e43e2c91251fa9eb9ca387e3e224",
+    "mtime": 1794009570.5358624,
+    "seen": 1794009586.8745768,
+    "ast_hash": "3656d0f191175a374a0de6c12d366128",
     "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercises.cs": {
-    "mtime": 1792990100.1174893,
-    "seen": 1793768714.240089,
-    "ast_hash": "6ebf2fa5fcedba81315306583b462204",
-    "semantic_hash": "6ebf2fa5fcedba81315306583b462204"
+    "mtime": 1794008154.8331606,
+    "seen": 1794009500.6322298,
+    "ast_hash": "50b7309da297ca1856831ee92a97f484",
+    "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/SkipExercises.cs": {
     "mtime": 1792993073.643364,
@@ -666,15 +666,33 @@
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingLambdasAndLinq.md": {
-    "mtime": 1793835128.8900309,
-    "seen": 1793835149.008977,
-    "ast_hash": "9657ba1b2cdb055da79f4829c91cb173",
+    "mtime": 1794008074.1429114,
+    "seen": 1794008082.8286715,
+    "ast_hash": "efb706e8ea2fd1f15bf605f6d9e16dc0",
     "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/POCOS/City.cs": {
     "mtime": 1793768686.9632401,
     "seen": 1793768714.2400692,
     "ast_hash": "776ae2d293aafd81e71606ab26b0cfb6",
+    "semantic_hash": ""
+  },
+  "TrainingLambdasAndLinq/POCOS/Employee.cs": {
+    "mtime": 1793945529.463863,
+    "seen": 1793945685.0199733,
+    "ast_hash": "e5efe4f61017ae843dbba77bfc3df230",
+    "semantic_hash": ""
+  },
+  "TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ThenByExercisesTest.cs": {
+    "mtime": 1794008001.7729838,
+    "seen": 1794008082.8285673,
+    "ast_hash": "e9554073c470d4cb9016fb84c416ed24",
+    "semantic_hash": ""
+  },
+  "TrainingLambdasAndLinq/lambdasAndLinq/easy/ThenByExercises.cs": {
+    "mtime": 1794008063.183217,
+    "seen": 1794008082.8286626,
+    "ast_hash": "fa1eaad98d5078b4c99664ad9478c79f",
     "semantic_hash": ""
   }
 }

@@ -542,5 +542,80 @@ namespace TestTrainingLambdasAndLinq.lambdasAndLinq.easy
 
             CollectionAssert.AreEquivalent(new Dictionary<string, int> { { "Pen", 2 } }, result["Ana"]);
         }
+
+        // --------------------------- GetTopKHashtags --------------------------
+
+        [TestCase("#dotnet is fun #linq #DotNet #csharp #linq #dotnet", 2, new[] { "#dotnet", "#linq" })]
+        [TestCase("#dotnet is fun #linq #DotNet #csharp #linq #dotnet", 3, new[] { "#dotnet", "#linq", "#csharp" })]
+        [TestCase("#b #a #c #a #b #c", 2, new[] { "#a", "#b" })]
+        [TestCase("#Hi #hi #HI", 5, new[] { "#hi" })]
+        [TestCase("price a#b #x", 2, new[] { "#x" })]
+        [TestCase("  #one   two  #one ", 1, new[] { "#one" })]
+        [TestCase("no tags here", 3, new string[0])]
+        [TestCase("", 3, new string[0])]
+        public void ShouldGetTopKHashtags(string text, int k, string[] output)
+        {
+            CollectionAssert.AreEqual(output, groupBy.GetTopKHashtags(text, k));
+        }
+
+        // ---------------------- CountEmployeesByDepartmentAndLevel ------------
+
+        [Test]
+        public void ShouldCountEmployeesByDepartmentAndLevel()
+        {
+            var employees = new List<Employee>
+            {
+                new Employee("Ana", "IT", 6000),
+                new Employee("Luis", "HR", 3000),
+                new Employee("Sofia", "IT", 6000),
+                new Employee("Pedro", "IT", 4500),
+                new Employee("Maria", "Sales", 4000),
+                new Employee("Juan", "IT", 5000),
+                new Employee("Lucia", "Sales", 5500),
+                new Employee("Eva", "HR", 5000),
+            };
+
+            CollectionAssert.AreEqual(
+                new[]
+                {
+                    "HR - High: 1 (total 5000)",
+                    "HR - Low: 1 (total 3000)",
+                    "IT - High: 3 (total 17000)",
+                    "IT - Low: 1 (total 4500)",
+                    "Sales - High: 1 (total 5500)",
+                    "Sales - Low: 1 (total 4000)",
+                },
+                groupBy.CountEmployeesByDepartmentAndLevel(employees));
+        }
+
+        [Test]
+        public void ShouldSkipLevelsWithNoEmployees()
+        {
+            var employees = new List<Employee>
+            {
+                new Employee("Ana", "IT", 6000),
+                new Employee("Sofia", "IT", 7000),
+            };
+
+            CollectionAssert.AreEqual(
+                new[] { "IT - High: 2 (total 13000)" },
+                groupBy.CountEmployeesByDepartmentAndLevel(employees));
+        }
+
+        [Test]
+        public void ShouldCountSalaryOfExactly5000AsHigh()
+        {
+            var employees = new List<Employee> { new Employee("Eva", "HR", 5000) };
+
+            CollectionAssert.AreEqual(
+                new[] { "HR - High: 1 (total 5000)" },
+                groupBy.CountEmployeesByDepartmentAndLevel(employees));
+        }
+
+        [Test]
+        public void ShouldReturnEmptyWhenNoEmployeesByDepartmentAndLevel()
+        {
+            CollectionAssert.IsEmpty(groupBy.CountEmployeesByDepartmentAndLevel(new List<Employee>()));
+        }
     }
 }

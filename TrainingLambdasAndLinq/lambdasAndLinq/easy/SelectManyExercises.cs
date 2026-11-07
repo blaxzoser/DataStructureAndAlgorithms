@@ -32,7 +32,7 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public int[] Flatten(int[][] matrix)
         {
-            throw new NotImplementedException();
+            return  matrix.SelectMany(x => x).ToArray();
         }
 
         // ========================================================================

@@ -36,6 +36,7 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | `GroupByExercises` (1-5) | 60 min (45) | 2026-10-25 | 24 / 24 | ❌ (a lot of AI help: 4 and 5 written by Claude) |
 | `GroupByExercises` (6-10) | (50) | | | |
 | `GroupByExercises` (11-20) senior mock | (110) | | | |
+| `ThenByExercises` | (85) | | | |
 
 ---
 
@@ -119,6 +120,23 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | 18 | `SplitIntoBatches` | 10 min | | `Select((n, i) => ...)` + `GroupBy(x => x.i / size, x => x.n)` |
 | 19 | `CountPeopleByCountry` | 15 min | | Build `ToDictionary` of cities ONCE, `TryGetValue` in the key, `"Unknown"` fallback |
 | 20 | `GetProductCountsByCustomer` | 15 min | | Nested: GroupBy customer → `SelectMany` products → GroupBy product |
+| 21 | `GetTopKHashtags` | 8 min | | Practice again Sample 12 + a `Where` BEFORE the `GroupBy` (`w[0] == '#'`). Don't reuse `k` as a lambda name |
+| 22 | `CountEmployeesByDepartmentAndLevel` | 12 min | | Practice again Sample 17: composite key `{ Department, Level }` + `Count()` AND `Sum()` in one text. `Select` last; watch the exact text |
+
+### ThenBy / ThenByDescending — [ThenByExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ThenByExercisesTest.cs)
+
+| # | Exercise | Expected | Checked | Notes |
+|---|---|---|---|---|
+| 1 | `SortWordsByLength` | 5 min | | `OrderBy(Length).ThenBy(w => w)`. Two `OrderBy` in a row throws the first sort away |
+| 2 | `SortPeopleByAgeThenName` | 5 min | | Sort the `Person` first, `Select` the name LAST |
+| 3 | `SortPeopleByCityThenOldest` | 8 min | | `ThenByDescending`: main ascending, tie-break descending |
+| 4 | `SortEmployeesBySalaryThenName` | 5 min | | `OrderByDescending` + `ThenBy` (mirror of 3) |
+| 5 | `EvensFirst` | 8 min | | Bool key: `false` before `true`. `% 2 != 0`, not `== 1` (negatives) |
+| 6 | `SortWordsByLastLetter` | 8 min | | A `char` as the key: `w[w.Length - 1]` |
+| 7 | `SortIgnoringCaseUpperFirst` | 10 min | | Key 1 `ToLowerInvariant()`, tie-break `char.IsLower(w[0])` (upper = false = first) |
+| 8 | `SortLeaderboard` | 8 min | | Elements are `KeyValuePair`: `.Value` score, `.Key` name |
+| 9 | `AdultsFirstThenByName` | 8 min | | Bool key where `true` must be first → `OrderByDescending` |
+| 10 | `RankDepartments` | 12 min | | `GroupBy`, then `OrderByDescending(Count)` → `ThenByDescending(Sum)` → `ThenBy(Key)` |
 
 ---
 
@@ -131,5 +149,6 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | Contains | 8 | 6 | 0 | 2 |
 | SelectMany | 5 | 0 | 0 | 5 |
 | Skip | 6 | 6 | 0 | 0 |
-| GroupBy | 20 | 3 | 2 | 15 |
-| **All** | **49** | **25** | **2** | **22** |
+| GroupBy | 22 | 3 | 2 | 17 |
+| ThenBy | 10 | 0 | 0 | 10 |
+| **All** | **61** | **25** | **2** | **34** |

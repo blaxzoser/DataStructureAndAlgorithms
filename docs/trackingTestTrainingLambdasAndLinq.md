@@ -37,7 +37,7 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | `GroupByExercises` (1-5) | 60 min (45) | 2026-10-25 | 24 / 24 | ❌ (a lot of AI help: 4 and 5 written by Claude) |
 | `GroupByExercises` (6-10) | (50) | | | |
 | `GroupByExercises` (11-20) senior mock | (110) | | | |
-| `ThenByExercises` | (85) | | | |
+| `ThenByExercises` | 50 min (85) | 2026-11-07 | 26 / 26 | ✅ |
 
 ---
 
@@ -138,16 +138,16 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 
 | # | Exercise | Expected | Checked | Notes |
 |---|---|---|---|---|
-| 1 | `SortWordsByLength` | 5 min | | `OrderBy(Length).ThenBy(w => w)`. Two `OrderBy` in a row throws the first sort away |
-| 2 | `SortPeopleByAgeThenName` | 5 min | | Sort the `Person` first, `Select` the name LAST |
-| 3 | `SortPeopleByCityThenOldest` | 8 min | | `ThenByDescending`: main ascending, tie-break descending |
-| 4 | `SortEmployeesBySalaryThenName` | 5 min | | `OrderByDescending` + `ThenBy` (mirror of 3) |
-| 5 | `EvensFirst` | 8 min | | Bool key: `false` before `true`. `% 2 != 0`, not `== 1` (negatives) |
-| 6 | `SortWordsByLastLetter` | 8 min | | A `char` as the key: `w[w.Length - 1]` |
-| 7 | `SortIgnoringCaseUpperFirst` | 10 min | | Key 1 `ToLowerInvariant()`, tie-break `char.IsLower(w[0])` (upper = false = first) |
-| 8 | `SortLeaderboard` | 8 min | | Elements are `KeyValuePair`: `.Value` score, `.Key` name |
-| 9 | `AdultsFirstThenByName` | 8 min | | Bool key where `true` must be first → `OrderByDescending` |
-| 10 | `RankDepartments` | 12 min | | `GroupBy`, then `OrderByDescending(Count)` → `ThenByDescending(Sum)` → `ThenBy(Key)` |
+| 1 | `SortWordsByLength` | 5 min | ✅ | `OrderBy(Length).ThenBy(w => w)`. Two `OrderBy` in a row throws the first sort away. Correct. Keep one lambda name per chain: `w` in both (`ThenBy(w => w)`), not `w` then `s` |
+| 2 | `SortPeopleByAgeThenName` | 5 min | ✅ | Sort the `Person` first, `Select` the name LAST. Correct. Same lambda-name note as First 5: a `Person` is `p` in every step (`a`, `s` hide what it is) |
+| 3 | `SortPeopleByCityThenOldest` | 8 min | ✅ | `ThenByDescending`: main ascending, tie-break descending. Correct |
+| 4 | `SortEmployeesBySalaryThenName` | 5 min | ✅ | `OrderByDescending` + `ThenBy` (mirror of 3). Correct. Name an `Employee` `e` in every step (`n`, `o` read like a name and an order) |
+| 5 | `EvensFirst` | 8 min | ✅ | Bool key: `false` before `true`. `% 2 != 0`, not `== 1` (negatives). Correct. An `int` lambda: `n`, not `p` / `s` |
+| 6 | `SortWordsByLastLetter` | 8 min | ✅ | A `char` as the key: `w[w.Length - 1]`. Correct. Interview edge case: an empty word crashes on `w[w.Length - 1]` |
+| 7 | `SortIgnoringCaseUpperFirst` | 10 min | ✅ | Key 1 `ToLowerInvariant()`, tie-break `char.IsLower(w[0])` (upper = false = first). Correct: `!char.IsUpper(w[0])` puts upper (false) first. `char.IsLower(w[0])` says the same without the double negative. Also valid: `OrderBy(w => w, StringComparer.OrdinalIgnoreCase)` (no lower-case copy of every word) |
+| 8 | `SortLeaderboard` | 8 min | ✅ | Elements are `KeyValuePair`: `.Value` score, `.Key` name. Correct |
+| 9 | `AdultsFirstThenByName` | 8 min | ✅ | Bool key where `true` must be first → `OrderByDescending`. Correct |
+| 10 | `RankDepartments` | 12 min | ✅ | `GroupBy`, then `OrderByDescending(Count)` → `ThenByDescending(Sum)` → `ThenBy(Key)`. Correct, first try on 3 keys. After `GroupBy` name the lambda `g` (`g.Count()`, `g.Sum(e => e.Salary)`, `g.Key`) as in GroupBy 2. `OrderBy` works out each key once per group, so `Count()`/`Sum()` don't run on every comparison |
 
 ---
 
@@ -161,5 +161,5 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | SelectMany | 15 | 5 | 0 | 10 |
 | Skip | 6 | 6 | 0 | 0 |
 | GroupBy | 22 | 3 | 2 | 17 |
-| ThenBy | 10 | 0 | 0 | 10 |
-| **All** | **71** | **30** | **2** | **39** |
+| ThenBy | 10 | 10 | 0 | 0 |
+| **All** | **71** | **40** | **2** | **29** |

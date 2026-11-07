@@ -48,13 +48,13 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Easy
         // Expected time to solve: 5 min
         // Topic: OrderBy + ThenBy on the SAME element (the word is its own key)
-        // Tip 1: First key = w.Length. Second key = the word itself (w => w).
-        // Tip 2: Try OrderBy(Length).OrderBy(w => w) and see which test fails.
-        //        That is the "two OrderBy" mistake from the header.
         // ========================================================================
         public List<string> SortWordsByLength(string[] words)
         {
-            throw new NotImplementedException();
+            return words.OrderBy(w => w.Length).ThenBy(s  => s).ToList();
+
+            // Better (same logic, one lambda name for the whole chain):
+            // return words.OrderBy(w => w.Length).ThenBy(w => w).ToList();
         }
 
         // ========================================================================
@@ -67,12 +67,17 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Easy
         // Expected time to solve: 5 min
         // Topic: ThenBy on a PROPERTY of an object
-        // Tip:   Sort the Person objects first, THEN Select the names. After
-        //        Select(p => p.Name) the age is gone and you can't sort by it.
         // ========================================================================
         public List<string> SortPeopleByAgeThenName(List<Person> people)
         {
-            throw new NotImplementedException();
+            return people.OrderBy(p => p.Age).ThenBy(a => a.Name).Select( s => s.Name).ToList();
+
+            // Better (a Person is "p" in every step, one call per line):
+            // return people
+            //     .OrderBy(p => p.Age)
+            //     .ThenBy(p => p.Name)
+            //     .Select(p => p.Name)
+            //     .ToList();
         }
 
         // ========================================================================
@@ -85,12 +90,17 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Easy
         // Expected time to solve: 8 min
         // Topic: ThenByDescending (the tie-break goes the other way)
-        // Tip:   The main sort is ascending, the tie-break is descending. They
-        //        are independent: OrderBy(...).ThenByDescending(...).
         // ========================================================================
         public List<string> SortPeopleByCityThenOldest(List<Person> people)
         {
-            throw new NotImplementedException();
+            return people.OrderBy(p => p.City).ThenByDescending( a => a.Age).Select(s=> s.Name).ToList();
+
+            // Better (same logic, "p" in every step):
+            // return people
+            //     .OrderBy(p => p.City)
+            //     .ThenByDescending(p => p.Age)
+            //     .Select(p => p.Name)
+            //     .ToList();
         }
 
         // ========================================================================
@@ -103,12 +113,19 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Easy
         // Expected time to solve: 5 min
         // Topic: OrderByDescending + ThenBy (main goes down, tie-break goes up)
-        // Tip:   It is the mirror of Sample 3. Say it out loud: "salary, biggest
-        //        first; if equal, name A-Z".
+
         // ========================================================================
         public List<string> SortEmployeesBySalaryThenName(List<Employee> employees)
         {
-            throw new NotImplementedException();
+            return employees.OrderByDescending(e => e.Salary).ThenBy(n => n.Name).Select(o => o.Name).ToList();
+
+            // Better (an Employee is "e" in every step; "n" / "o" read like
+            // a name and an order):
+            // return employees
+            //     .OrderByDescending(e => e.Salary)
+            //     .ThenBy(e => e.Name)
+            //     .Select(e => e.Name)
+            //     .ToList();
         }
 
         // ========================================================================
@@ -122,14 +139,15 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Easy-Medium
         // Expected time to solve: 8 min
         // Topic: A bool as the FIRST sort key
-        // Tip 1: false sorts BEFORE true. So the first key must be "is odd":
-        //        OrderBy(n => n % 2 != 0). Evens get false, so they come first.
-        // Tip 2: Use "% 2 != 0", not "% 2 == 1": in C# -3 % 2 is -1, not 1.
-        //        The second key is the number itself.
         // ========================================================================
         public List<int> EvensFirst(int[] numbers)
         {
-            throw new NotImplementedException();
+            return numbers.OrderBy(p => p % 2 != 0).ThenBy(s => s).ToList();
+
+            // Better (same logic; an int is "n", and a named bool says what
+            // the key means):
+            // return numbers.OrderBy(n => IsOdd(n)).ThenBy(n => n).ToList();
+            // static bool IsOdd(int n) => n % 2 != 0;   // -3 % 2 == -1, so not "== 1"
         }
 
         // ========================================================================
@@ -143,12 +161,17 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Easy-Medium
         // Expected time to solve: 8 min
         // Topic: A char as the sort key
-        // Tip:   The last char of w is w[w.Length - 1]. A char sorts by its
-        //        letter order. The words in the tests are never empty.
         // ========================================================================
         public List<string> SortWordsByLastLetter(string[] words)
         {
-            throw new NotImplementedException();
+            return words.OrderBy(p => p[p.Length - 1]).ThenBy(s => s).ToList();
+
+            // Better ("w" for a word, and an empty word doesn't crash: it gets
+            // '\0', which sorts before every letter):
+            // return words
+            //     .OrderBy(w => w.Length > 0 ? w[w.Length - 1] : '\0')
+            //     .ThenBy(w => w)
+            //     .ToList();
         }
 
         // ========================================================================
@@ -162,14 +185,18 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Medium
         // Expected time to solve: 10 min
         // Topic: Two different "views" of the same word as keys
-        // Tip 1: Main key: the word in lower case (w.ToLowerInvariant()).
-        //        "Alice" and "alice" are now EQUAL, so they need a tie-break.
-        // Tip 2: Tie-break: is the first letter lower case? char.IsLower(w[0])
-        //        returns a bool, and false (= upper case) comes first.
+
         // ========================================================================
         public List<string> SortIgnoringCaseUpperFirst(string[] words)
         {
-            throw new NotImplementedException();
+            return words.OrderBy(w => w.ToLowerInvariant()).ThenBy(s => !char.IsUpper( s[0]) ).ToList();
+
+            // Better: a comparer instead of a lower-case COPY of every word, and
+            // IsLower instead of !IsUpper (no double negative; lower = true = last):
+            // return words
+            //     .OrderBy(w => w, StringComparer.OrdinalIgnoreCase)
+            //     .ThenBy(w => char.IsLower(w[0]))
+            //     .ToList();
         }
 
         // ========================================================================
@@ -183,12 +210,18 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Medium
         // Expected time to solve: 8 min
         // Topic: ThenBy on a Dictionary (the element is a KeyValuePair)
-        // Tip:   Each element has .Key (the name) and .Value (the score).
-        //        Sort the pairs first, then Select(s => s.Key).
+
         // ========================================================================
         public List<string> SortLeaderboard(Dictionary<string, int> scores)
         {
-            throw new NotImplementedException();
+            return scores.OrderByDescending(s => s.Value).ThenBy(n => n.Key).Select(s => s.Key).ToList();
+
+            // Better (same logic; the element is a KeyValuePair, so "kv" in every step):
+            // return scores
+            //     .OrderByDescending(kv => kv.Value)
+            //     .ThenBy(kv => kv.Key)
+            //     .Select(kv => kv.Key)
+            //     .ToList();
         }
 
         // ========================================================================
@@ -201,13 +234,20 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Difficulty: Medium
         // Expected time to solve: 8 min
         // Topic: A bool key where TRUE must come first
-        // Tip:   false sorts before true, and here you want the adults (true)
-        //        first. Which of OrderBy / OrderByDescending do you need?
-        //        (Same bool trick as Sample 5, but the other direction.)
+
         // ========================================================================
         public List<string> AdultsFirstThenByName(List<Person> people)
         {
-            throw new NotImplementedException();
+            return people.OrderByDescending(p => p.Age >= 18).ThenBy(s => s.Name).Select(s => s.Name).ToList();
+
+            // Better (same logic, "p" in every step):
+            // return people
+            //     .OrderByDescending(p => p.Age >= 18)
+            //     .ThenBy(p => p.Name)
+            //     .Select(p => p.Name)
+            //     .ToList();
+            // Also valid: OrderBy(p => p.Age < 18) (minors = true = last).
+            // Descending on the bool reads closer to "adults FIRST".
         }
 
         // ========================================================================
@@ -228,14 +268,26 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Expected time to solve: 12 min
         // Pattern: GetTopKFrequentWords (GroupByExercises 12) + Samples 3 and 4
         // Topic: ThenBy chained TWICE on GROUPS
-        // Tip 1: After GroupBy, each element is a box g (see GroupByExercises):
-        //        g.Count(), g.Sum(e => e.Salary) and g.Key are all available.
-        // Tip 2: OrderByDescending(...).ThenByDescending(...).ThenBy(...).
-        //        Sort the boxes BEFORE Select(g => g.Key).
+
         // ========================================================================
         public List<string> RankDepartments(List<Employee> employees)
         {
-            throw new NotImplementedException();
+            return employees.GroupBy(e => e.Department)
+                .OrderByDescending(x => x.Count())
+                .ThenByDescending(s => s.Sum( x=> x.Salary))
+                .ThenBy(y => y.Key)
+                .Select(s => s.Key)
+                .ToList();
+
+            // Better (same logic; after GroupBy every lambda gets a GROUP, so "g",
+            // and the inner lambda gets an Employee, so "e"):
+            // return employees
+            //     .GroupBy(e => e.Department)
+            //     .OrderByDescending(g => g.Count())
+            //     .ThenByDescending(g => g.Sum(e => e.Salary))
+            //     .ThenBy(g => g.Key)
+            //     .Select(g => g.Key)
+            //     .ToList();
         }
     }
 }

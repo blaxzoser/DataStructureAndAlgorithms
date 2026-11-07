@@ -666,9 +666,9 @@
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingLambdasAndLinq.md": {
-    "mtime": 1794080904.1367302,
-    "seen": 1794080911.582451,
-    "ast_hash": "354b0d984fed2d9cf2536c056cd94d74",
+    "mtime": 1794087870.4780312,
+    "seen": 1794088055.000349,
+    "ast_hash": "ad2c86bb999facc180c72a00aaa3b463",
     "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/POCOS/City.cs": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/ThenByExercises.cs": {
-    "mtime": 1794008063.183217,
-    "seen": 1794008082.8286626,
-    "ast_hash": "fa1eaad98d5078b4c99664ad9478c79f",
+    "mtime": 1794088031.9531915,
+    "seen": 1794088055.0003393,
+    "ast_hash": "86318c6077daa3e2ce71d5eefd223eab",
     "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/POCOS/Customer.cs": {

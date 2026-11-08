@@ -52,7 +52,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 |---|---|---|---|---|---|---|
 | 10 | `ValidPalindromeSkipAndDelete.CanBeValidPalindrome` | [ValidPalindromeSkipAndDeleteTest.cs](../TestTrainingAlgorithms/algorithms/hard/ValidPalindromeSkipAndDeleteTest.cs) | (15) | | | |
 | 11 | `TrappingRainWater.Trap` | [TrappingRainWaterTest.cs](../TestTrainingAlgorithms/algorithms/hard/TrappingRainWaterTest.cs) | (15) | | | |
-| 21 | `EmailGenerator.Generate` | [EmailGeneratorTest.cs](../TestTrainingAlgorithms/algorithms/hard/EmailGeneratorTest.cs) | (60) | | | Hard version of the email snippet fixed with Claude on 2026-11-08: initial + last name, repeat number via `ContainsKey`/`Add` counter, plus parsing rules (middle names, `'`/`-`, one-word names, spaces, domain). Option `includeMiddleNames: true` adds each middle name's initial: `pbParker` |
+| 21 | `EmailGenerator.Generate` | [EmailGeneratorTest.cs](../TestTrainingAlgorithms/algorithms/hard/EmailGeneratorTest.cs) | (60) | | | Hard version of the email snippet fixed with Claude on 2026-11-08: initial + last name, repeat number via `ContainsKey`/`Add` counter, plus parsing rules (middle names, `'`/`-`, one-word names, spaces, domain). Option `includeMiddleNames: true` adds each middle name's initial: `pbParker`. Option `onlyFirstPartOfLastName: true` keeps the last name up to the first `-`: `Parker-Hot` → `pParker` |
 | 22 | `UsernameGenerator.Generate` | [UsernameGeneratorTest.cs](../TestTrainingAlgorithms/algorithms/hard/UsernameGeneratorTest.cs) | (60) | | | Practice for `EmailGenerator`: some usernames are already taken, so find the smallest FREE number (HashSet + Dictionary "next number") |
 
 ---

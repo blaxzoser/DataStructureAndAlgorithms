@@ -516,9 +516,9 @@
     "semantic_hash": "6f45d50a5a5b18a7db5bb52bfd719654"
   },
   "docs/CheatSheet.md": {
-    "mtime": 1794110277.3816736,
-    "seen": 1794110285.2412581,
-    "ast_hash": "b470e6a7377c2b2c0ed0c636d4514299",
+    "mtime": 1794118535.4458127,
+    "seen": 1794118544.1991794,
+    "ast_hash": "8b682601c7d8a69cf6c80044262b0ba0",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/ReverseVowelsTest.cs": {
@@ -588,9 +588,9 @@
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingAlgorithms.md": {
-    "mtime": 1794104214.328662,
-    "seen": 1794104235.1094923,
-    "ast_hash": "3f14839877fcb4d7564e9d96fda413ab",
+    "mtime": 1794118535.0145648,
+    "seen": 1794118544.199183,
+    "ast_hash": "27f9297bb940eeb59a6d5dc15b7edeea",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs": {
@@ -729,6 +729,30 @@
     "mtime": 1794110276.8532724,
     "seen": 1794110285.2412603,
     "ast_hash": "6421cc0adc9446c2e67930213ff1e56d",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/hard/EmailGeneratorTest.cs": {
+    "mtime": 1794118459.382457,
+    "seen": 1794118544.1990445,
+    "ast_hash": "ce41856105393f0a7eff6ec67fd0e304",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/hard/UsernameGeneratorTest.cs": {
+    "mtime": 1794118480.1402202,
+    "seen": 1794118544.1990488,
+    "ast_hash": "34ac0f82727bf3f003be0f8dbc48b6b0",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/hard/EmailGenerator.cs": {
+    "mtime": 1794118514.554214,
+    "seen": 1794118544.1991336,
+    "ast_hash": "2f419f9da4261399c241ac96a77e25f7",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/hard/UsernameGenerator.cs": {
+    "mtime": 1794118514.5562203,
+    "seen": 1794118544.199137,
+    "ast_hash": "60c79140fce663ac4882d7d1181af458",
     "semantic_hash": ""
   }
 }

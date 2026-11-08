@@ -2,6 +2,7 @@
 
 Quick reminders to recognize a problem and pick the right technique.
 Update this file every time you finish a new exercise in `TrainingAlgorithms`.
+LINQ operators (Where, First, GroupBy, ThenBy, SelectMany…) live in [LinqCheatSheet.md](LinqCheatSheet.md).
 
 ---
 

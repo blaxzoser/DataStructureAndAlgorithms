@@ -28,6 +28,7 @@ reference solution in a separate method (e.g. `Sample1Refactor`) next to theirs.
 | `TrainingLambdasAndLinq/POCOS/` | | Person, Order, Student, City, Employee, Customer (data for LINQ exercises) | |
 | `DataStructureAndAlgorithms/` | console app | Hello World entry point, unused | |
 | `docs/CheatSheet.md` | doc | Patterns + templates, C# quick reference, Time/Space, edge cases, progress log | |
+| `docs/LinqCheatSheet.md` | doc | LINQ operators with examples from the solved `TrainingLambdasAndLinq` exercises, pitfalls, progress log | |
 | `docs/trackingTestTrainingAlgorithms.md` | doc | Time / date / checked / notes for every exercise tested in `TestTrainingAlgorithms` | |
 | `docs/trackingTestTrainingLambdasAndLinq.md` | doc | Rounds per class + checked / notes for every exercise tested in `TestTrainingLambdasAndLinq` | |
 | `graphify-out/` | generated | Knowledge graph (see below) | |

@@ -475,6 +475,17 @@ namespace TestTrainingLambdasAndLinq.lambdasAndLinq.easy
             CollectionAssert.IsEmpty(groupBy.SplitIntoBatches(new int[0], 3));
         }
 
+        [Test]
+        public void ShouldGetSameBatchesInDebugVersion()
+        {
+            var result = groupBy.SplitIntoBatchesDebug(new[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
+
+            Assert.AreEqual(3, result.Count);
+            CollectionAssert.AreEqual(new[] { 1, 2, 3 }, result[0]);
+            CollectionAssert.AreEqual(new[] { 4, 5, 6 }, result[1]);
+            CollectionAssert.AreEqual(new[] { 7 }, result[2]);
+        }
+
         // ------------------------- CountPeopleByCountry -----------------------
 
         [Test]
@@ -616,6 +627,44 @@ namespace TestTrainingLambdasAndLinq.lambdasAndLinq.easy
         public void ShouldReturnEmptyWhenNoEmployeesByDepartmentAndLevel()
         {
             CollectionAssert.IsEmpty(groupBy.CountEmployeesByDepartmentAndLevel(new List<Employee>()));
+        }
+
+        // ------------------------------ DealCards -----------------------------
+
+        [Test]
+        public void ShouldDealCardsRoundRobin()
+        {
+            var result = groupBy.DealCards(new[] { "A", "B", "C", "D", "E", "F", "G" }, 3);
+
+            Assert.AreEqual(3, result.Count);
+            CollectionAssert.AreEqual(new[] { "A", "D", "G" }, result[0]);
+            CollectionAssert.AreEqual(new[] { "B", "E" }, result[1]);
+            CollectionAssert.AreEqual(new[] { "C", "F" }, result[2]);
+        }
+
+        [Test]
+        public void ShouldNotMakeEmptyHandsWhenMorePlayersThanCards()
+        {
+            var result = groupBy.DealCards(new[] { "A", "B" }, 5);
+
+            Assert.AreEqual(2, result.Count);
+            CollectionAssert.AreEqual(new[] { "A" }, result[0]);
+            CollectionAssert.AreEqual(new[] { "B" }, result[1]);
+        }
+
+        [Test]
+        public void ShouldGiveEverythingToOnePlayer()
+        {
+            var result = groupBy.DealCards(new[] { "A", "B", "C" }, 1);
+
+            Assert.AreEqual(1, result.Count);
+            CollectionAssert.AreEqual(new[] { "A", "B", "C" }, result[0]);
+        }
+
+        [Test]
+        public void ShouldDealNothingWhenThereAreNoCards()
+        {
+            CollectionAssert.IsEmpty(groupBy.DealCards(new string[0], 3));
         }
     }
 }

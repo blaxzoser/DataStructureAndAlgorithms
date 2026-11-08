@@ -128,11 +128,12 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | 15 | `GetSecondHighestSalaryByDepartment` | 15 min | | `Distinct` + `OrderByDescending` + `Skip(1)` + `FirstOrDefault` (0 when none) |
 | 16 | `CountStudentsByCourse` | 10 min | | `SelectMany` BEFORE `GroupBy`; `Distinct` per student, not after flattening |
 | 17 | `CountPeopleByCityAndAgeGroup` | 15 min | | Composite key `new { p.City, AgeGroup }`; `OrderBy` + `ThenBy` on `g.Key.X` |
-| 18 | `SplitIntoBatches` | 10 min | | `Select((n, i) => ...)` + `GroupBy(x => x.i / size, x => x.n)` |
+| 18 | `SplitIntoBatches` | 10 min | ❌ | Solution written by Claude (the first try did `GroupBy(x => x / size)` on the VALUE; the batch depends on the INDEX). Re-do it from memory. `Select((n, i) => ...)` + `GroupBy(x => x.i / size, x => x.n)`. See the TRACE + `SplitIntoBatchesDebug` |
 | 19 | `CountPeopleByCountry` | 15 min | | Build `ToDictionary` of cities ONCE, `TryGetValue` in the key, `"Unknown"` fallback |
 | 20 | `GetProductCountsByCustomer` | 15 min | | Nested: GroupBy customer → `SelectMany` products → GroupBy product |
 | 21 | `GetTopKHashtags` | 8 min | | Practice again Sample 12 + a `Where` BEFORE the `GroupBy` (`w[0] == '#'`). Don't reuse `k` as a lambda name |
 | 22 | `CountEmployeesByDepartmentAndLevel` | 12 min | | Practice again Sample 17: composite key `{ Department, Level }` + `Count()` AND `Sum()` in one text. `Select` last; watch the exact text |
+| 23 | `DealCards` | 8 min | | Practice again Sample 18: same `Select((c, i) => ...)`, other key: `i % players` (round-robin) instead of `i / size` |
 
 ### ThenBy / ThenByDescending — [ThenByExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ThenByExercisesTest.cs)
 
@@ -160,6 +161,6 @@ dotnet test TestTrainingLambdasAndLinq/TestTrainingLambdasAndLinq.csproj --filte
 | Contains | 8 | 6 | 0 | 2 |
 | SelectMany | 15 | 5 | 0 | 10 |
 | Skip | 6 | 6 | 0 | 0 |
-| GroupBy | 22 | 3 | 2 | 17 |
+| GroupBy | 23 | 3 | 3 | 17 |
 | ThenBy | 10 | 10 | 0 | 0 |
-| **All** | **71** | **40** | **2** | **29** |
+| **All** | **72** | **40** | **3** | **29** |

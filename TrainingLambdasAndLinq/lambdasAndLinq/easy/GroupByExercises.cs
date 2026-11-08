@@ -796,17 +796,13 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Expected time to solve: 10 min
         // Pattern: CharFrequency (Sample 1) + SelectManyExercises.GetAllCourses
         // Topic:   SelectMany BEFORE GroupBy (flatten the lists, then count)
-        // Tip 1:   You can't group courses while they are inside lists.
-        //          SelectMany(s => s.Courses) gives one flat list of courses.
-        // Tip 2:   Remove the repeats PER STUDENT, before flattening:
-        //          s.Courses.Distinct(). After flattening it's too late
-        //          (you'd remove Math from Luis too).
         // Interview follow-up: "Which course has the most students?"
         // ========================================================================
         public Dictionary<string, int> CountStudentsByCourse(List<Student> students)
         {
-
-            throw new NotImplementedException();
+            return students.SelectMany(s => s.Courses.Distinct())
+                            .GroupBy(a => a)
+                            .ToDictionary( y => y.Key, m => m.Count());
         }
 
         // ========================================================================
@@ -914,7 +910,87 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public List<List<int>> SplitIntoBatches(int[] numbers, int size)
         {
-            throw new NotImplementedException();
+            return numbers
+                .Select((n, i) => new { n, i })            // STEP 1: attach the position to each number
+                .GroupBy(x => x.i / size, x => x.n)        // STEP 2: batch number = index / size, keep only n
+                .Select(g => g.ToList())                   // STEP 3: each batch (group) -> List<int>
+                .ToList();                                 // STEP 4: all the batches -> List<List<int>>
+        }
+
+        // ========================================================================
+        // SAMPLE 18 TRACE: what each step of SplitIntoBatches does
+        // ========================================================================
+        // Your first try did GroupBy(x => x / size) FIRST. That divides the VALUE,
+        // not the POSITION: 1/3=0, 2/3=0, 3/3=1 ... -> [1,2] [3,4,5] [6,7]  (wrong).
+        // The batch depends on WHERE the number is, so we need the index first.
+        //
+        // TRACE: numbers = [1, 2, 3, 4, 5, 6, 7], size = 3
+        //
+        // STEP 1: Select((n, i) => new { n, i })
+        //   Select with 2 parameters: n = the item, i = its index (starts at 0).
+        //   One small box { n, i } per number. Same count as the input (7).
+        //
+        //   n | 1  2  3  4  5  6  7
+        //   i | 0  1  2  3  4  5  6
+        //
+        // STEP 2: GroupBy(x => x.i / size, x => x.n)
+        //   1st lambda = the KEY (which bucket), 2nd lambda = what we STORE.
+        //   Integer division: the decimals are dropped (2 / 3 = 0, not 0.66).
+        //
+        //   n | i | i / 3 (key) | stored | buckets after this item
+        //   --+---+-------------+--------+---------------------------
+        //   1 | 0 |      0      |   1    | 0:[1]
+        //   2 | 1 |      0      |   2    | 0:[1,2]
+        //   3 | 2 |      0      |   3    | 0:[1,2,3]
+        //   4 | 3 |      1      |   4    | 0:[1,2,3] 1:[4]
+        //   5 | 4 |      1      |   5    | 0:[1,2,3] 1:[4,5]
+        //   6 | 5 |      1      |   6    | 0:[1,2,3] 1:[4,5,6]
+        //   7 | 6 |      2      |   7    | 0:[1,2,3] 1:[4,5,6] 2:[7]
+        //
+        //   Result: 3 groups (the keys 0, 1, 2 are only labels; we never use them).
+        //
+        // STEP 3: Select(g => g.ToList())
+        //   Now Select has ONE parameter, because we only need the group g.
+        //   A group is an IEnumerable<int>; the method must return List<int>.
+        //   [1,2,3]  [4,5,6]  [7]
+        //
+        // STEP 4: ToList()
+        //   The outer sequence -> List<List<int>>. This is also what RUNS the lazy
+        //   chain (one pass over the array, Time O(n)).
+        //
+        // EDGE CASES:
+        //   ([1, 2], 5) -> keys 0/5=0, 1/5=0 -> one group [1,2]     OK
+        //   ([], 3)     -> STEP 1 makes 0 boxes -> 0 groups -> []    OK, no special case
+        //   (size = 0)  -> i / 0 throws DivideByZeroException (not tested here;
+        //                  in real code you would validate size > 0 first).
+        //
+        // Remember the two uses of Select:  Select(n => ...)      -> only the item
+        //                                   Select((n, i) => ...) -> item + index
+        // ========================================================================
+        // DEBUG VERSION: same result, one variable per step.
+        //   Put a breakpoint on each Debug.WriteLine, or debug the test
+        //   ShouldGetSameBatchesInDebugVersion and hover the variables.
+        //   .ToList() on the early steps is ONLY for debugging (it runs the lazy
+        //   step now so you can see the content).
+        // ========================================================================
+        public List<List<int>> SplitIntoBatchesDebug(int[] numbers, int size)
+        {
+            // STEP 1: number + index.  [1,2,3,4,5,6,7] -> {1,0} {2,1} {3,2} ...
+            var withIndex = numbers.Select((n, i) => new { n, i }).ToList();
+            foreach (var x in withIndex)
+                Debug.WriteLine($"STEP 1  n={x.n}  i={x.i}  -> key i/size = {x.i / size}");
+
+            // STEP 2: buckets by index / size, storing only the number
+            List<IGrouping<int, int>> groups = withIndex.GroupBy(x => x.i / size, x => x.n).ToList();
+            foreach (var g in groups)
+                Debug.WriteLine($"STEP 2  key {g.Key} -> [{string.Join(", ", g)}]");
+
+            // STEP 3: each group -> List<int>
+            List<List<int>> batches = groups.Select(g => g.ToList()).ToList();
+            foreach (var b in batches)
+                Debug.WriteLine($"STEP 3  batch [{string.Join(", ", b)}]");
+
+            return batches;
         }
 
         // ========================================================================
@@ -974,7 +1050,13 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // ========================================================================
         public Dictionary<string, Dictionary<string, int>> GetProductCountsByCustomer(List<Order> orders)
         {
-            throw new NotImplementedException();
+            return orders.GroupBy(c => c.Customer)
+                         .ToDictionary(g => g.Key , 
+                                p => p.SelectMany(e => e.Products)
+                                       .GroupBy(  s =>s)
+                                       .ToDictionary(y => y.Key, x => 
+                                                                x.Count())                         
+                         );
         }
 
         // ========================================================================
@@ -997,19 +1079,19 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         // Expected time to solve: 8 min (Sample 12 took longer: beat it)
         // Pattern: GetTopKFrequentWords (Sample 12) + a Where BEFORE the GroupBy
         // Topic:   Where + GroupBy + OrderByDescending + ThenBy + Take
-        // Tip 1:   Same steps as Sample 12. The only new step is a Where on the
-        //          WORDS (before GroupBy) that keeps the ones starting with '#'.
-        //          Use w[0] == '#' (words are never empty after RemoveEmptyEntries).
-        // Tip 2:   Say the order out loud, as SQL, before you type:
-        //          Split -> Where -> GroupBy -> OrderByDescending(count)
-        //          -> ThenBy(key) -> Take(k) -> Select(key) -> ToList().
-        //          Don't reuse the name 'k' for a lambda variable.
         // Interview follow-up: the Where could come AFTER the GroupBy too. Which
         //          is cheaper, and why? (hint: how many boxes get built?)
         // ========================================================================
         public List<string> GetTopKHashtags(string text, int k)
         {
-            throw new NotImplementedException();
+            return       text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                        .Where(t =>  t[0] == '#')
+                        .GroupBy(x => x.ToLowerInvariant())
+                        .OrderByDescending(g => g.Count())
+                        .ThenBy(g => g.Key)
+                        .Select(g => g.Key)
+                        .Take(k)
+                        .ToList();
         }
 
         // ========================================================================
@@ -1045,6 +1127,33 @@ namespace TrainingLambdasAndLinq.lambdasAndLinq.easy
         //          would you still prefer an anonymous type? (hint: names of the parts)
         // ========================================================================
         public List<string> CountEmployeesByDepartmentAndLevel(List<Employee> employees)
+        {
+            throw new NotImplementedException();
+        }
+
+        // ========================================================================
+        // SAMPLE 23: Deal cards to players (practice again: Sample 18)
+        // ========================================================================
+        // Card 0 goes to player 0, card 1 to player 1, ... and when the players
+        // run out, start again from player 0 (like dealing in a card game).
+        // (["A","B","C","D","E","F","G"], 3) -> [["A","D","G"], ["B","E"], ["C","F"]]
+        // (["A","B"], 5)                     -> [["A"], ["B"]]   (no empty hands)
+        // ([], 3)                            -> []
+        //
+        // Difficulty: Medium
+        // Goal: Time O(n), Space O(n)
+        // Expected time to solve: 8 min (Sample 18 took longer: beat it)
+        // Pattern: SplitIntoBatches (Sample 18): Select((x, i) => ...) + GroupBy on the INDEX
+        // Topic:   Same idea, other key: i % players instead of i / size
+        // Tip 1:   Read the TRACE of Sample 18 first. Step 1 is identical:
+        //          Select((c, i) => new { c, i }). Only the key of GroupBy changes.
+        // Tip 2:   % gives the REMAINDER: index 0,1,2,3,4,5,6 % 3 = 0,1,2,0,1,2,0.
+        //          Players are the keys, so the first card of each player decides
+        //          the group order (that's why the hands come out as player 0, 1, 2).
+        // Interview follow-up: "What is the difference between i / size and i % size?"
+        //          (/ makes CONSECUTIVE batches, % makes ROUND-ROBIN hands.)
+        // ========================================================================
+        public List<List<string>> DealCards(string[] cards, int players)
         {
             throw new NotImplementedException();
         }

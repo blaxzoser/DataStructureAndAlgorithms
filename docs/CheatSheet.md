@@ -236,13 +236,16 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `GroupAnagrams.Group` (medium) | Grouping with a Dictionary | 15 min | | | |
 | `AssignCookies.MaxContentChildren` (easy) | Greedy: sort + two pointers | 15 min | | | Step back from `ContainerWithMostWater` to learn greedy on a simpler problem |
 | `BoatsToSavePeople.MinBoats` (medium) | Greedy: sort + opposite-end pointers | 15 min | | | Second round of "decide which pointer moves", like `MaxArea` |
+| `EmailGenerator.Generate` (hard) | Frequency count (repeat number) + string parsing | 60 min | | | Counter: in the dictionary? yes -> add 1, no -> put 1. Count 1 = no number, 2+ = add it |
+| `UsernameGenerator.Generate` (hard) | Seen set + Dictionary "next number to try" | 60 min | | | Practice for `EmailGenerator`: taken usernames mean count + 1 isn't enough, loop to the smallest free number |
 
 **Suggested order** (each one reuses the one before it):
 `ReverseOnlyLetters` → `ReverseVowels` → `ValidPalindromeOneDeletion` → `ValidPalindromeSkipAndDelete`
 and `ContainerWithMostWater` → `TrappingRainWater`.
 
 Seen set / frequency count:
-`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `GroupAnagrams`.
+`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `GroupAnagrams`
+→ `EmailGenerator` → `UsernameGenerator` (hard, ~1 hour each).
 
 Greedy (sort, then take the best local choice and never undo it):
 `AssignCookies` → `BoatsToSavePeople` → back to `ContainerWithMostWater` → `TrappingRainWater`.

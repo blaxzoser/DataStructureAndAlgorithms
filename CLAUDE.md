@@ -41,6 +41,7 @@ Current `TrainingAlgorithms` exercises, by pattern family:
 - Seen set / frequency count (worked LINQ/sort versions live in `Samples/questions/arraysAndStrings` and `Samples/questions/lambdas/StringProblems.cs`)
   - easy: `UniqueCharacters` (`IsUnique` + `IsUniqueNoExtraSpace`), `FirstUniqueCharacter`, `ValidAnagram`, `RansomNote`
   - medium: `LongestSubstringWithoutRepeating` (sliding window), `GroupAnagrams`
+  - hard (~1 hour, string parsing + repeat counter): `EmailGenerator`, `UsernameGenerator` (taken names, smallest free number)
 
 ## Conventions for training exercises
 

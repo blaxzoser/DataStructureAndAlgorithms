@@ -233,6 +233,8 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `RansomNote.CanConstruct` (easy) | Frequency count, use up | 15 min | 20 min | ❌ | `null` checks go FIRST: calling `.Trim()` / `.Length` on `null` crashes. Too many special cases caused the bugs; the main loop already handled `""` |
 | `LongestSubstringWithoutRepeating.LengthOfLongest` (medium) | Sliding window + seen set | 15 min | | | |
 | `GroupAnagrams.Group` (medium) | Grouping with a Dictionary | 15 min | | | |
+| `AssignCookies.MaxContentChildren` (easy) | Greedy: sort + two pointers | 15 min | | | Step back from `ContainerWithMostWater` to learn greedy on a simpler problem |
+| `BoatsToSavePeople.MinBoats` (medium) | Greedy: sort + opposite-end pointers | 15 min | | | Second round of "decide which pointer moves", like `MaxArea` |
 
 **Suggested order** (each one reuses the one before it):
 `ReverseOnlyLetters` → `ReverseVowels` → `ValidPalindromeOneDeletion` → `ValidPalindromeSkipAndDelete`
@@ -240,3 +242,6 @@ and `ContainerWithMostWater` → `TrappingRainWater`.
 
 Seen set / frequency count:
 `UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `GroupAnagrams`.
+
+Greedy (sort, then take the best local choice and never undo it):
+`AssignCookies` → `BoatsToSavePeople` → back to `ContainerWithMostWater` → `TrappingRainWater`.

@@ -34,6 +34,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | 14 | `FirstUniqueCharacter.FindIndex` | [FirstUniqueCharacterTest.cs](../TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs) | 30 min (15) | 2026-10-24 | ✅ | Score 7/10 before the fix. Right shape (count in a `Dictionary`, then 2nd pass over the string), but checked `> 1` (first repeated) instead of `== 1` (first unique). Extra `Length == 1` check again |
 | 15 | `ValidAnagram.IsAnagram` | [ValidAnagramTest.cs](../TestTrainingAlgorithms/algorithms/easy/ValidAnagramTest.cs) | 20 min (15) | 2026-10-25 | ✅ | Fixed: all 11 pass (~9/10). Before the fix: score 5/10, 3 of 11 tests failed (every "true" case). Right idea (count first, subtract second, `Count == 0`), but `Add(c, i)` stores the INDEX instead of 1, and the 2nd loop reads `source[i]` (first string) instead of `second[i]`. The "false" tests passed by accident |
 | 16 | `RansomNote.CanConstruct` | [RansomNoteTest.cs](../TestTrainingAlgorithms/algorithms/easy/RansomNoteTest.cs) | 20 min (15) | 2026-10-25 | ❌ | Score 6/10, 2 of 10 tests fail (`NullReferenceException` on `null`). Main logic is right (count the note, use up with the magazine, `Count == 0`). The 5 special-case lines at the top cause the bugs: `.Trim()` / `.Length` run before the `null` checks. One line `if (note == null \|\| magazine == null) return false;` replaces all 5 |
+| 19 | `AssignCookies.MaxContentChildren` | [AssignCookiesTest.cs](../TestTrainingAlgorithms/algorithms/easy/AssignCookiesTest.cs) | (15) | | | First greedy (simpler than `ContainerWithMostWater`): sort both, give each cookie to the least greedy sad child |
 
 ## Medium
 
@@ -43,6 +44,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | 9 | `ContainerWithMostWater.MaxArea` | [ContainerWithMostWaterTest.cs](../TestTrainingAlgorithms/algorithms/medium/ContainerWithMostWaterTest.cs) | (15) | | | |
 | 17 | `LongestSubstringWithoutRepeating.LengthOfLongest` | [LongestSubstringWithoutRepeatingTest.cs](../TestTrainingAlgorithms/algorithms/medium/LongestSubstringWithoutRepeatingTest.cs) | (15) | | | |
 | 18 | `GroupAnagrams.Group` | [GroupAnagramsTest.cs](../TestTrainingAlgorithms/algorithms/medium/GroupAnagramsTest.cs) | (15) | | | |
+| 20 | `BoatsToSavePeople.MinBoats` | [BoatsToSavePeopleTest.cs](../TestTrainingAlgorithms/algorithms/medium/BoatsToSavePeopleTest.cs) | (15) | | | Practice for `ContainerWithMostWater`: sort + two pointers, the heaviest always boards, the lightest only if it fits |
 
 ## Hard
 
@@ -57,7 +59,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 
 | Level | Total | ✅ | ❌ | Pending |
 |---|---|---|---|---|
-| Easy | 12 | 8 | 2 | 2 |
-| Medium | 4 | 0 | 0 | 4 |
+| Easy | 13 | 8 | 2 | 3 |
+| Medium | 5 | 0 | 0 | 5 |
 | Hard | 2 | 0 | 0 | 2 |
-| **All** | **18** | **8** | **2** | **8** |
+| **All** | **20** | **8** | **2** | **10** |

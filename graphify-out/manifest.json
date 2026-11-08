@@ -492,9 +492,9 @@
     "semantic_hash": "76231025029e9945c37dcb2e6af29cdb"
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercises.cs": {
-    "mtime": 1794097900.6871495,
-    "seen": 1794097925.8546038,
-    "ast_hash": "194f82d61d5ac272ec46a2515e082b4c",
+    "mtime": 1794100649.530401,
+    "seen": 1794104235.10948,
+    "ast_hash": "7b77c35377db3374dff98f9ddf23257e",
     "semantic_hash": ""
   },
   "TrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercises.cs": {
@@ -516,9 +516,9 @@
     "semantic_hash": "6f45d50a5a5b18a7db5bb52bfd719654"
   },
   "docs/CheatSheet.md": {
-    "mtime": 1792973264.5161333,
-    "seen": 1792973277.0430772,
-    "ast_hash": "83c036a536a4cd50bbbd47ebe6efc604",
+    "mtime": 1794104216.0474708,
+    "seen": 1794104235.1094906,
+    "ast_hash": "8ef9da51ce60c608414cb75bb923ef18",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/ReverseVowelsTest.cs": {
@@ -570,9 +570,9 @@
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/medium/ContainerWithMostWater.cs": {
-    "mtime": 1792886648.744021,
-    "seen": 1792886672.8654423,
-    "ast_hash": "d8916903ead6856894d2908fedb3adb9",
+    "mtime": 1794103759.0613055,
+    "seen": 1794104235.1094565,
+    "ast_hash": "812d05f3e0ef65f84260e62dc48484b0",
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/medium/ValidPalindromeOneDeletion.cs": {
@@ -588,9 +588,9 @@
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingAlgorithms.md": {
-    "mtime": 1792973264.5141366,
-    "seen": 1792973277.0430787,
-    "ast_hash": "c6c86f9026f33e0bfeee26c4f5915973",
+    "mtime": 1794104214.328662,
+    "seen": 1794104235.1094923,
+    "ast_hash": "3f14839877fcb4d7564e9d96fda413ab",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs": {
@@ -699,6 +699,30 @@
     "mtime": 1794080833.8074224,
     "seen": 1794080911.5824075,
     "ast_hash": "3680a33be19d49d429c4c3c6f17d1e6f",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/easy/AssignCookiesTest.cs": {
+    "mtime": 1794104164.9266484,
+    "seen": 1794104235.109342,
+    "ast_hash": "55079ec667afccd1ecce04f91c07a77c",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/BoatsToSavePeopleTest.cs": {
+    "mtime": 1794104188.0264468,
+    "seen": 1794104235.1093638,
+    "ast_hash": "45f06608b670350dc24f1f63fcb54c68",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/easy/AssignCookies.cs": {
+    "mtime": 1794104210.928983,
+    "seen": 1794104235.1094363,
+    "ast_hash": "632e16455c50a5b68fcfb5bf929dc61d",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/BoatsToSavePeople.cs": {
+    "mtime": 1794104211.7927783,
+    "seen": 1794104235.1094546,
+    "ast_hash": "1b463753bd590417ce91f94e9cfa9db5",
     "semantic_hash": ""
   }
 }

@@ -37,7 +37,7 @@ Current `TrainingAlgorithms` exercises, by pattern family:
 - Two pointers
   - easy: `Palindrome` (+ `Sample1Refactor`/`Sample2Refactor` reference solutions), `ReverseOnlyLetters`, `ReverseVowels`
   - medium: `ValidPalindromeOneDeletion`, `ContainerWithMostWater`
-  - hard: `ValidPalindromeSkipAndDelete`, `TrappingRainWater`
+  - hard: `ValidPalindromeSkipAndDelete`, `TrappingRainWater`, `ThreeSum` (sort + fix one + two pointers, unique triplets)
 - Seen set / frequency count (worked LINQ/sort versions live in `Samples/questions/arraysAndStrings` and `Samples/questions/lambdas/StringProblems.cs`)
   - easy: `UniqueCharacters` (`IsUnique` + `IsUniqueNoExtraSpace`), `FirstUniqueCharacter`, `ValidAnagram`, `RansomNote`
   - medium: `LongestSubstringWithoutRepeating` (sliding window), `GroupAnagrams`

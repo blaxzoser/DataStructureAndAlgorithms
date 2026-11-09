@@ -45,6 +45,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | 17 | `LongestSubstringWithoutRepeating.LengthOfLongest` | [LongestSubstringWithoutRepeatingTest.cs](../TestTrainingAlgorithms/algorithms/medium/LongestSubstringWithoutRepeatingTest.cs) | (15) | | | |
 | 18 | `GroupAnagrams.Group` | [GroupAnagramsTest.cs](../TestTrainingAlgorithms/algorithms/medium/GroupAnagramsTest.cs) | (15) | | | |
 | 20 | `BoatsToSavePeople.MinBoats` | [BoatsToSavePeopleTest.cs](../TestTrainingAlgorithms/algorithms/medium/BoatsToSavePeopleTest.cs) | (15) | | | Practice for `ContainerWithMostWater`: sort + two pointers, the heaviest always boards, the lightest only if it fits |
+| 24 | `ThreeSumClosest.FindClosestSum` | [ThreeSumClosestTest.cs](../TestTrainingAlgorithms/algorithms/medium/ThreeSumClosestTest.cs) | (30) | | | Second round of `ThreeSum`: sort + fix one + two pointers, but return the sum closest to a target. No duplicate skipping; keep one `best` variable, start it with the first 3 sorted numbers |
 
 ## Hard
 
@@ -63,6 +64,6 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | Level | Total | ✅ | ❌ | Pending |
 |---|---|---|---|---|
 | Easy | 13 | 8 | 2 | 3 |
-| Medium | 5 | 0 | 0 | 5 |
+| Medium | 6 | 0 | 0 | 6 |
 | Hard | 5 | 1 | 0 | 4 |
-| **All** | **23** | **9** | **2** | **12** |
+| **All** | **24** | **9** | **2** | **13** |

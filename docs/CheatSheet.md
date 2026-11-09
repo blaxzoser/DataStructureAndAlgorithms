@@ -241,6 +241,7 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `ValidPalindromeSkipAndDelete.CanBeValidPalindrome` (hard) | Two Pointers + Skip + one deletion | 15 min | | | |
 | `TrappingRainWater.Trap` (hard) | Two Pointers, move the shorter side + side max | 15 min | | | |
 | `ThreeSum.CountTriplets` (hard) | Sort + fix one + Two Pointers, move by the sum + skip repeats | 60 min | | | Repeats are skipped in 2 places: the fixed number `i`, and `left`/`right` after a match |
+| `ThreeSumClosest.FindClosestSum` (medium) | Sort + fix one + Two Pointers, return the closest sum to a target | 30 min | | | Same loop as `ThreeSum`, no skipping repeats; start `best` with the first 3 sorted numbers |
 | `UniqueCharacters.IsUnique` (easy) | Seen set | 10 min | 30 min | ✅ | First exercise of a new pattern. Special case for `""`/1 char not needed; `!seen.Add(c)` = check + add |
 | `UniqueCharacters.IsUniqueNoExtraSpace` (easy) | Compare every pair | 15 min | 12 min | ✅ | First one under the expected time. `j = i + 1`: never compare a char with itself, never compare a pair twice |
 | `FirstUniqueCharacter.FindIndex` (easy) | Frequency count, 2 passes | 15 min | 30 min | ✅ | Unique means count `== 1`, not `> 1`. Walk the STRING in pass 2 (not the dictionary) to get the first one |
@@ -256,7 +257,7 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 **Suggested order** (each one reuses the one before it):
 `ReverseOnlyLetters` → `ReverseVowels` → `ValidPalindromeOneDeletion` → `ValidPalindromeSkipAndDelete`
 and `ContainerWithMostWater` → `TrappingRainWater`
-and `IsSumPairEqualToTarget` (Samples) + `Sample2Refactor` → `ThreeSum`.
+and `IsSumPairEqualToTarget` (Samples) + `Sample2Refactor` → `ThreeSum` → `ThreeSumClosest`.
 
 Seen set / frequency count:
 `UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `GroupAnagrams`

@@ -121,6 +121,18 @@ return new string(chars);
 
 **Seen in:** `UniqueCharacters`, `FirstUniqueCharacter`, `ValidAnagram`, `RansomNote`, `GroupAnagrams`
 
+**Common mistakes (from `EmailGenerator`, score 6/10, 90 min):**
+
+- `IEnumerable<char>` in `$"{...}"` prints the type name: wrap it in `string.Concat(...)`.
+- `TakeWhile` stops at the first failure; to keep only some chars use `Where`.
+- `Select((element, index) => ...)`: the element comes first.
+- `return null` inside `Select` + `string.Join` = empty slots (`, ,`). Filter with `Where(!IsNullOrWhiteSpace)` BEFORE the `Select`.
+- Don't write one branch per size (`Length == 1/2/3`): use `words[0]` and `words[words.Length - 1]`, and `string.Join(" ", words)` to rebuild the name.
+- Clean a value ONCE before the `if`s (letters only, lower case), not in some branches only.
+- Case-insensitive counts: `new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase)`, not `.ToLower()` on every access.
+- Counter: `counts[key] = counts.TryGetValue(key, out var n) ? n + 1 : 1;` (one lookup).
+
+
 ### Sliding window (two pointers, same direction)
 
 **Use it when:** the question asks for the longest / shortest **continuous**
@@ -207,6 +219,7 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 - [ ] One element: `"a"` / `[1]`
 - [ ] Two elements: `"ab"` / `[1, 2]`
 - [ ] Only "junk": `" "`, `".,"`, `"123"`
+- [ ] Empty pieces after a `Split` (`"a,,b"`, trailing `,`) and extra spaces inside
 - [ ] Upper vs lower case: `"Racecar"`
 - [ ] Negative numbers and `0`
 - [ ] Numbers ending in `0`: `10`
@@ -237,7 +250,7 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `GroupAnagrams.Group` (medium) | Grouping with a Dictionary | 15 min | | | |
 | `AssignCookies.MaxContentChildren` (easy) | Greedy: sort + two pointers | 15 min | | | Step back from `ContainerWithMostWater` to learn greedy on a simpler problem |
 | `BoatsToSavePeople.MinBoats` (medium) | Greedy: sort + opposite-end pointers | 15 min | | | Second round of "decide which pointer moves", like `MaxArea` |
-| `EmailGenerator.Generate` (hard) | Frequency count (repeat number) + string parsing | 60 min | | | Counter: in the dictionary? yes -> add 1, no -> put 1. Count 1 = no number, 2+ = add it |
+| `EmailGenerator.Generate` (hard) | Frequency count (repeat number) + string parsing | 60 → 30 min | 90 min | ✅ 6/10 | Needed help 3 times; see "Common mistakes" in the Seen set section. Counter: in the dictionary? yes -> add 1, no -> put 1. Count 1 = no number, 2+ = add it |
 | `UsernameGenerator.Generate` (hard) | Seen set + Dictionary "next number to try" | 60 min | | | Practice for `EmailGenerator`: taken usernames mean count + 1 isn't enough, loop to the smallest free number |
 
 **Suggested order** (each one reuses the one before it):

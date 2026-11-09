@@ -52,7 +52,7 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 |---|---|---|---|---|---|---|
 | 10 | `ValidPalindromeSkipAndDelete.CanBeValidPalindrome` | [ValidPalindromeSkipAndDeleteTest.cs](../TestTrainingAlgorithms/algorithms/hard/ValidPalindromeSkipAndDeleteTest.cs) | (15) | | | |
 | 11 | `TrappingRainWater.Trap` | [TrappingRainWaterTest.cs](../TestTrainingAlgorithms/algorithms/hard/TrappingRainWaterTest.cs) | (15) | | | |
-| 21 | `EmailGenerator.Generate` | [EmailGeneratorTest.cs](../TestTrainingAlgorithms/algorithms/hard/EmailGeneratorTest.cs) | (60) | | | Hard version of the email snippet fixed with Claude on 2026-11-08: initial + last name, repeat number via `ContainsKey`/`Add` counter, plus parsing rules (middle names, `'`/`-`, one-word names, spaces, domain). Option `includeMiddleNames: true` adds each middle name's initial: `pbParker`. Option `onlyFirstPartOfLastName: true` keeps the last name up to the first `-`: `Parker-Hot` → `pParker` |
+| 21 | `EmailGenerator.Generate` | [EmailGeneratorTest.cs](../TestTrainingAlgorithms/algorithms/hard/EmailGeneratorTest.cs) | 90 min (60 → 30 after simplifying) | 2026-11-08 | ✅ | **Score 6/10**: 15/15 tests pass, but 90 min vs 60 expected and it needed help 3 times. **Common mistakes (check before submitting):** (1) `TakeWhile` where a `Where` filter was needed, and an `IEnumerable<char>` inside `$"{...}"` prints the type name: use `string.Concat(...)`. (2) `Select((i, v) => ...)`: the order is (element, index). (3) `return null` inside `Select` for empty entries, then `string.Join` still adds `, `: filter with `Where(!IsNullOrWhiteSpace)` BEFORE the `Select`; `IsNullOrEmpty` lets `" "` through. (4) Handling name shapes one by one (`Length == 1/2/3`): the last name is always `words[^1]`/`words[Length - 1]` and the first is `words[0]`, so 4+ words still work. (5) Building the output from `[0]`+`[1]`+`[2]`: use `string.Join(" ", words)`. (6) Letters-only filter applied in one branch but not the others: clean the last name once, before the `if`s. (7) Case: the dictionary key must ignore case, but the email keeps the last name's case: `Dictionary` with `StringComparer.OrdinalIgnoreCase` instead of `.ToLower()` on every access. (8) `ContainsKey` + 3 times the key lookup: `TryGetValue` once, `count + 1`. |
 | 22 | `UsernameGenerator.Generate` | [UsernameGeneratorTest.cs](../TestTrainingAlgorithms/algorithms/hard/UsernameGeneratorTest.cs) | (60) | | | Practice for `EmailGenerator`: some usernames are already taken, so find the smallest FREE number (HashSet + Dictionary "next number") |
 | 23 | `ThreeSum.CountTriplets` | [ThreeSumTest.cs](../TestTrainingAlgorithms/algorithms/hard/ThreeSumTest.cs) | (60) | | | Sort + fix one + two pointers moved by the sum (`IsSumPairEqualToTarget`), skip repeats with `Sample2Refactor`'s inner whiles. Counts unique triplets |
 
@@ -64,5 +64,5 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 |---|---|---|---|---|
 | Easy | 13 | 8 | 2 | 3 |
 | Medium | 5 | 0 | 0 | 5 |
-| Hard | 5 | 0 | 0 | 5 |
-| **All** | **23** | **8** | **2** | **13** |
+| Hard | 5 | 1 | 0 | 4 |
+| **All** | **23** | **9** | **2** | **12** |

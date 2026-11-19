@@ -40,7 +40,7 @@ Current `TrainingAlgorithms` exercises, by pattern family:
   - hard: `ValidPalindromeSkipAndDelete`, `TrappingRainWater`, `ThreeSum` (sort + fix one + two pointers, unique triplets)
 - Seen set / frequency count (worked LINQ/sort versions live in `Samples/questions/arraysAndStrings` and `Samples/questions/lambdas/StringProblems.cs`)
   - easy: `UniqueCharacters` (`IsUnique` + `IsUniqueNoExtraSpace`), `FirstUniqueCharacter`, `ValidAnagram`, `RansomNote`
-  - medium: `LongestSubstringWithoutRepeating` (sliding window), `GroupAnagrams`
+  - medium: `LongestSubstringWithoutRepeating` (sliding window), `MaximumUniqueSubarraySum` (same window, best = biggest sum), `GroupAnagrams`
   - hard (~1 hour, string parsing + repeat counter): `EmailGenerator`, `UsernameGenerator` (taken names, smallest free number)
 
 ## Conventions for training exercises

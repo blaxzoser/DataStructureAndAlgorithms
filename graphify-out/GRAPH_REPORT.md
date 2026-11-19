@@ -1,27 +1,27 @@
-# Graph Report - DataStructureAndAlgorithms  (2026-11-08)
+# Graph Report - DataStructureAndAlgorithms  (2026-11-19)
 
 ## Corpus Check
-- 130 files · ~65,713 words
+- 132 files · ~66,596 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 3)
 
 ## Summary
-- 1091 nodes · 2627 edges · 72 communities (31 shown, 41 thin omitted)
-- Extraction: 78% EXTRACTED · 22% INFERRED · 0% AMBIGUOUS · INFERRED: 583 edges (avg confidence: 0.87)
+- 1099 nodes · 2649 edges · 66 communities (31 shown, 35 thin omitted)
+- Extraction: 78% EXTRACTED · 22% INFERRED · 0% AMBIGUOUS · INFERRED: 588 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `338f0c72`
+- Built from commit: `6fa728dd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - StringProblemsTest
-- Test
-- ChatGPTTest
-- WhereExercises
-- AVL & BST Trees
 - nunit_framework
+- ChatGPTTest
+- SelectManyExercisesTest
+- AVL & BST Trees
+- Samples.algorithms
 - QuickSort
 - OtherTest
 - Stack
@@ -42,41 +42,36 @@
 - ArrayDoubleTest.cs
 - LINQ Cheat Sheet
 - TrappingRainWaterTest
-- TestCase
+- ThenByExercisesTest
 - SkipExercises
 - GroupByExercisesTest
-- FibonacciTest
-- Medium
+- City
+- BoatsToSavePeopleTest
 - system_text
 - TrainingAlgorithms.algorithms.easy
 - Person
-- Easy
+- TrainingAlgorithms.algorithms.medium
 - system_collections_generic
 - ContainsExercisesTest
 - Test.csproj
-- BubbleSort
+- ArrayDouble
 - PalindromeTest
-- Samples.questions.lambdas
-- GroupAnagramsTest
-- Algorithms Cheat Sheet
+- List
+- Medium
+- Student
+- Order
 - StringProblems
 - Employee
-- ContainsExercises
+- Parangram
 - UniqueCharactersTest
 - Easy
 - ThreeSumClosestTest
-- MergeSort
 - system
-- Recursion
-- Half-Reverse Palindrome Number Trick
 - AssignCookiesTest
 - FirstUniqueCharacterTest
 - RansomNoteTest
 - ReverseOnlyLettersTest
 - ValidAnagramTest
-- OtherTest.cs
-- LongestSubstringWithoutRepeatingTest
-- ValidPalindromeOneDeletionTest
 
 ## God Nodes (most connected - your core abstractions)
 1. `StringProblemsTest` - 65 edges
@@ -95,12 +90,12 @@
   docs/trackingTestTrainingAlgorithms.md → TrainingAlgorithms/algorithms/hard/ThreeSum.cs
 - `Easy` --references--> `ContainerWithMostWater`  [INFERRED]
   docs/trackingTestTrainingAlgorithms.md → TrainingAlgorithms/algorithms/medium/ContainerWithMostWater.cs
+- `SelectMany — [SelectManyExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercisesTest.cs)` --references--> `Customer`  [INFERRED]
+  docs/trackingTestTrainingLambdasAndLinq.md → TrainingLambdasAndLinq/POCOS/Customer.cs
 - `GroupBy — [GroupByExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/GroupByExercisesTest.cs)` --references--> `Employee`  [INFERRED]
   docs/trackingTestTrainingLambdasAndLinq.md → TrainingLambdasAndLinq/POCOS/Employee.cs
 - `ThenBy / ThenByDescending — [ThenByExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ThenByExercisesTest.cs)` --references--> `Employee`  [INFERRED]
   docs/trackingTestTrainingLambdasAndLinq.md → TrainingLambdasAndLinq/POCOS/Employee.cs
-- `12. Progress log` --references--> `ContainsExercises`  [INFERRED]
-  docs/LinqCheatSheet.md → TrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercises.cs
 
 ## Import Cycles
 - None detected.
@@ -109,23 +104,31 @@
 - **Two Pointer Pattern Family** — docs_cheatsheet_two_pointers_opposite_ends, docs_cheatsheet_two_pointers_skip, docs_cheatsheet_two_pointers_skip_swap [EXTRACTED 1.00]
 - **Palindrome Exercise Series** — docs_cheatsheet_palindrome_ispalindrome, docs_cheatsheet_palindrome_isvalidpalindrome, docs_cheatsheet_palindrome_sample2refactor, docs_cheatsheet_palindrome_ispalindromenumber [INFERRED 0.85]
 
-## Communities (72 total, 41 thin omitted)
+## Communities (66 total, 35 thin omitted)
+
+### Community 1 - "nunit_framework"
+Cohesion: 0.12
+Nodes (5): Test.questions.lamdas, Samples.questions.lambdas, Test, Samples.datastructures, Test.algorithms.questions
 
 ### Community 2 - "ChatGPTTest"
 Cohesion: 0.11
 Nodes (5): Person, Age, Name, ChatGPT, ChatGPTTest
 
-### Community 3 - "WhereExercises"
-Cohesion: 0.24
-Nodes (3): Where — [WhereExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/WhereExercisesTest.cs), WhereExercisesTest, WhereExercises
+### Community 3 - "SelectManyExercisesTest"
+Cohesion: 0.14
+Nodes (3): SelectMany — [SelectManyExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercisesTest.cs), SelectManyExercisesTest, SelectManyExercises
 
 ### Community 4 - "AVL & BST Trees"
 Cohesion: 0.09
 Nodes (15): AVLTree, Node, Height, Key, Left, Right, BinarySearchTree, Root (+7 more)
 
-### Community 7 - "OtherTest"
+### Community 5 - "Samples.algorithms"
 Cohesion: 0.07
-Nodes (6): Compressor, Palindrome, StringDuplicates, Parangram, StringMerger, OtherTest
+Nodes (11): Test.algorithms, Samples.algorithms, BubbleSort, FibonacciMemoized, FibonacciNaive, MergeSort, Recursion, BubbleSortTest (+3 more)
+
+### Community 7 - "OtherTest"
+Cohesion: 0.08
+Nodes (6): Compressor, Kata, Palindrome, StringDuplicates, StringMerger, OtherTest
 
 ### Community 8 - "Stack"
 Cohesion: 0.10
@@ -136,8 +139,8 @@ Cohesion: 0.13
 Nodes (9): System.Runtime.CompilerServices, Samples.memory, PersonClass, Age, Name, PersonRecord, ValuesTypeVsReferenceType, IsExternalInit (+1 more)
 
 ### Community 11 - "TestTrainingAlgorithms.csproj"
-Cohesion: 0.10
-Nodes (16): netstandard2.0, Microsoft.NET.Sdk, netcoreapp3.1, Microsoft.NET.Test.Sdk (16.5.0), NUnit (3.12.0), NUnit3TestAdapter (3.16.1), Microsoft.NET.Sdk, netcoreapp3.1 (+8 more)
+Cohesion: 0.06
+Nodes (32): Algorithms Cheat Sheet, C# Quick Reference (Strings, Chars, Loops), Edge-Case Checklist, Integer Overflow (int.MaxValue), LINQ Allocation Cost, Palindrome.IsPalindrome, Palindrome.IsPalindromeNumber, Palindrome.IsValidPalindrome (+24 more)
 
 ### Community 12 - "Max Heap"
 Cohesion: 0.21
@@ -171,89 +174,81 @@ Nodes (29): 10. Pitfalls checklist, 11. Time / Space quick guide, 1. Which opera
 Cohesion: 0.07
 Nodes (15): TrainingAlgorithms.algorithms.hard, TestTrainingAlgorithms.algorithms.hard, Hard, Summary, Tracking: TestTrainingAlgorithms, EmailGeneratorTest, ThreeSumTest, TrappingRainWaterTest (+7 more)
 
-### Community 26 - "TestCase"
-Cohesion: 0.05
-Nodes (17): SelectMany — [SelectManyExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SelectManyExercisesTest.cs), ThenBy / ThenByDescending — [ThenByExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ThenByExercisesTest.cs), SelectManyExercisesTest, ThenByExercisesTest, SelectManyExercises, ThenByExercises, Customer, City (+9 more)
+### Community 26 - "ThenByExercisesTest"
+Cohesion: 0.13
+Nodes (3): ThenBy / ThenByDescending — [ThenByExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ThenByExercisesTest.cs), ThenByExercisesTest, ThenByExercises
 
 ### Community 27 - "SkipExercises"
 Cohesion: 0.23
 Nodes (3): Skip / Take / SkipWhile / TakeWhile — [SkipExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/SkipExercisesTest.cs), SkipExercisesTest, SkipExercises
 
-### Community 29 - "FibonacciTest"
-Cohesion: 0.29
-Nodes (3): FibonacciMemoized, FibonacciNaive, FibonacciTest
-
-### Community 30 - "Medium"
-Cohesion: 0.24
-Nodes (5): Medium, BoatsToSavePeopleTest, ContainerWithMostWaterTest, BoatsToSavePeople, ContainerWithMostWater
+### Community 29 - "City"
+Cohesion: 0.21
+Nodes (4): City, Country, IsCapital, Name
 
 ### Community 31 - "system_text"
-Cohesion: 0.19
-Nodes (4): Samples.questions.arraysAndStrings, Test.algorithms.questions, Samples.POCOS, RemoveDuplicates
+Cohesion: 0.14
+Nodes (4): Samples.questions.recursive, Samples.questions.arraysAndStrings, Samples.POCOS, RemoveDuplicates
 
 ### Community 33 - "Person"
-Cohesion: 0.14
-Nodes (8): 12. Progress log, First / FirstOrDefault — [FirstExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/FirstExercisesTest.cs), FirstExercisesTest, FirstExercises, Person, Age, City, Name
-
-### Community 34 - "Easy"
-Cohesion: 0.20
-Nodes (5): Contains / Any / All — [ContainsExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercisesTest.cs), Easy, Rounds, Summary, Tracking: TestTrainingLambdasAndLinq
+Cohesion: 0.09
+Nodes (11): 12. Progress log, First / FirstOrDefault — [FirstExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/FirstExercisesTest.cs), Where — [WhereExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/WhereExercisesTest.cs), FirstExercisesTest, WhereExercisesTest, FirstExercises, WhereExercises, Person (+3 more)
 
 ### Community 35 - "system_collections_generic"
 Cohesion: 0.23
 Nodes (3): TrainingLambdasAndLinq.lambdasAndLinq.easy, TestTrainingLambdasAndLinq.lambdasAndLinq.easy, TrainingLambdasAndLinq.POCOS
 
 ### Community 36 - "ContainsExercisesTest"
-Cohesion: 0.22
-Nodes (5): ContainsExercisesTest, City, Country, IsCapital, Name
+Cohesion: 0.11
+Nodes (7): Contains / Any / All — [ContainsExercisesTest.cs](../TestTrainingLambdasAndLinq/lambdasAndLinq/easy/ContainsExercisesTest.cs), Easy, Rounds, Summary, Tracking: TestTrainingLambdasAndLinq, ContainsExercisesTest, ContainsExercises
 
 ### Community 37 - "Test.csproj"
 Cohesion: 0.14
 Nodes (5): netcoreapp3.1, Microsoft.NET.Test.Sdk (16.5.0), NUnit (3.12.0), NUnit3TestAdapter (3.16.1), Microsoft.NET.Sdk
 
-### Community 38 - "BubbleSort"
-Cohesion: 0.18
-Nodes (4): BubbleSort, ArrayDouble, BubbleSortTest, ArrayDoubleTest
+### Community 40 - "List"
+Cohesion: 0.27
+Nodes (4): Customer, City, Name, Orders
 
-### Community 40 - "Samples.questions.lambdas"
-Cohesion: 0.15
-Nodes (3): Test.questions.lamdas, Samples.questions.lambdas, Kata
+### Community 42 - "Medium"
+Cohesion: 0.09
+Nodes (11): Medium, ContainerWithMostWaterTest, GroupAnagramsTest, LongestSubstringWithoutRepeatingTest, MaximumUniqueSubarraySumTest, ValidPalindromeOneDeletionTest, ContainerWithMostWater, GroupAnagrams (+3 more)
 
-### Community 43 - "Algorithms Cheat Sheet"
-Cohesion: 0.18
-Nodes (13): Algorithms Cheat Sheet, C# Quick Reference (Strings, Chars, Loops), LINQ Allocation Cost, Palindrome.IsPalindrome, Palindrome.IsValidPalindrome, Palindrome.Sample2Refactor, Progress Log, ReverseOnlyLetters.Reverse (+5 more)
+### Community 43 - "Student"
+Cohesion: 0.31
+Nodes (3): Student, Courses, Name
+
+### Community 45 - "Order"
+Cohesion: 0.29
+Nodes (4): Order, Customer, Id, Products
 
 ### Community 47 - "Employee"
 Cohesion: 0.16
 Nodes (4): Employee, Department, Name, Salary
 
 ### Community 50 - "Easy"
-Cohesion: 0.36
+Cohesion: 0.43
 Nodes (3): Easy, ReverseVowelsTest, ReverseVowels
-
-### Community 62 - "Half-Reverse Palindrome Number Trick"
-Cohesion: 0.40
-Nodes (3): Edge-Case Checklist, Integer Overflow (int.MaxValue), Palindrome.IsPalindromeNumber
 
 ## Knowledge Gaps
 - **67 isolated node(s):** `netcoreapp3.1`, `Microsoft.NET.Sdk`, `Name`, `Age`, `netstandard2.0` (+62 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 123 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GroupByExercisesTest` connect `GroupByExercisesTest` to `system_collections_generic`, `.CharFrequency`, `GroupByExercises`, `Dictionary`, `.CountPeopleByCountry`, `.GetProductCountsByCustomer`, `Employee`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
+- **Why does `GroupByExercisesTest` connect `GroupByExercisesTest` to `system_collections_generic`, `GroupByExercises`, `Dictionary`, `Order`, `Employee`, `.BuildNamesByCityLookup`, `.GetOldestPersonByCity`?**
+  _High betweenness centrality (0.048) - this node is a cross-community bridge._
 - **What connects `netcoreapp3.1`, `Microsoft.NET.Sdk`, `Name` to the rest of the system?**
   _67 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `StringProblemsTest` be split into smaller, more focused modules?**
-  _Cohesion score 0.13768115942028986 - nodes in this community are weakly interconnected._
-- **Why does `12. Progress log` connect `Person` to `WhereExercises`, `GroupByExercises`, `.CountPeopleByCountry`, `Employee`, `ContainsExercises`, `LINQ Cheat Sheet`, `TestCase`, `SkipExercises`, `GroupByExercisesTest`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
-- **Should `ChatGPTTest` be split into smaller, more focused modules?**
-  _Cohesion score 0.11 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1471861471861472 - nodes in this community are weakly interconnected._
+- **Why does `12. Progress log` connect `Person` to `SelectManyExercisesTest`, `ContainsExercisesTest`, `GroupByExercises`, `Dictionary`, `Employee`, `LINQ Cheat Sheet`, `ThenByExercisesTest`, `SkipExercises`, `GroupByExercisesTest`?**
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
+- **Should `nunit_framework` be split into smaller, more focused modules?**
+  _Cohesion score 0.12169312169312169 - nodes in this community are weakly interconnected._
 - **Why does `LINQ Cheat Sheet` connect `LINQ Cheat Sheet` to `Person`?**
   _High betweenness centrality (0.040) - this node is a cross-community bridge._
-- **Should `AVL & BST Trees` be split into smaller, more focused modules?**
-  _Cohesion score 0.09019607843137255 - nodes in this community are weakly interconnected._
+- **Should `ChatGPTTest` be split into smaller, more focused modules?**
+  _Cohesion score 0.11 - nodes in this community are weakly interconnected._

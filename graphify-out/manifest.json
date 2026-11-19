@@ -516,9 +516,9 @@
     "semantic_hash": "6f45d50a5a5b18a7db5bb52bfd719654"
   },
   "docs/CheatSheet.md": {
-    "mtime": 1794201229.170204,
-    "seen": 1794201258.881585,
-    "ast_hash": "bdf3aa81b8c5c39c42c670327be4b342",
+    "mtime": 1795109804.9207077,
+    "seen": 1795109826.1433427,
+    "ast_hash": "f97bf36d32320ead6ff49ceeef95e7ec",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/ReverseVowelsTest.cs": {
@@ -588,9 +588,9 @@
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingAlgorithms.md": {
-    "mtime": 1794201229.168207,
-    "seen": 1794201258.8815882,
-    "ast_hash": "7d2c5524c5c379ec333f224f957ab60b",
+    "mtime": 1795109804.221881,
+    "seen": 1795109826.1433468,
+    "ast_hash": "e2761e8fecaeca7a92a20283a041a553",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs": {
@@ -648,8 +648,8 @@
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/easy/ValidAnagram.cs": {
-    "mtime": 1792971699.2451973,
-    "seen": 1792973277.0430443,
+    "mtime": 1795109799.086414,
+    "seen": 1795109826.1432817,
     "ast_hash": "e22f3fa6fa01cd0311a46ddede78b3b3",
     "semantic_hash": ""
   },
@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/medium/LongestSubstringWithoutRepeating.cs": {
-    "mtime": 1794105201.2107303,
-    "seen": 1794110285.2412262,
-    "ast_hash": "02679b788181a3ddbb10aaff08869308",
+    "mtime": 1795109743.6266587,
+    "seen": 1795109826.1433015,
+    "ast_hash": "8380d9fad33ba2d4c6792e3d087c7007",
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingLambdasAndLinq.md": {
@@ -774,9 +774,21 @@
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/medium/ThreeSumClosest.cs": {
-    "mtime": 1794201221.0972285,
-    "seen": 1794201258.8815508,
+    "mtime": 1794201334.337263,
+    "seen": 1795109826.1433055,
     "ast_hash": "c1af5f49b6fb82d8ce685564a77e8cd9",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/MaximumUniqueSubarraySumTest.cs": {
+    "mtime": 1795109776.1264987,
+    "seen": 1795109826.143184,
+    "ast_hash": "8044f0bfb37784788f77477345f7c129",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/MaximumUniqueSubarraySum.cs": {
+    "mtime": 1795109803.679265,
+    "seen": 1795109826.1433034,
+    "ast_hash": "a8a0067fb04067afe27992063e1630b5",
     "semantic_hash": ""
   }
 }

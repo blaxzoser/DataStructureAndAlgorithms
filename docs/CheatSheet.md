@@ -144,7 +144,7 @@ piece (substring, subarray) that follows a rule.
 
 > Template: fill in after you solve `LongestSubstringWithoutRepeating`.
 
-**Seen in:** `LongestSubstringWithoutRepeating`
+**Seen in:** `LongestSubstringWithoutRepeating`, `MaximumUniqueSubarraySum`
 
 ### Digit manipulation (numbers without strings)
 
@@ -248,6 +248,7 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `ValidAnagram.IsAnagram` (easy) | Frequency count, +1/-1 | 15 min | 20 min | ✅ (after fix) | A new count starts at **1**, not at the index `i`. When looping over 2 strings, check each loop reads the right one (copy-paste bug) |
 | `RansomNote.CanConstruct` (easy) | Frequency count, use up | 15 min | 20 min | ❌ | `null` checks go FIRST: calling `.Trim()` / `.Length` on `null` crashes. Too many special cases caused the bugs; the main loop already handled `""` |
 | `LongestSubstringWithoutRepeating.LengthOfLongest` (medium) | Sliding window + seen set | 15 min | | | |
+| `MaximumUniqueSubarraySum.MaxSum` (medium) | Sliding window + seen set + running sum | 15 min | | | Second round of `LengthOfLongest`: best = biggest sum, not size. Add when entering, subtract when leaving |
 | `GroupAnagrams.Group` (medium) | Grouping with a Dictionary | 15 min | | | |
 | `AssignCookies.MaxContentChildren` (easy) | Greedy: sort + two pointers | 15 min | | | Step back from `ContainerWithMostWater` to learn greedy on a simpler problem |
 | `BoatsToSavePeople.MinBoats` (medium) | Greedy: sort + opposite-end pointers | 15 min | | | Second round of "decide which pointer moves", like `MaxArea` |
@@ -260,7 +261,7 @@ and `ContainerWithMostWater` → `TrappingRainWater`
 and `IsSumPairEqualToTarget` (Samples) + `Sample2Refactor` → `ThreeSum` → `ThreeSumClosest`.
 
 Seen set / frequency count:
-`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `GroupAnagrams`
+`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `MaximumUniqueSubarraySum` → `GroupAnagrams`
 → `EmailGenerator` → `UsernameGenerator` (hard, ~1 hour each).
 
 Greedy (sort, then take the best local choice and never undo it):

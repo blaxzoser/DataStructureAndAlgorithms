@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TrainingAlgorithms.algorithms.medium
 {
@@ -48,7 +49,90 @@ namespace TrainingAlgorithms.algorithms.medium
         // ========================================================================
         public int LengthOfLongest(string input)
         {
-            throw new NotImplementedException();
+
+            // FIX 1: check the input first.
+            //   null -> 'input.Length' crashed.   "" -> '.Max()' on an empty set crashed.
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+
+            // The bag: letters currently INSIDE the window [left .. right].
+            // One item per letter -> { "p", "w" }, never one item "pw".
+
+
+            HashSet<string> memory = new HashSet<string>();
+
+
+            // FIX 2: one int is enough (the "high score").
+            //   We only need the BIGGEST size so far, not every size.
+            int best = 0;
+
+            // BAD
+            //HashSet<int> size = new HashSet<int>();
+            //int maxSize = 0;
+            //int best = 0;
+
+            int left = 0;
+            int right = 0;
+
+            //***************************************************************************************************
+            // WRONG you dont need move 2 pointers
+            //while (right < input.Length) {
+
+            //    if (!memory.Contains(input[right].ToString()))
+            //    {
+            //        memory.Add(input[right].ToString());
+            //    }
+            //    else
+            //    {
+            //        memory.Remove(input[left].ToString());
+            //        left++;
+
+            //    }
+
+
+            //    if (!memory.Contains(input[left].ToString()))
+            //    {
+            //        memory.Add(input[left].ToString());
+            //    }
+
+            //    size.Add(right - left + 1);
+
+            //    right++;
+            //}
+            //***************************************************************************************************
+            // GOOD
+            while (right < input.Length)
+            {
+                string letter = input[right].ToString();
+
+                // FIX 3: your 'else', but as a WHILE.
+                //   The new letter is already in the window -> shrink from the left
+                //   until the old copy is gone.
+                //   "pwwkew", right = 2 (second 'w'):
+                //     remove "p" (left 0 -> 1) -> old "w" still inside, keep going
+                //     remove "w" (left 1 -> 2) -> old "w" gone, stop
+                while (memory.Contains(letter))
+                {
+                    memory.Remove(input[left].ToString());
+                    left++;
+                }
+
+                // Now it's safe: add the NEW letter (input[right], not input[left]).
+                memory.Add(letter);
+
+                // FIX 4: size = right - left + 1. Update 'best' only when this window beats it.
+                //   "abcdd": at the end size is 1 ([d]), but best must stay 4 ("abcd").
+                best = Math.Max(best, right - left + 1);
+
+                right++;   // kept from your code: after measuring the size
+            }
+
+            // FIX 5 (removed): the 'if (!memory.Contains(input[left]))' block.
+            //   Adding letters is done once, above. 'left' only moves in the shrink loop.
+
+            return best;
         }
     }
 }

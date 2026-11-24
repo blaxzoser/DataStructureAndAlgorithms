@@ -46,7 +46,9 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | 18 | `GroupAnagrams.Group` | [GroupAnagramsTest.cs](../TestTrainingAlgorithms/algorithms/medium/GroupAnagramsTest.cs) | (15) | | | |
 | 20 | `BoatsToSavePeople.MinBoats` | [BoatsToSavePeopleTest.cs](../TestTrainingAlgorithms/algorithms/medium/BoatsToSavePeopleTest.cs) | (15) | | | Practice for `ContainerWithMostWater`: sort + two pointers, the heaviest always boards, the lightest only if it fits |
 | 24 | `ThreeSumClosest.FindClosestSum` | [ThreeSumClosestTest.cs](../TestTrainingAlgorithms/algorithms/medium/ThreeSumClosestTest.cs) | (30) | | | Second round of `ThreeSum`: sort + fix one + two pointers, but return the sum closest to a target. No duplicate skipping; keep one `best` variable, start it with the first 3 sorted numbers |
-| 25 | `MaximumUniqueSubarraySum.MaxSum` | [MaximumUniqueSubarraySumTest.cs](../TestTrainingAlgorithms/algorithms/medium/MaximumUniqueSubarraySumTest.cs) | (15) | | | Second round of `LongestSubstringWithoutRepeating`: same window + HashSet + shrink `while`, but numbers instead of letters and best = biggest SUM. Running sum: `+=` when a number enters, `-=` when it leaves |
+| 25 | `MaximumUniqueSubarraySum.MaxSum` | [MaximumUniqueSubarraySumTest.cs](../TestTrainingAlgorithms/algorithms/medium/MaximumUniqueSubarraySumTest.cs) | 20 min (15) | 2026-11-24 | ❌ | **Score 4/10**, 2 of 10 tests pass (only `[]` and `[5]`, thanks to the early returns); 7 throw `IndexOutOfRange`, `null` throws `NullReference`. Right pieces (HashSet, left/right, sum, best, shrink `while`, `Math.Max`) but **left and right swapped**: the shrink loop did `right++` (should be `left++`), `Add(numbers[left])` (should be `[right]`), and the outer loop did `left++` (use `for (right...)`). Also: `null` check after `.Length` again; `sum =+ x` is `sum = +x` (use `+=`); re-summing the window with a loop is O(n²) and had the wrong bound (`i < size`): keep a running sum, `+=` on enter, `-=` on leave. Extra `Length == 1` check again. Fixed version given in chat, to re-type |
+| 26 | `MaximumSumDistinctSubarrayOfLengthK.MaxSum` | [MaximumSumDistinctSubarrayOfLengthKTest.cs](../TestTrainingAlgorithms/algorithms/medium/MaximumSumDistinctSubarrayOfLengthKTest.cs) | (15-20) | | | Third round of the window: `MaxSum` with a FIXED size k. Shrink on a repeat OR when full (`right - left == k` before adding); count `best` only when size `== k`. Shrink loop always uses `numbers[left]` |
+| 27 | `LongestSubstringKDistinct.LengthOfLongest` | [LongestSubstringKDistinctTest.cs](../TestTrainingAlgorithms/algorithms/medium/LongestSubstringKDistinctTest.cs) | (20) | | | `LengthOfLongest` with letters allowed to repeat, but at most k DIFFERENT: `HashSet` → `Dictionary<char,int>` counts, shrink `while (counts.Count > k)`. A count that hits 0 must be REMOVED |
 
 ## Hard
 
@@ -65,6 +67,6 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | Level | Total | ✅ | ❌ | Pending |
 |---|---|---|---|---|
 | Easy | 13 | 8 | 2 | 3 |
-| Medium | 7 | 0 | 0 | 7 |
+| Medium | 9 | 0 | 1 | 8 |
 | Hard | 5 | 1 | 0 | 4 |
-| **All** | **25** | **9** | **2** | **14** |
+| **All** | **27** | **9** | **3** | **15** |

@@ -55,7 +55,34 @@ namespace TrainingAlgorithms.algorithms.medium
         // ========================================================================
         public int MaxSum(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null ||  numbers.Length == 0  ) 
+                return 0;
+
+            HashSet<int> memory = new HashSet<int>();
+            int left= 0;
+            int best= 0, sum = 0;
+            for (int right = 0; right < numbers.Length; right++)
+            {
+                while (memory.Contains(numbers[right]))
+                {
+                    memory.Remove(numbers[left]);
+                    sum -= numbers[left];
+                    left++;
+                }
+                memory.Add(numbers[right]);
+                sum += numbers[right];
+
+                //int size = right - left + 1;
+
+                //it's bad its O(n²)
+                //for (int i = left; i <= right; i++) {
+                //    sum += numbers[i];
+                //}
+
+                best = Math.Max(best , sum);
+            }
+
+            return best;
         }
     }
 }

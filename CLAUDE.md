@@ -28,6 +28,7 @@ reference solution in a separate method (e.g. `Sample1Refactor`) next to theirs.
 | `TrainingLambdasAndLinq/POCOS/` | | Person, Order, Student, City, Employee, Customer (data for LINQ exercises) | |
 | `DataStructureAndAlgorithms/` | console app | Hello World entry point, unused | |
 | `docs/CheatSheet.md` | doc | Patterns + templates, C# quick reference, Time/Space, edge cases, progress log | |
+| `TwoPointersAndSlidingWindow.md` | doc (root) | One-page cheat sheet for only two pointers and sliding window: how to tell them apart, templates, user's common mistakes. Keep in sync with `docs/CheatSheet.md` | |
 | `docs/LinqCheatSheet.md` | doc | LINQ operators with examples from the solved `TrainingLambdasAndLinq` exercises, pitfalls, progress log | |
 | `docs/trackingTestTrainingAlgorithms.md` | doc | Time / date / checked / notes for every exercise tested in `TestTrainingAlgorithms` | |
 | `docs/trackingTestTrainingLambdasAndLinq.md` | doc | Rounds per class + checked / notes for every exercise tested in `TestTrainingLambdasAndLinq` | |
@@ -40,7 +41,7 @@ Current `TrainingAlgorithms` exercises, by pattern family:
   - hard: `ValidPalindromeSkipAndDelete`, `TrappingRainWater`, `ThreeSum` (sort + fix one + two pointers, unique triplets)
 - Seen set / frequency count (worked LINQ/sort versions live in `Samples/questions/arraysAndStrings` and `Samples/questions/lambdas/StringProblems.cs`)
   - easy: `UniqueCharacters` (`IsUnique` + `IsUniqueNoExtraSpace`), `FirstUniqueCharacter`, `ValidAnagram`, `RansomNote`
-  - medium: `LongestSubstringWithoutRepeating` (sliding window), `MaximumUniqueSubarraySum` (same window, best = biggest sum), `GroupAnagrams`
+  - medium: `LongestSubstringWithoutRepeating` (sliding window), `MaximumUniqueSubarraySum` (same window, best = biggest sum), `MaximumSumDistinctSubarrayOfLengthK` (same + fixed size k), `LongestSubstringKDistinct` (window + Dictionary counts, at most k distinct), `GroupAnagrams`
   - hard (~1 hour, string parsing + repeat counter): `EmailGenerator`, `UsernameGenerator` (taken names, smallest free number)
 
 ## Conventions for training exercises

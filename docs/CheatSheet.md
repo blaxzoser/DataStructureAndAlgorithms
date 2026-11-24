@@ -3,6 +3,7 @@
 Quick reminders to recognize a problem and pick the right technique.
 Update this file every time you finish a new exercise in `TrainingAlgorithms`.
 LINQ operators (Where, First, GroupBy, ThenBy, SelectMany…) live in [LinqCheatSheet.md](LinqCheatSheet.md).
+Two pointers vs sliding window on one page: [TwoPointersAndSlidingWindow.md](../TwoPointersAndSlidingWindow.md).
 
 ---
 
@@ -142,9 +143,45 @@ piece (substring, subarray) that follows a rule.
 - Window size = `right - left + 1`.
 - Still O(n): each pointer only moves forward.
 
-> Template: fill in after you solve `LongestSubstringWithoutRepeating`.
+```csharp
+for (int right = 0; right < n; right++)      // right ALWAYS moves: a[right] wants to enter
+{
+    while (/* adding a[right] would break the rule */)
+    {
+        // a[left] LEAVES: Remove(a[left]) / sum -= a[left] / count--
+        left++;
+    }
+    // a[right] ENTERS: Add(a[right]) / sum += a[right] / count++
+    best = Math.Max(best, /* right - left + 1  or  sum */);
+}
+```
 
-**Seen in:** `LongestSubstringWithoutRepeating`, `MaximumUniqueSubarraySum`
+- The shrink loop uses `a[left]` on EVERY line. `a[right]` only appears in the `while` condition.
+- The window's summary can be a `HashSet` (already inside?), a `sum` (total inside) or a `Dictionary<char,int>` (how many of each inside).
+
+**Seen in:** `LongestSubstringWithoutRepeating`, `MaximumUniqueSubarraySum`, `MaximumSumDistinctSubarrayOfLengthK` (fixed size k), `LongestSubstringKDistinct` (Dictionary counts instead of a set)
+
+### Two pointers vs Sliding window: how to tell them apart
+
+Both use `left` and `right`. The difference is **what you look at**:
+
+- **Two pointers** look at the **2 cells** the pointers sit on. What's in between doesn't matter.
+- **Sliding window** looks at **every cell between** `left` and `right`, and keeps a summary of it.
+
+| | Two pointers | Sliding window |
+|---|---|---|
+| Question asks for | A **pair** (both ends match, two numbers sum to a target, the best two walls) | The longest / biggest **continuous piece** (substring, subarray) that follows a rule |
+| Pointers start | Opposite ends: `left = 0`, `right = n - 1` | Both at 0 |
+| Direction | Toward each other | Same direction, left to right |
+| Who moves | You decide each step (one `if/else`, or both) | `right` always (`for`), `left` only to fix the window (`while`) |
+| Inner `while` does | **Skips** cells that don't count ("step over it") | **Removes** cells from the left until the window is valid ("the window is broken, throw out the oldest") |
+| Key tool | Compare `a[left]` with `a[right]` | A summary of the window: `HashSet` / `sum` / `Dictionary` |
+| Answer from | The comparison of the 2 cells | `right - left + 1` (size) or `sum` |
+| Your exercises | `Palindrome`, `ReverseOnlyLetters`, `ReverseVowels`, `ContainerWithMostWater`, `BoatsToSavePeople`, `ThreeSum` | `LengthOfLongest`, `MaxSum` and the two k versions |
+
+- The inner skip `while`s belong to "Two pointers + Skip" only. `ContainerWithMostWater` and `BoatsToSavePeople` have none: one `if/else` picks which pointer moves.
+- Tricky case: same direction but **not** a window (`RemoveDuplicates`: slow pointer writes, fast pointer reads). No summary of the range = not a window.
+- **One line:** two pointers look at 2 cells; a sliding window looks at all the cells between them, keeping a running summary as `right` adds and `left` removes.
 
 ### Digit manipulation (numbers without strings)
 
@@ -248,7 +285,9 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `ValidAnagram.IsAnagram` (easy) | Frequency count, +1/-1 | 15 min | 20 min | ✅ (after fix) | A new count starts at **1**, not at the index `i`. When looping over 2 strings, check each loop reads the right one (copy-paste bug) |
 | `RansomNote.CanConstruct` (easy) | Frequency count, use up | 15 min | 20 min | ❌ | `null` checks go FIRST: calling `.Trim()` / `.Length` on `null` crashes. Too many special cases caused the bugs; the main loop already handled `""` |
 | `LongestSubstringWithoutRepeating.LengthOfLongest` (medium) | Sliding window + seen set | 15 min | | | |
-| `MaximumUniqueSubarraySum.MaxSum` (medium) | Sliding window + seen set + running sum | 15 min | | | Second round of `LengthOfLongest`: best = biggest sum, not size. Add when entering, subtract when leaving |
+| `MaximumUniqueSubarraySum.MaxSum` (medium) | Sliding window + seen set + running sum | 15 min | 20 min | ❌ | `right` GROWS the window (outer `for`, `Add(numbers[right])`, `sum +=`); `left` SHRINKS it (inner `while`, `Remove(numbers[left])`, `sum -=`, `left++`). Swapping them crashes. `=+` is not `+=`. `null` check first |
+| `MaximumSumDistinctSubarrayOfLengthK.MaxSum` (medium) | Sliding window (fixed size k) + seen set + running sum | 15-20 min | | | Third round of the window: also shrink when full (`right - left == k`), count best only at size k |
+| `LongestSubstringKDistinct.LengthOfLongest` (medium) | Sliding window + frequency count | 20 min | | | Set → `Dictionary<char,int>`; shrink while `Count > k`; remove a key when its count hits 0 |
 | `GroupAnagrams.Group` (medium) | Grouping with a Dictionary | 15 min | | | |
 | `AssignCookies.MaxContentChildren` (easy) | Greedy: sort + two pointers | 15 min | | | Step back from `ContainerWithMostWater` to learn greedy on a simpler problem |
 | `BoatsToSavePeople.MinBoats` (medium) | Greedy: sort + opposite-end pointers | 15 min | | | Second round of "decide which pointer moves", like `MaxArea` |
@@ -261,7 +300,7 @@ and `ContainerWithMostWater` → `TrappingRainWater`
 and `IsSumPairEqualToTarget` (Samples) + `Sample2Refactor` → `ThreeSum` → `ThreeSumClosest`.
 
 Seen set / frequency count:
-`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `MaximumUniqueSubarraySum` → `GroupAnagrams`
+`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `MaximumUniqueSubarraySum` → `MaximumSumDistinctSubarrayOfLengthK` → `LongestSubstringKDistinct` → `GroupAnagrams`
 → `EmailGenerator` → `UsernameGenerator` (hard, ~1 hour each).
 
 Greedy (sort, then take the best local choice and never undo it):

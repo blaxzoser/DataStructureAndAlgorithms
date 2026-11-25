@@ -25,7 +25,7 @@ Both use `left` and `right`. The difference is **what you look at**:
 | Inner `while` does | **Skips** cells that don't count: "step over it" | **Removes** cells from the left until the window is valid: "the window is broken, throw out the oldest" |
 | Key tool | Compare `a[left]` with `a[right]` | A summary of the window: `HashSet` / `sum` / `Dictionary` |
 | Answer from | The comparison of the 2 cells | `right - left + 1` (size) or `sum` |
-| Your exercises | `Palindrome`, `ReverseOnlyLetters`, `ReverseVowels`, `ContainerWithMostWater`, `BoatsToSavePeople`, `ThreeSum`, `ThreeSumClosest` | `LongestSubstringWithoutRepeating`, `MaximumUniqueSubarraySum`, `MaximumSumDistinctSubarrayOfLengthK`, `LongestSubstringKDistinct` |
+| Your exercises | `Palindrome`, `ReverseOnlyLetters`, `ReverseVowels`, `ContainerWithMostWater`, `BoatsToSavePeople`, `ThreeSum`, `ThreeSumClosest` | `LongestSubstringWithoutRepeating` (+ reps `LongestUniqueNumbers`, `LongestUniqueWords`, `LongestUniqueSubstring`), `MaximumUniqueSubarraySum`, `MaximumSumDistinctSubarrayOfLengthK`, (later) `LongestSubstringKDistinct` |
 
 **One line:** two pointers look at 2 cells; a sliding window looks at all the
 cells between them, keeping a running summary as `right` adds and `left` removes.
@@ -150,7 +150,7 @@ for (int right = 0; right < n; right++)      // right ALWAYS moves: a[right] wan
 
 | Summary | Answers | Shrink while… | Exercise |
 |---|---|---|---|
-| `HashSet` | Is this already inside? | `set.Contains(a[right])` | `LengthOfLongest`, `MaxSum` |
+| `HashSet` | Is this already inside? | `set.Contains(a[right])` | `LengthOfLongest` (+ the 3 reps), `MaxSum` |
 | `sum` | What's the total inside? | (same as the set) | `MaxSum` |
 | `HashSet` + size | Repeat, or window full? | `Contains(a[right]) \|\| right - left == k` | `MaximumSumDistinctSubarrayOfLengthK` |
 | `Dictionary<char,int>` | How many of each inside? | `counts.Count > k` (shrink AFTER adding) | `LongestSubstringKDistinct` |

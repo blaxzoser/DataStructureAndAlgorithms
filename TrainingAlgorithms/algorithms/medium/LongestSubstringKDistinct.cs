@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TrainingAlgorithms.algorithms.medium
 {
@@ -61,7 +62,33 @@ namespace TrainingAlgorithms.algorithms.medium
         // ========================================================================
         public int LengthOfLongest(string text, int k)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(text)) return 0;
+            
+           Dictionary<char,int> window = new Dictionary<char,int>();
+           var left = 0;
+           var bestSize = 0;
+           
+           for (int right = 0; right < text.Length; right++) {
+
+                if (window.ContainsKey(text[right]))
+                    window[text[right]]++;
+                else
+                    window[text[right]] = 1;
+
+
+                // too many DIFFERENT letters → text[left] LEAVES
+                while (window.Count > k)
+                {
+                    window[text[left]]--;
+                    if (window[text[left]] == 0)
+                        window.Remove(text[left]);   // gone from the window → one less different letter
+                    left++;
+                }
+
+                bestSize = Math.Max(bestSize, right - left + 1);
+            }
+
+           return bestSize;
         }
     }
 }

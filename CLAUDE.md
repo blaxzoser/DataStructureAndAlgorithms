@@ -41,7 +41,7 @@ Current `TrainingAlgorithms` exercises, by pattern family:
   - hard: `ValidPalindromeSkipAndDelete`, `TrappingRainWater`, `ThreeSum` (sort + fix one + two pointers, unique triplets)
 - Seen set / frequency count (worked LINQ/sort versions live in `Samples/questions/arraysAndStrings` and `Samples/questions/lambdas/StringProblems.cs`)
   - easy: `UniqueCharacters` (`IsUnique` + `IsUniqueNoExtraSpace`), `FirstUniqueCharacter`, `ValidAnagram`, `RansomNote`
-  - medium: `LongestSubstringWithoutRepeating` (sliding window), `MaximumUniqueSubarraySum` (same window, best = biggest sum), `MaximumSumDistinctSubarrayOfLengthK` (same + fixed size k), `LongestSubstringKDistinct` (window + Dictionary counts, at most k distinct), `GroupAnagrams`
+  - medium: `LongestSubstringWithoutRepeating` (sliding window), reps with the identical skeleton `LongestUniqueNumbers` (int[]), `LongestUniqueWords` (split into words), `LongestUniqueSubstring` (return the piece), `MaximumUniqueSubarraySum` (same window, best = biggest sum), `MaximumSumDistinctSubarrayOfLengthK` (same + fixed size k), `LongestSubstringKDistinct` (window + Dictionary counts, at most k distinct; LATER, changes 2 things at once), `GroupAnagrams`
   - hard (~1 hour, string parsing + repeat counter): `EmailGenerator`, `UsernameGenerator` (taken names, smallest free number)
 
 ## Conventions for training exercises
@@ -54,6 +54,10 @@ Current `TrainingAlgorithms` exercises, by pattern family:
   Expected time to solve, Pattern (which earlier exercise it builds on), Topic, Tip 1/Tip 2.
 - Exercises should reuse a pattern the user already practiced and step up difficulty
   gradually (~15 min each). Check existing exercises (and `Samples/`) to avoid repeats.
+- A follow-up exercise changes only ONE thing compared with the one it builds on (same
+  data structure, same loop, same condition, same order). For a set of practice reps,
+  use the `repeat5-times-alberto-style` skill (`.claude/skills/`): same skeleton,
+  only the context changes (string, int[], words, List<Person>...).
 - Verify test expectations with a temporary reference solution, then strip it back to a stub.
 - When adding an exercise, also add a row to `docs/trackingTestTrainingAlgorithms.md`
   (LINQ exercises: `docs/trackingTestTrainingLambdasAndLinq.md`)

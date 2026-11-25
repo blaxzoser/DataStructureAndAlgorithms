@@ -48,7 +48,10 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | 24 | `ThreeSumClosest.FindClosestSum` | [ThreeSumClosestTest.cs](../TestTrainingAlgorithms/algorithms/medium/ThreeSumClosestTest.cs) | (30) | | | Second round of `ThreeSum`: sort + fix one + two pointers, but return the sum closest to a target. No duplicate skipping; keep one `best` variable, start it with the first 3 sorted numbers |
 | 25 | `MaximumUniqueSubarraySum.MaxSum` | [MaximumUniqueSubarraySumTest.cs](../TestTrainingAlgorithms/algorithms/medium/MaximumUniqueSubarraySumTest.cs) | 20 min (15) | 2026-11-24 | ❌ | **Score 4/10**, 2 of 10 tests pass (only `[]` and `[5]`, thanks to the early returns); 7 throw `IndexOutOfRange`, `null` throws `NullReference`. Right pieces (HashSet, left/right, sum, best, shrink `while`, `Math.Max`) but **left and right swapped**: the shrink loop did `right++` (should be `left++`), `Add(numbers[left])` (should be `[right]`), and the outer loop did `left++` (use `for (right...)`). Also: `null` check after `.Length` again; `sum =+ x` is `sum = +x` (use `+=`); re-summing the window with a loop is O(n²) and had the wrong bound (`i < size`): keep a running sum, `+=` on enter, `-=` on leave. Extra `Length == 1` check again. Fixed version given in chat, to re-type |
 | 26 | `MaximumSumDistinctSubarrayOfLengthK.MaxSum` | [MaximumSumDistinctSubarrayOfLengthKTest.cs](../TestTrainingAlgorithms/algorithms/medium/MaximumSumDistinctSubarrayOfLengthKTest.cs) | (15-20) | | | Third round of the window: `MaxSum` with a FIXED size k. Shrink on a repeat OR when full (`right - left == k` before adding); count `best` only when size `== k`. Shrink loop always uses `numbers[left]` |
-| 27 | `LongestSubstringKDistinct.LengthOfLongest` | [LongestSubstringKDistinctTest.cs](../TestTrainingAlgorithms/algorithms/medium/LongestSubstringKDistinctTest.cs) | (20) | | | `LengthOfLongest` with letters allowed to repeat, but at most k DIFFERENT: `HashSet` → `Dictionary<char,int>` counts, shrink `while (counts.Count > k)`. A count that hits 0 must be REMOVED |
+| 27 | `LongestSubstringKDistinct.LengthOfLongest` | [LongestSubstringKDistinctTest.cs](../TestTrainingAlgorithms/algorithms/medium/LongestSubstringKDistinctTest.cs) | (20) | | | **LATER**: do it after #28–#30 are solved cleanly. It changes 2 things at once (`HashSet` → `Dictionary<char,int>` counts, AND add first / shrink after with `while (counts.Count > k)`). A count that hits 0 must be REMOVED. First try (2026-11-24) hung: `=+`, `left++` at the end, `text[left]` vs `text[right]` mixed up |
+| 28 | `LongestUniqueNumbers.LengthOfLongest` | [LongestUniqueNumbersTest.cs](../TestTrainingAlgorithms/algorithms/medium/LongestUniqueNumbersTest.cs) | 15 min (10) | 2026-11-24 | ✅ | **Score 9/10**: 10/10 tests pass on the first run, no help. Rep 1 of `LengthOfLongest`, identical skeleton (`int[]` instead of `string`). Null check first, no `Length == 1` case, `Remove(numbers[left])` + `left++` only inside the while, `Add(numbers[right])`, no `=+`: all 4 old mistakes fixed. Only gap: 5 min over the 10 min target |
+| 29 | `LongestUniqueWords.LengthOfLongest` | [LongestUniqueWordsTest.cs](../TestTrainingAlgorithms/algorithms/medium/LongestUniqueWordsTest.cs) | (10-15) | | | Rep 2 of `LengthOfLongest`, identical skeleton. Only change: `Split(' ')` first, then loop over words |
+| 30 | `LongestUniqueSubstring.Find` | [LongestUniqueSubstringTest.cs](../TestTrainingAlgorithms/algorithms/medium/LongestUniqueSubstringTest.cs) | (15) | | | Rep 3 of `LengthOfLongest`, identical skeleton. Only change: return the substring (`bestStart` + `Substring(start, length)`), `>` so the first one wins |
 
 ## Hard
 
@@ -67,6 +70,6 @@ dotnet test TestTrainingAlgorithms/TestTrainingAlgorithms.csproj
 | Level | Total | ✅ | ❌ | Pending |
 |---|---|---|---|---|
 | Easy | 13 | 8 | 2 | 3 |
-| Medium | 9 | 0 | 1 | 8 |
+| Medium | 12 | 1 | 1 | 10 |
 | Hard | 5 | 1 | 0 | 4 |
-| **All** | **27** | **9** | **3** | **15** |
+| **All** | **30** | **10** | **3** | **17** |

@@ -159,7 +159,7 @@ for (int right = 0; right < n; right++)      // right ALWAYS moves: a[right] wan
 - The shrink loop uses `a[left]` on EVERY line. `a[right]` only appears in the `while` condition.
 - The window's summary can be a `HashSet` (already inside?), a `sum` (total inside) or a `Dictionary<char,int>` (how many of each inside).
 
-**Seen in:** `LongestSubstringWithoutRepeating`, `MaximumUniqueSubarraySum`, `MaximumSumDistinctSubarrayOfLengthK` (fixed size k), `LongestSubstringKDistinct` (Dictionary counts instead of a set)
+**Seen in:** `LongestSubstringWithoutRepeating` (+ reps `LongestUniqueNumbers`, `LongestUniqueWords`, `LongestUniqueSubstring`), `MaximumUniqueSubarraySum`, `MaximumSumDistinctSubarrayOfLengthK` (fixed size k), `LongestSubstringKDistinct` (Dictionary counts instead of a set)
 
 ### Two pointers vs Sliding window: how to tell them apart
 
@@ -287,7 +287,10 @@ reversed = reversed * 10 + lastDigit; // 12   -> 123
 | `LongestSubstringWithoutRepeating.LengthOfLongest` (medium) | Sliding window + seen set | 15 min | | | |
 | `MaximumUniqueSubarraySum.MaxSum` (medium) | Sliding window + seen set + running sum | 15 min | 20 min | ❌ | `right` GROWS the window (outer `for`, `Add(numbers[right])`, `sum +=`); `left` SHRINKS it (inner `while`, `Remove(numbers[left])`, `sum -=`, `left++`). Swapping them crashes. `=+` is not `+=`. `null` check first |
 | `MaximumSumDistinctSubarrayOfLengthK.MaxSum` (medium) | Sliding window (fixed size k) + seen set + running sum | 15-20 min | | | Third round of the window: also shrink when full (`right - left == k`), count best only at size k |
-| `LongestSubstringKDistinct.LengthOfLongest` (medium) | Sliding window + frequency count | 20 min | | | Set → `Dictionary<char,int>`; shrink while `Count > k`; remove a key when its count hits 0 |
+| `LongestUniqueNumbers.LengthOfLongest` (medium) | Sliding window + seen set (rep 1) | 10 min | 15 min | ✅ 9/10 | First clean window: 10/10 on the first run. The skeleton stuck once nothing else changed |
+| `LongestUniqueWords.LengthOfLongest` (medium) | Sliding window + seen set (rep 2) | 10-15 min | | | Same skeleton, `Split(' ')` first, loop over words |
+| `LongestUniqueSubstring.Find` (medium) | Sliding window + seen set (rep 3) | 15 min | | | Same skeleton, return the piece: `bestStart` + `Substring(start, length)` |
+| `LongestSubstringKDistinct.LengthOfLongest` (medium) | Sliding window + frequency count | 20 min | | | LATER (after the 3 reps). Set → `Dictionary<char,int>`; add first, then shrink while `Count > k`; remove a key when its count hits 0 |
 | `GroupAnagrams.Group` (medium) | Grouping with a Dictionary | 15 min | | | |
 | `AssignCookies.MaxContentChildren` (easy) | Greedy: sort + two pointers | 15 min | | | Step back from `ContainerWithMostWater` to learn greedy on a simpler problem |
 | `BoatsToSavePeople.MinBoats` (medium) | Greedy: sort + opposite-end pointers | 15 min | | | Second round of "decide which pointer moves", like `MaxArea` |
@@ -300,7 +303,7 @@ and `ContainerWithMostWater` → `TrappingRainWater`
 and `IsSumPairEqualToTarget` (Samples) + `Sample2Refactor` → `ThreeSum` → `ThreeSumClosest`.
 
 Seen set / frequency count:
-`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → `MaximumUniqueSubarraySum` → `MaximumSumDistinctSubarrayOfLengthK` → `LongestSubstringKDistinct` → `GroupAnagrams`
+`UniqueCharacters` → `FirstUniqueCharacter` → `ValidAnagram` → `RansomNote` → `LongestSubstringWithoutRepeating` → reps with the identical skeleton: `LongestUniqueNumbers` → `LongestUniqueWords` → `LongestUniqueSubstring` → `MaximumUniqueSubarraySum` → `MaximumSumDistinctSubarrayOfLengthK` → (later) `LongestSubstringKDistinct` → `GroupAnagrams`
 → `EmailGenerator` → `UsernameGenerator` (hard, ~1 hour each).
 
 Greedy (sort, then take the best local choice and never undo it):

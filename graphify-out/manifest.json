@@ -516,9 +516,9 @@
     "semantic_hash": "6f45d50a5a5b18a7db5bb52bfd719654"
   },
   "docs/CheatSheet.md": {
-    "mtime": 1795564568.2314074,
-    "seen": 1795564574.4959812,
-    "ast_hash": "b430e72e4b63f321dc2a129a0c083b12",
+    "mtime": 1795567950.5183342,
+    "seen": 1795567961.500886,
+    "ast_hash": "c2ae02a0a68b56a40914a9991c3e1b86",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/ReverseVowelsTest.cs": {
@@ -588,9 +588,9 @@
     "semantic_hash": ""
   },
   "docs/trackingTestTrainingAlgorithms.md": {
-    "mtime": 1795563552.0861998,
-    "seen": 1795563562.0112333,
-    "ast_hash": "615cdea44f7740e65840f77e74e27c3a",
+    "mtime": 1795567949.9463248,
+    "seen": 1795567961.5008893,
+    "ast_hash": "aa6f412dd91fe196aceb5075a29a90c3",
     "semantic_hash": ""
   },
   "TestTrainingAlgorithms/algorithms/easy/FirstUniqueCharacterTest.cs": {
@@ -660,8 +660,8 @@
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/medium/LongestSubstringWithoutRepeating.cs": {
-    "mtime": 1795109743.6266587,
-    "seen": 1795109826.1433015,
+    "mtime": 1795567876.1450672,
+    "seen": 1795567961.5008445,
     "ast_hash": "8380d9fad33ba2d4c6792e3d087c7007",
     "semantic_hash": ""
   },
@@ -804,9 +804,9 @@
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/medium/LongestSubstringKDistinct.cs": {
-    "mtime": 1795563519.7503915,
-    "seen": 1795563562.011181,
-    "ast_hash": "17113ed6c70f158bd1c659af6480067a",
+    "mtime": 1795567890.3707938,
+    "seen": 1795567961.5008428,
+    "ast_hash": "53f84f5e9f1d547e60bf5e5eeb98b864",
     "semantic_hash": ""
   },
   "TrainingAlgorithms/algorithms/medium/MaximumSumDistinctSubarrayOfLengthK.cs": {
@@ -816,9 +816,45 @@
     "semantic_hash": ""
   },
   "TwoPointersAndSlidingWindow.md": {
-    "mtime": 1795564555.1413317,
-    "seen": 1795564574.4959779,
-    "ast_hash": "2a6bca89cd51acd34ae343f0ded4b6aa",
+    "mtime": 1795567950.9203982,
+    "seen": 1795567961.5008845,
+    "ast_hash": "23c7e59fc344417aa01e7e75204abec8",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/LongestUniqueNumbersTest.cs": {
+    "mtime": 1795567882.6549127,
+    "seen": 1795567961.5007417,
+    "ast_hash": "a53fde7aedb1b63832136369f57f9d12",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/LongestUniqueSubstringTest.cs": {
+    "mtime": 1795567883.088472,
+    "seen": 1795567961.5007443,
+    "ast_hash": "2f377881ec296d487b3fe9362c7f0f0b",
+    "semantic_hash": ""
+  },
+  "TestTrainingAlgorithms/algorithms/medium/LongestUniqueWordsTest.cs": {
+    "mtime": 1795567882.8979502,
+    "seen": 1795567961.5007463,
+    "ast_hash": "545332d95002acf050155f4401f77b8e",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/LongestUniqueNumbers.cs": {
+    "mtime": 1795567916.5352411,
+    "seen": 1795567961.5008461,
+    "ast_hash": "95b4d2598c5994083273c668fc5f868f",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/LongestUniqueSubstring.cs": {
+    "mtime": 1795567917.177871,
+    "seen": 1795567961.5008476,
+    "ast_hash": "0e300c0e2b8872dcda55a07ef4da3c0c",
+    "semantic_hash": ""
+  },
+  "TrainingAlgorithms/algorithms/medium/LongestUniqueWords.cs": {
+    "mtime": 1795567916.7235687,
+    "seen": 1795567961.500849,
+    "ast_hash": "2d8871022472bb619aae39de64f1166d",
     "semantic_hash": ""
   }
 }
